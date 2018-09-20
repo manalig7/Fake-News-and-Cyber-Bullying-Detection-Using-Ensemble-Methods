@@ -4,16 +4,25 @@ from sklearn.metrics import confusion_matrix, precision_recall_fscore_support, r
 import pickle
 import sys
 
-tsv = 'final_news_content.txt'
+tsv = 'FakeNewsNet_Dataset/fakenewsnet_train.txt'
 f=open(tsv,'r')
 x_train=[]
 y_train=[]
 
 for line in f:
 	ls=line.split('\t')
-	x_train.append(ls[1].lower())
-	y_train.append(int(ls[2]))
+	x_train.append(ls[0].lower())
+	y_train.append(int(ls[1]))
 
+tsv1 = 'FakeNewsNet_Dataset/fakenewsnet_test.txt'
+f=open(tsv,'r')
+x_test=[]
+y_test=[]
+
+for line in f:
+	ls=line.split('\t')
+	x_test.append(ls[0].lower())
+	y_test.append(int(ls[1]))
 
 print "Number of Training Samples"
 print len(x_train)
@@ -37,10 +46,11 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 tvec = TfidfVectorizer(max_features=100000,ngram_range=(1, 3))
 tvec.fit(x_train)
 
-filename = 'tfidf_model.txt'
-pickle.dump(tvec, open(filename, 'wb'))
+#filename = 'tfidf_model.txt'
+#pickle.dump(tvec, open(filename, 'wb'))
 
 x_train_tfidf = tvec.transform(x_train)
+x_test_tfidf = tvec.transform(x_test)
 
 print x_train_tfidf.shape
 
@@ -59,23 +69,22 @@ clf.fit(x_train_tfidf, y_train)
 
 print "Accuracy on Training Set"
 print clf.score(x_train_tfidf, y_train)
-print "Saving the Model"
-filename = 'text_model_rf.txt'
-pickle.dump(clf, open(filename, 'wb'))
+#print "Saving the Model"
+#filename = 'text_model_rf.txt'
+#pickle.dump(clf, open(filename, 'wb'))
 
-print "Predicting and writing the results for training set"
+print "Checking on Test Set"
+print "Accuracy on Testing Set"
+print clf.score(x_test_tfidf, y_test)
 
-y_pred=clf.predict(x_train_tfidf)
+y_pred=clf.predict(x_test_tfidf)
 
-f=open('training_pred_text_rf.txt','w+')
-
-print y_pred
-
-for i in range(0,len(indexes)):
-	f.write(str(indexes[i])+'\t'+str(y_pred[i])+'\n')
-
-f.close()
-
+print "Precision Score"
+print precision_score(y_test, y_pred)
+print "Recall Score"
+print recall_score(y_test, y_pred)
+print "F1 Score"
+print f1_score(y_test, y_pred)
 
 
 
