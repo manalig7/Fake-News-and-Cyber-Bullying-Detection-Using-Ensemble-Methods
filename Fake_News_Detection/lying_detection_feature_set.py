@@ -44,6 +44,9 @@ for i, news in enumerate(x_train):
     tokens = [stemmer.stem(t) for t in tkr.tokenize(news) if not t.startswith('@')]
     tokenized_text.append(tokens)
 
+remove_list=[',','.','?',':','_','-','--','(',')','!','$']
+
 for i in range(0,len(tokenized_text)):
-	tokenized_text[i].remove(',','.','?',':','_','-','--','(',')','!','$')
+	for item in remove_list:
+		tokenized_text[i].remove(item)
 	feature_set[i].append(len(tokenized_text))
