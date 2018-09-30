@@ -82,6 +82,25 @@ def flesch_kincaid(text,avg_sen_len,avg_syl):
           float(84.6 * avg_syl) 
     return legacy_round(flesch, 2) 
 
+   # Return total Difficult Words in a text 
+def difficult_words(text): 
+  	# Find all words in the text 
+    words = [] 
+    sentences = break_sentences(text) 
+    for sentence in sentences: 
+        words += [token for token in sentence] 
+    diff_words_set = set() 
+    for word in words: 
+        syllable_count = syllables_count(word) 
+        if word not in easy_word_set and syllable_count >= 2: 
+            diff_words_set.add(word) 
+
+def gunning_fog(text,wordcount,avg_sen_len): 
+    per_diff_words = (difficult_words(text) / wordcount * 100) + 5
+    grade = 0.4 * (avg_sen_len + per_diff_words) 
+    return grade 
+  
+
 ##############################################FEATURES################################
 #Features are being stored in feature set
 
@@ -107,13 +126,19 @@ for i in range(0,len(x_train)):
 #Average Number of Words per sentence(3)
 for i in range(0,len(x_train)):
 	text=x_train[i]
-	avg_syl=avg_sentence_length(text,wordcount,feature_set[i][1])
-	feature_set[i].append(avg_syl)
+	avg_sen_len=avg_sentence_length(text,wordcount,sentencecount)
+	feature_set[i].append(avg_sen_len)
 
 #Flesch Kincaid Score (4)
 for i in range(0,len(x_train)):
 	text=x_train[i]
-	flesch=flesch_kincaid(text,feature_set[i][3],feature_set[i][2])
+	flesch=flesch_kincaid(text,avg_sen_len,avg_syl)
 	feature_set[i].append(flesch)
+
+#Gunning-Fog (5)
+for i in range(0,len(x_train)):
+	text=x_train[i]
+	gf=gunning_fog(text,wordcount,avg_sen_len)
+	feature_set[i].append(gf)
 
 #######################################################################################
