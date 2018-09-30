@@ -2,8 +2,8 @@
 Minimal Feature Set: 
 Number of unique words
 Complexity
-Gunning-Fog
-Character count with whitespace
+Gunning-Fog-
+Character count with whitespace-
 Character count without whitespace
 Average syllables per word-
 Sentence count-
@@ -104,41 +104,56 @@ def gunning_fog(text,wordcount,avg_sen_len):
 ##############################################FEATURES################################
 #Features are being stored in feature set
 
-#Number of Words (0)
+#Number of Words 
 
 for i in range(0,len(x_train)):
 	text=x_train[i]
 	wordcount=word_count(text)
 	
 
-#Number of Sentences (1)
+#Number of Sentences (0)
 for i in range(0,len(x_train)):
 	text=x_train[i]
 	sentencecount=sentence_count(text)
 	feature_set[i].append(sentencecount)
 
-#Average Number of Syllables per word (2)
+#Average Number of Syllables per word (1)
 for i in range(0,len(x_train)):
 	text=x_train[i]
 	avg_syl=avg_syllables_per_word(text)
 	feature_set[i].append(avg_syl)
 
-#Average Number of Words per sentence(3)
+#Average Number of Words per sentence(2)
 for i in range(0,len(x_train)):
 	text=x_train[i]
 	avg_sen_len=avg_sentence_length(text,wordcount,sentencecount)
 	feature_set[i].append(avg_sen_len)
 
-#Flesch Kincaid Score (4)
+#Flesch Kincaid Score (3)
 for i in range(0,len(x_train)):
 	text=x_train[i]
 	flesch=flesch_kincaid(text,avg_sen_len,avg_syl)
 	feature_set[i].append(flesch)
 
-#Gunning-Fog (5)
+#Gunning-Fog (4)
 for i in range(0,len(x_train)):
 	text=x_train[i]
 	gf=gunning_fog(text,wordcount,avg_sen_len)
 	feature_set[i].append(gf)
+
+#Number of characters with whitespace (5)
+for i in range(0,len(x_train)):
+	text=x_train[i]
+	num_char_w=len(text)
+	feature_set[i].append(num_char_w)
+
+#Number of characters without whitespace (6)
+for i in range(0,len(x_train)):
+	text=x_train[i]
+	num_char=0
+	for j in range(0,len(text)):
+		if text[j]!=' ':
+			num_char=num_char+1
+	feature_set[i].append(num_char)
 
 #######################################################################################
