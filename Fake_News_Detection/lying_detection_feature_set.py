@@ -57,27 +57,54 @@ def avg_syllables_per_word(text):
     ASPW = float(syllable) / float(words) 
     return legacy_round(ASPW, 1) 
 
+#Average sentence length
+def avg_sentence_length(text,words,sentences): 
+    #words = word_count(text) 
+    #sentences = sentence_count(text) 
+    average_sentence_length = float(words / sentences) 
+    return average_sentence_length 
+
+#Returns Flesch Kincaid Score
+def flesch_kincaid(text,avg_sen_len,avg_syl): 
+    flesch = 206.835 - float(1.015 * avg_sen_len) -\ 
+          float(84.6 * avg_syl) 
+    return legacy_round(flesch, 2) 
+
 ##############################################FEATURES################################
-#Number of Words
+#Features are being stored in feature set
+
+#Number of Words (0)
 
 for i in range(0,len(x_train)):
 	text=x_train[i]
 	wordcount=word_count(text)
 	feature_set[i].append(wordcount)
 
-#Number of Sentences
+#Number of Sentences (1)
 for i in range(0,len(x_train)):
 	text=x_train[i]
 	sentencecount=sentence_count(text)
 	feature_set[i].append(sentencecount)
 
-#Average Number of Syllables per word
+#Average Number of Syllables per word (2)
 for i in range(0,len(x_train)):
 	text=x_train[i]
 	avg_syl=avg_syllables_per_word(text)
 	feature_set[i].append(avg_syl)
 
+#Average Number of Words per sentence(3)
+for i in range(0,len(x_train)):
+	text=x_train[i]
+	avg_syl=avg_sentence_length(text,feature_set[i][0],feature_set[i][1])
+	feature_set[i].append(avg_syl)
 
+#Flesch Kincaid Score (4)
+for i in range(0,len(x_train)):
+	text=x_train[i]
+	flesch=flesch_kincaid(text,feature_set[i][3],feature_set[i][2])
+	feature_set[i].append(flesch)
+
+#######################################################################################
 
 """
 #Number of Sentences
