@@ -17,7 +17,7 @@ Number of Conjunctions
 4. Uncertainity
 Number of words expressing uncertainity
 Number of tentative words
-Modal Verbs
+Modal Verbs-
 5. Specificity and Expressiveness
 Rate of adjectives and adverbs
 Number of affective terms
@@ -158,7 +158,18 @@ for i in range(0,len(x_train)):
 	feature_set[i].append(num_short)
 	feature_set[i].append(num_long)
 
+#Modal Verbs
+list_modal_verbs=['can','could','may','might','must','shall','should','will','would']
 
+for i in range(0,len(x_train)):
+	text=x_train[i]
+	sentences = break_sentences(text) 
+	num_mod=0
+	for item in sentences:
+		for token in item:
+			if token in list_modal_verbs:
+				num_mod=num_mod+1
+	feature_set[i].append(num_mod)
 
 #######################################################################################
 
