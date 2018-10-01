@@ -1,9 +1,41 @@
+"""
+REQUIRED FEATURES
+1. Quantity: 
+Number of Syllables -
+Number of Words -
+Number of Sentences -
+2. Vocabulary complexity: 
+Number of big words
+Number of syllables per word -
+3. Grammmatical Complexity
+Number of short sentences-
+Number of long sentences-
+Flesch-Kincaid -
+Average Number of Words per sentence -
+Sentence Complexity
+Number of Conjunctions
+4. Uncertainity
+Number of words expressing uncertainity
+Number of tentative words
+Modal Verbs
+5. Specificity and Expressiveness
+Rate of adjectives and adverbs
+Number of affective terms
+6. Verbal Non-Immediacy
+Self References
+Number of first, second and third person pronoun usage
+
+"""
+
+
 import pandas as pd  
 import numpy as np
 import sys
 from nltk.stem.lancaster import LancasterStemmer
 from nltk.tokenize import RegexpTokenizer
 from nltk.tokenize import sent_tokenize, word_tokenize
+
+short_sentence_cutoff=10
 
 tsv = 'FakeNewsNet_Dataset/fakenewsnet_train.txt'
 f=open(tsv,'r')
@@ -70,8 +102,10 @@ def flesch_kincaid(text,avg_sen_len,avg_syl):
           float(84.6 * avg_syl) 
     return legacy_round(flesch, 2) 
 
+
 ##############################################FEATURES################################
 #Features are being stored in feature set
+
 
 #Number of Words (0)
 
@@ -86,23 +120,45 @@ for i in range(0,len(x_train)):
 	sentencecount=sentence_count(text)
 	feature_set[i].append(sentencecount)
 
-#Average Number of Syllables per word (2)
+#Number of Syllables (2)
+for i in range(0,len(x_train)):
+	text=x_train[i]
+	syl_count=num_syllables(text)
+	feature_set[i].append(syl_count)
+
+#Average Number of Syllables per word (3)
 for i in range(0,len(x_train)):
 	text=x_train[i]
 	avg_syl=avg_syllables_per_word(text)
 	feature_set[i].append(avg_syl)
 
-#Average Number of Words per sentence(3)
+#Average Number of Words per sentence(4)
 for i in range(0,len(x_train)):
 	text=x_train[i]
 	avg_syl=avg_sentence_length(text,feature_set[i][0],feature_set[i][1])
 	feature_set[i].append(avg_syl)
 
-#Flesch Kincaid Score (4)
+#Flesch Kincaid Score (5)
 for i in range(0,len(x_train)):
 	text=x_train[i]
-	flesch=flesch_kincaid(text,feature_set[i][3],feature_set[i][2])
+	flesch=flesch_kincaid(text,feature_set[i][4],feature_set[i][3])
 	feature_set[i].append(flesch)
+
+#Number of Short Sentences and Long Sentences (6,7)
+for i in range(0,len(x_train)):
+	text=x_train[i]
+	sentences = break_sentences(text) 
+	num_short=0
+	num_long=0
+	for item in sentences:
+		if len(item)<=short_sentence_cutoff:
+			num_short=num_short+1
+		else:
+			num_long=num_long+1
+	feature_set[i].append(num_short)
+	feature_set[i].append(num_long)
+
+
 
 #######################################################################################
 
