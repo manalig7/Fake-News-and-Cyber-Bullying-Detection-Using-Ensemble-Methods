@@ -146,11 +146,15 @@ for i in range(0,len(x_train)):
 	feature_set[i].append(flesch)
 
 #Number of big words
-int big_word_count=0;
 for i in range(0,len(x_train)):
 	text=x_train[i]
-	if(len(text)>=6)
-		big_word_count=big_word_count+1;
+	sentences = break_sentences(text)
+	big_word_count=0
+	for item in sentences:
+		for token in item:
+			if(len(text)>=6)
+			big_word_count=big_word_count+1;
+	feature_set[i].append(big_word_count)
 
 #Number of Short Sentences and Long Sentences (6,7)
 for i in range(0,len(x_train)):
@@ -178,6 +182,9 @@ for i in range(0,len(x_train)):
 			if token in list_modal_verbs:
 				num_mod=num_mod+1
 	feature_set[i].append(num_mod)
+
+list_conjunctions=['and','but','for', 'nor', 'or', 'so', 'yet']
+
 
 #######################################################################################
 
