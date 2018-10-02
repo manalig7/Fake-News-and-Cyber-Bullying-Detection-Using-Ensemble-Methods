@@ -13,6 +13,9 @@ for line in f:
 	y_train.append(int(ls[1]))
 f.close()
 
+train_features = []
+train_features = BOW(x_train)
+
 tsv1 = 'dataset/finaldataset_test.txt'
 f=open(tsv1,'r')
 x_test=[]
@@ -24,25 +27,31 @@ for line in f:
 	y_test.append(int(ls[1]))
 f.close()
 
-print "Number of Training Samples"
-print len(x_train)
+test_features = []
+test_features = BOW(x_test)
 
-print "CountVectors"
 
-vectorizer = CountVectorizer()
-features1 = vectorizer.fit_transform(x_train).toarray()
-#print( vectorizer.vocabulary_ )
-print(features1.shape)
+def BOW(X):
+	print "Number of Samples"
+	print len(X)
 
-"""for f in features1:
-	print(f)	
-	#print( euclidean_distances(features[0], f) )"""
+	print "CountVectors"
 
-print "TfIdf-Vectors"
+	vectorizer = CountVectorizer(decode_error='ignore')
+	features1 = vectorizer.fit_transform(X).toarray()
+	#print( vectorizer.vocabulary_ )
+	#print(features1.shape)
 
-tvec = TfidfVectorizer()
-features2 = tvec.fit_transform(x_train).toarray()
-print(features2.shape)
+	#for f in features1:
+	#	print(f)	
+		
+	print "TfIdf-Vectors"
 
-"""for f in features2:
-	print(f)"""
+	tvec = TfidfVectorizer(decode_error='ignore')
+	features2 = tvec.fit_transform(X).toarray()
+	#print(features2.shape)
+
+	#for f in features2:
+	#	print(f)
+	
+	return [features1,features2]
