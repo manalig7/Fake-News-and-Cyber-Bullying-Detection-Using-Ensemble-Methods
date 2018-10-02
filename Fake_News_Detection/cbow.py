@@ -45,10 +45,10 @@ for line in f :
 f.close()
 print(len(x_train))
 
-model_W2V = Word2Vec(data, size=5, window=5, min_count=1, workers=5, sg=0)
+model_W2V = Word2Vec(data, size=10, window=5, min_count=1, workers=5, sg=0)
 
 
-model_FT = FastText(data, size=100, window=5, min_count=1, workers=5,sg=0)
+model_FT = FastText(data, size=10, window=5, min_count=1, workers=5,sg=0)
 
 print "model_done!"
 
@@ -56,7 +56,7 @@ X_train0=fit_transform(x_train,data,0)
 
 X_train1=fit_transform(x_train,data,1)
 
-print(X_train.toarray())
+print(np.asarray(X_train))
 
 
 ##### testing dataset #####
