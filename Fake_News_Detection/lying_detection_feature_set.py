@@ -5,7 +5,7 @@ Number of Syllables -
 Number of Words -
 Number of Sentences -
 2. Vocabulary complexity: 
-Number of big words
+Number of big words - 
 Number of syllables per word -
 3. Grammmatical Complexity
 Number of short sentences-
@@ -62,8 +62,9 @@ from textstat.textstat import textstatistics
  ##########################################FUNCTIONS################################# 
 def break_sentences(text): 
     nlp = spacy.load('en') 
+
     doc = nlp(text) 
-    return doc.sents 
+    return doc.sents
   
 # Returns Number of Words in the text 
 def word_count(text): 
@@ -98,7 +99,7 @@ def avg_sentence_length(text,words,sentences):
 
 #Returns Flesch Kincaid Score
 def flesch_kincaid(text,avg_sen_len,avg_syl): 
-    flesch = 206.835 - float(1.015 * avg_sen_len) -\ 
+    flesch = 206.835 - float(1.015 * avg_sen_len) -\
           float(84.6 * avg_syl) 
     return legacy_round(flesch, 2) 
 
@@ -143,6 +144,13 @@ for i in range(0,len(x_train)):
 	text=x_train[i]
 	flesch=flesch_kincaid(text,feature_set[i][4],feature_set[i][3])
 	feature_set[i].append(flesch)
+
+#Number of big words
+int big_word_count=0;
+for i in range(0,len(x_train)):
+	text=x_train[i]
+	if(len(text)>=6)
+		big_word_count=big_word_count+1;
 
 #Number of Short Sentences and Long Sentences (6,7)
 for i in range(0,len(x_train)):
