@@ -24,14 +24,14 @@ from nltk.stem.lancaster import LancasterStemmer
 from nltk.tokenize import RegexpTokenizer
 from nltk.tokenize import sent_tokenize, word_tokenize
 
-tsv = 'FakeNewsNet_Dataset/fakenewsnet_train.txt'
+tsv = 'FakeNewsNet_Dataset/trial.txt'
 f=open(tsv,'r')
 x_train=[]
 y_train=[]
 
 for line in f:
 	ls=line.split('\t')
-	x_train.append(ls[0].lower())
+	x_train.append((ls[0].decode('utf-8')).lower())
 	y_train.append(int(ls[1]))
 
 feature_set=[]
@@ -45,6 +45,7 @@ for i in range(0,len(x_train)):
 import spacy 
 from textstat.textstat import easy_word_set, legacy_round 
 from textstat.textstat import textstatistics
+from readcalc import readcalc
   
  ##########################################FUNCTIONS################################# 
 def break_sentences(text): 
@@ -63,7 +64,7 @@ def word_count(text):
 # Returns the number of sentences in the text 
 def sentence_count(text): 
     sentences = break_sentences(text) 
-    return len(sentences) 
+    return len(list(sentences)) 
 
 def num_syllables(word): 
     return textstatistics().syllable_count(word) 
@@ -85,7 +86,7 @@ def avg_sentence_length(text,words,sentences):
 
 #Returns Flesch Kincaid Score
 def flesch_kincaid(text,avg_sen_len,avg_syl): 
-    flesch = 206.835 - float(1.015 * avg_sen_len) -\ 
+    flesch = 206.835 - float(1.015 * avg_sen_len) -\
           float(84.6 * avg_syl) 
     return legacy_round(flesch, 2) 
 
@@ -98,15 +99,15 @@ def difficult_words(text):
         words += [token for token in sentence] 
     diff_words_set = set() 
     for word in words: 
-        syllable_count = syllables_count(word) 
+        syllable_count = num_syllables(str(word)) 
         if word not in easy_word_set and syllable_count >= 2: 
             diff_words_set.add(word) 
-
+"""
 def gunning_fog(text,wordcount,avg_sen_len): 
     per_diff_words = (difficult_words(text) / wordcount * 100) + 5
     grade = 0.4 * (avg_sen_len + per_diff_words) 
     return grade 
-  
+"""
 
 ##############################################FEATURES################################
 #Features are being stored in feature set
@@ -145,9 +146,12 @@ for i in range(0,len(x_train)):
 
 #Gunning-Fog (4)
 for i in range(0,len(x_train)):
-	text=x_train[i]
-	gf=gunning_fog(text,wordcount[i],feature_set[i][2])
-	feature_set[i].append(gf)
+    text=x_train[i]
+    #gf=gunning_fog(text,wordcount[i],feature_set[i][2])
+    #gf=textstatistics.gunning_fog(self,text)
+    calc = readcalc.ReadCalc(text)
+    gf=calc.get_fog_index()
+    feature_set[i].append(gf)
 
 #Number of characters with whitespace (5)
 for i in range(0,len(x_train)):
