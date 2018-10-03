@@ -23,6 +23,7 @@ import sys
 from nltk.stem.lancaster import LancasterStemmer
 from nltk.tokenize import RegexpTokenizer
 from nltk.tokenize import sent_tokenize, word_tokenize
+from textatistic import Textatistic
 
 tsv = 'FakeNewsNet_Dataset/trial.txt'
 f=open(tsv,'r')
@@ -149,8 +150,11 @@ for i in range(0,len(x_train)):
     text=x_train[i]
     #gf=gunning_fog(text,wordcount[i],feature_set[i][2])
     #gf=textstatistics.gunning_fog(self,text)
-    calc = readcalc.ReadCalc(text)
-    gf=calc.get_fog_index()
+    #calc = readcalc.ReadCalc(text)
+    #gf=calc.get_fog_index()
+    print type(text)
+    s = Textatistic(text)
+    gf=a.gunningfog_score
     feature_set[i].append(gf)
 
 #Number of characters with whitespace (5)
