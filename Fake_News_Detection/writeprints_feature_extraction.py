@@ -161,17 +161,25 @@ for i in range(0,len(x_train)):
 	wordcount=word_count(text)
 	feature_set[i].append(wordcount)
 
-#Percentage number of short words (less than 4 chracters) (32)
+#Percentage number of short words (less than 4 chracters) and Percentage of characters in words, Average word length(32,33,34)
 for i in range(0,len(x_train)):
 	text=x_train[i]
 	for item in char_remove:
 		text=text.replace(item,"")
 	ls=text.split(" ")
 	count=0
+	num_char=0
 	for item in ls:
 		if len(item)<4:
 			count=count+1
+		num_char=num_char+len(item)
 	shortratio=float(count)/feature_set[i][31]
+	word_char_ratio=float(num_char)/feature_set[i][0]
+	av_word_length=float(num_char)/feature_set[i][31]
 	feature_set[i].append(shortratio)
+	feature_set[i].append(word_char_ratio)
 
-#Percentage of characters in words (33)
+
+
+
+
