@@ -13,16 +13,16 @@ Number of long sentences-
 Flesch-Kincaid -
 Average Number of Words per sentence -
 Sentence Complexity
-Number of Conjunctions
+Number of Conjunctions -
 4. Uncertainity
 Number of words expressing uncertainity
-Number of tentative words
+Number of tentative words -
 Modal Verbs-
 5. Specificity and Expressiveness
-Rate of adjectives and adverbs
+Rate of adjectives and adverbs 
 Number of affective terms
 6. Verbal Non-Immediacy
-Self References
+Self References 
 Number of first, second and third person pronoun usage
 
 """
@@ -37,7 +37,7 @@ from nltk.tokenize import sent_tokenize, word_tokenize
 
 short_sentence_cutoff=10
 
-tsv = 'FakeNewsNet_Dataset/fakenewsnet_train.txt'
+tsv = 'FakeNewsNet_Dataset/fakenewsnet_train (copy).txt'
 f=open(tsv,'r')
 x_train=[]
 y_train=[]
@@ -77,7 +77,7 @@ def word_count(text):
 # Returns the number of sentences in the text 
 def sentence_count(text): 
     sentences = break_sentences(text) 
-    return len(sentences) 
+    return len(list(sentences)) 
 
 def num_syllables(word): 
     return textstatistics().syllable_count(word) 
@@ -150,10 +150,10 @@ for i in range(0,len(x_train)):
 	text=x_train[i]
 	sentences = break_sentences(text)
 	big_word_count=0
-	for item in sentences:
+	for item in list(sentences):
 		for token in item:
-			if(len(text)>=6)
-			big_word_count=big_word_count+1;
+			if len(text)>=6:
+				big_word_count=big_word_count+1;
 	feature_set[i].append(big_word_count)
 
 #Number of Short Sentences and Long Sentences (6,7)
@@ -162,7 +162,7 @@ for i in range(0,len(x_train)):
 	sentences = break_sentences(text) 
 	num_short=0
 	num_long=0
-	for item in sentences:
+	for item in list(sentences):
 		if len(item)<=short_sentence_cutoff:
 			num_short=num_short+1
 		else:
@@ -177,14 +177,56 @@ for i in range(0,len(x_train)):
 	text=x_train[i]
 	sentences = break_sentences(text) 
 	num_mod=0
-	for item in sentences:
+	for item in list(sentences):
 		for token in item:
 			if token in list_modal_verbs:
 				num_mod=num_mod+1
 	feature_set[i].append(num_mod)
 
-list_conjunctions=['and','but','for', 'nor', 'or', 'so', 'yet']
+list_conjunctions=['and','but','for', 'nor', 'or', 'so', 'yet', 'because', 'if' ,'as', 'since']
+for i in range(0,len(x_train)):
+	text=x_train[i]
+	sentences = break_sentences(text) 
+	num_conjunct=0
+	for item in list(sentences):
+		for token in item:
+			if token in list_conjunctions:
+				num_conjunct=num_conjunct+1
+	feature_set[i].append(num_conjunct)
 
+list_tentative_words=[ 'suggests that' , 'appear' ,'indicate', 'may', 'might','could','can','possibly', 'probably','likely','perhaps','uncertain','maybe',' conceivably' ,'tentative','tentatively' ,'tends to' , 'seems to']
+for i in range(0,len(x_train)):
+	text=x_train[i]
+	sentences = break_sentences(text) 
+	num_tentative=0
+	for item in list(sentences):
+		for token in item:
+			if token in list_tentative_words:
+				num_tentative=num_tentative+1
+	feature_set[i].append(num_tentative)
+
+
+#Number of first, second, third person
+
+list_first_person_pronouns=['I','we','me','us','my','our','mine','ours']
+list_second_person_pronouns=['you','your','yours']
+list_third_person_pronouns=['he','they','him','them','his', 'her','their','she','her','hers','theirs','it','its']
+
+for i in range(0,len(x_train)):
+	text=x_train[i]
+	sentences = break_sentences(text) 
+	num_tentative=0
+	for item in list(sentences):
+		for token in item:
+			if token in list_first_person_pronouns:
+				num_first_person=num_first_person+1
+			elif token in list_second_person_pronouns:
+					num_second_person=num_second_person+1;
+			elif token in list_third_person_pronouns:
+					num_third_person=num_third_person+1;
+	feature_set[i].append(num_first_person)
+	feature_set[i].append(num_second_person)
+	feature_set[i].append(num_third_person)
 
 #######################################################################################
 
