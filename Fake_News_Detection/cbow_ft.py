@@ -2,22 +2,16 @@ import numpy as np
 import warnings 
 warnings.filterwarnings(action = 'ignore') 
 from nltk.tokenize import RegexpTokenizer
-from gensim.models import Word2Vec
 from gensim.models import FastText
 
 
-def fit_transform(x,d,op):
+def fit_transform(x,d):
 	res=[]
 	for i in range(0,len(x_train)):
 		temp=[]
-		if op==0:
-			for word in d[i]:
-				#word=word.encode('ascii','ignore')
-				temp.append(np.mean(model_W2V.wv[word]))		
-		else:
-			for word in d[i]:
-				#word=word.encode('ascii','ignore')
-				temp.append(np.mean(model_FT.wv[word]))
+		for word in d[i]:
+			#word=word.encode('ascii','ignore')
+			temp.append(np.mean(model_FT.wv[word]))
 		res.append(temp)
 	return res
 
@@ -45,16 +39,11 @@ for line in f :
 f.close()
 print(len(x_train))
 
-model_W2V = Word2Vec(data, size=10, window=5, min_count=1, workers=5, sg=0)
-
-
 model_FT = FastText(data, size=10, window=5, min_count=1, workers=5,sg=0)
 
 print "model_done!"
 
-X_train0=fit_transform(x_train,data,0)
-
-X_train1=fit_transform(x_train,data,1)
+X_train=fit_transform(x_train,data)
 
 print(np.asarray(X_train))
 
@@ -78,8 +67,7 @@ for line in f:
 	y_test.append(int(ls[1]))
 f.close()
 
-model_W2V.train(data1)
 model_FT.train(data1)
 
-X_test0=fit_transform(x_test,data1,0)
-X_test1=fit_transform(x_test,data1,1)
+X_test=fit_transform(x_test,data1)
+
