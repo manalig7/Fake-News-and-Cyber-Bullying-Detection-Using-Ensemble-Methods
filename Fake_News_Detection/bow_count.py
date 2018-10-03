@@ -1,7 +1,6 @@
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfVectorizer
 
-
 tsv = 'dataset/finaldataset_train.txt'
 f=open(tsv,'r')
 x_train=[]
@@ -30,18 +29,21 @@ for line in f:
 	y_test.append(int(ls[1]))
 f.close()
 
-print "TfIdf-Vectors"
+#print(data)
 
-tvec = TfidfVectorizer(decode_error='ignore')
-features2 = tvec.fit_transform(x_train).toarray()
+print "CountVectors"
+vectorizer = CountVectorizer(decode_error='ignore')
+features1 = vectorizer.fit_transform(data).toarray()
+#print( vectorizer.vocabulary_ )
+#print(features1.shape)
 
 train_features = []
-train_features = features2[:m]
+train_features = features1[:m]
 #print(m)
 #print(len(y_test))
 
 test_features = []
-test_features = features2[m:]
+test_features = features1[m:]
 #print(test_features.shape)
 
 
@@ -69,6 +71,4 @@ print "\nRecall Score"
 print recall_score(y_test, y_pred)
 print "\nF1 Score"
 print f1_score(y_test, y_pred)
-
-
 
