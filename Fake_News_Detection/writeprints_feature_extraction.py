@@ -61,6 +61,7 @@ from nltk.stem.lancaster import LancasterStemmer
 from nltk.tokenize import RegexpTokenizer
 from nltk.tokenize import sent_tokenize, word_tokenize
 import string
+import nltk
 
 tsv = 'FakeNewsNet_Dataset/trial.txt'
 f=open(tsv,'r')
@@ -90,6 +91,18 @@ def break_sentences(text):
     nlp = spacy.load('en') 
     doc = nlp(text) 
     return doc.sents
+
+def hapaxlegomena(text):																	  
+    freq = nltk.FreqDist(word for word in text.split())
+    hapax_legomena = [key for key,val in freq.items() if val==1]
+    return len(hapax_legomena)
+
+def dislegomena(text):																	  
+    freq = nltk.FreqDist(word for word in text.split())
+    dislegomena = [key for key,val in freq.items() if val==2]
+    return len(dislegomena)
+
+    
 
 ##############################FEATURES#############################
 
@@ -217,10 +230,20 @@ for i in range(0,len(x_train)):
 	feature_set[i].append(len(s))
 
 #Frequency of once-occurring words (38)
-
+for i in range(0,len(x_train)):
+	text=x_train[i]
+	for item in char_remove:
+		text=text.replace(item,"")
+	hapax=hapaxlegomena(text)
+	feature_set[i].append(hapax)
 
 #Frequency of twice-occurring words (39)
-
+for i in range(0,len(x_train)):
+	text=x_train[i]
+	for item in char_remove:
+		text=text.replace(item,"")
+	dis=dislegomena(text)
+	feature_set[i].append(dis)
 
 #A vocabulary richness measure defined by Yule (40)
 
