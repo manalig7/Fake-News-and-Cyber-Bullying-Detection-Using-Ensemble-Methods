@@ -17,19 +17,19 @@ Average word length
 Average sentence length in terms of character
 Average sentence length in terms of word
 Total different words
-Hapax legomena* Frequency of once-occurring words
-Hapax dislegomena* Frequency of twice-occurring words
-Yule’s K measure* A vocabulary richness measure defined by Yule
-Simpson’s D measure* A vocabulary richness measure defined by Simpson
-Sichel’s S measure* A vocabulary richness measure defined by Sichele
-Brunet’s W measure* A vocabulary richness measure defined by Brune
-Honore’s R measure* A vocabulary richness measure defined by Honore
+Frequency of once-occurring words
+Frequency of twice-occurring words
+A vocabulary richness measure defined by Yule
+A vocabulary richness measure defined by Simpson
+A vocabulary richness measure defined by Sichele
+A vocabulary richness measure defined by Brune
+A vocabulary richness measure defined by Honore
 Word length frequency distribution /Mnumber of words(20 features) 
 Frequency of words in different length
 
 SYNTACTIC FEATURES
-Frequency of punctuations (8 features) “,”, “.”, “?”, “!”, “:”, “;”, “ ’ ” ,“ ” ”
-Frequency of function words (303 features) The whole list of function words is in the appendix.
+Frequency of punctuations
+Frequency of function words
 
 STRUCTURAL FEATURES
 Total number of lines
@@ -50,3 +50,85 @@ Use url as signature
 CONTENT SPECIFIC FEATURES
 Frequency of content specific keyword
 """
+import spacy 
+from textstat.textstat import easy_word_set, legacy_round 
+from textstat.textstat import textstatistics
+from readcalc import readcalc
+import pandas as pd  
+import numpy as np
+import sys
+from nltk.stem.lancaster import LancasterStemmer
+from nltk.tokenize import RegexpTokenizer
+from nltk.tokenize import sent_tokenize, word_tokenize
+
+tsv = 'FakeNewsNet_Dataset/trial.txt'
+f=open(tsv,'r')
+x_train=[]
+y_train=[]
+
+for line in f:
+	ls=line.split('\t')
+	x_train.append((ls[0].decode('utf-8')))
+	y_train.append(int(ls[1]))
+
+feature_set=[]
+
+for i in range(0,len(x_train)):
+	feature_set.append([])
+
+#Number of Characters (0)
+for i in range(0,len(x_train)):
+	text=x_train[i]
+	charcount=len(text)
+	feature_set[i].append(charcount)
+
+#Percentage of Digits (1)
+for i in range(0,len(x_train)):
+	text=x_train[i]
+	digcount=0
+	for j in range(0,len(text)):
+		if text[j].isdigit():
+			digcount=digcount+1
+	digratio=float(digcount)/feature_set[i][0]
+	feature_set[i].append(digratio)
+
+#Percentage of Upper case letters (2)
+for i in range(0,len(x_train)):
+	text=x_train[i]
+	upcount=0
+	for j in range(0,len(text)):
+		if text[j].isupper():
+			upcount=upcount+1
+	upratio=float(upcount)/feature_set[i][0]
+	feature_set[i].append(upratio)
+
+#Percentage of whitespace (3)
+for i in range(0,len(x_train)):
+	text=x_train[i]
+	whitecount=0
+	for j in range(0,len(text)):
+		if text[j]==" ":
+			whitecount=whitecount+1
+	whiteratio=float(whitecount)/feature_set[i][0]
+	feature_set[i].append(whiteratio)
+
+#Frequency of each letter (4-29)
+letters=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+for i in range(0,len(x_train)):
+	text=x_train[i]
+	for j in range(0,len(letters)):
+		count=0
+		for k in range(0,len(text)):
+			if text[k]==letters[j]:
+				count=count+1
+		feature_set[i].append(count)
+
+#Frequency of special characters (30)
+spchar=['~' , '@', '#', '$', '%', '^', '&', '*', '-', '_', '=' ,'+', '>', '<', '[', ']', '{', '}', '/', '\\', '\|']
+for i in range(0,len(x_train)):
+	text=x_train[i]
+	count=0
+	for k in range(0,len(text)):
+			if text[k] in spchar:
+				count=count+1
+	feature_set[i].append(count)
