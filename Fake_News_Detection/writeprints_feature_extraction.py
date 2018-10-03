@@ -76,6 +76,23 @@ feature_set=[]
 for i in range(0,len(x_train)):
 	feature_set.append([])
 
+##############################FUNCTIONS#############################
+
+def word_count(text): 
+    sentences = break_sentences(text) 
+    words = 0
+    for sentence in sentences: 
+        words += len([token for token in sentence]) 
+    return words 
+
+def break_sentences(text): 
+    nlp = spacy.load('en') 
+    doc = nlp(text) 
+    return doc.sents
+
+##############################FEATURES#############################
+
+#CHARACTER BASED FEATURES
 #Number of Characters (0)
 for i in range(0,len(x_train)):
 	text=x_train[i]
@@ -132,3 +149,29 @@ for i in range(0,len(x_train)):
 			if text[k] in spchar:
 				count=count+1
 	feature_set[i].append(count)
+
+#WORD BASED FEATURES
+char_remove=['.',',' ,'~' , '@', '#', '$', '%', '^', '&', '*', '-', '_', '=' ,'+', '>', '<', '[', ']', '{', '}', '/', '\\', '\|','"','\'','!']
+
+#Total number of words (31)
+for i in range(0,len(x_train)):
+	text=x_train[i]
+	for item in char_remove:
+		text=text.replace(item,"")
+	wordcount=word_count(text)
+	feature_set[i].append(wordcount)
+
+#Percentage number of short words (less than 4 chracters) (32)
+for i in range(0,len(x_train)):
+	text=x_train[i]
+	for item in char_remove:
+		text=text.replace(item,"")
+	ls=text.split(" ")
+	count=0
+	for item in ls:
+		if len(item)<4:
+			count=count+1
+	shortratio=float(count)/feature_set[i][31]
+	feature_set[i].append(shortratio)
+
+#Percentage of characters in words (33)
