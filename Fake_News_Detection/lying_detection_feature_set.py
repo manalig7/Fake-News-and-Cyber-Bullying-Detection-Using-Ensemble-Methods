@@ -19,11 +19,11 @@ Number of words expressing uncertainity
 Number of tentative words -
 Modal Verbs-
 5. Specificity and Expressiveness
-Rate of adjectives and adverbs 
-Number of affective terms
+Rate of adjectives and adverbs  - 
+Number of affective terms 
 6. Verbal Non-Immediacy
 Self References 
-Number of first, second and third person pronoun usage
+Number of first, second and third person pronoun usage -
 
 """
 
@@ -31,13 +31,15 @@ Number of first, second and third person pronoun usage
 import pandas as pd  
 import numpy as np
 import sys
+import nltk
 from nltk.stem.lancaster import LancasterStemmer
 from nltk.tokenize import RegexpTokenizer
 from nltk.tokenize import sent_tokenize, word_tokenize
+from collections import Counter
 
 short_sentence_cutoff=10
 
-tsv = 'FakeNewsNet_Dataset/fakenewsnet_train (copy).txt'
+tsv = 'FakeNewsNet_Dataset/trial1.txt'
 f=open(tsv,'r')
 x_train=[]
 y_train=[]
@@ -170,11 +172,24 @@ for i in range(0,len(x_train)):
 	feature_set[i].append(num_short)
 	feature_set[i].append(num_long)
 
+
+char_remove=['.',',' ,'~' , '@', '#', '$', '%', '^', '&', '*', '-', '_', '=' ,'+', '>', '<', '[', ']', '{', '}', '/', '\\', '\|','"','\'','!']
+
 #Modal Verbs
 list_modal_verbs=['can','could','may','might','must','shall','should','will','would']
 
 for i in range(0,len(x_train)):
-	text=x_train[i]
+	text=x_train[i].lower()
+	for item in char_remove:
+		text=text.replace(item,"")
+	ls=text.split(" ")
+	count_modal=0
+	for item in ls:
+		if item in list_modal_verbs:
+			count_modal=count_modal+1
+
+	feature_set[i].append(count_modal)
+	"""
 	sentences = break_sentences(text) 
 	num_mod=0
 	for item in list(sentences):
@@ -182,29 +197,38 @@ for i in range(0,len(x_train)):
 			if token in list_modal_verbs:
 				num_mod=num_mod+1
 	feature_set[i].append(num_mod)
+	"""
 
 list_conjunctions=['and','but','for', 'nor', 'or', 'so', 'yet', 'because', 'if' ,'as', 'since']
 for i in range(0,len(x_train)):
-	text=x_train[i]
-	sentences = break_sentences(text) 
+	text=x_train[i].lower()
+	for item in char_remove:
+		text=text.replace(item,"")
+	ls=text.split(" ")
+	num_conjunct=0
+	for item in ls:
+		if item in list_conjunctions:
+			num_conjunct=num_conjunct+1
+	feature_set[i].append(num_conjunct)
+
+	"""sentences = break_sentences(text) 
 	num_conjunct=0
 	for item in list(sentences):
 		for token in item:
 			if token in list_conjunctions:
-				num_conjunct=num_conjunct+1
-	feature_set[i].append(num_conjunct)
+				num_conjunct=num_conjunct+1"""
 
 list_tentative_words=[ 'suggests that' , 'appear' ,'indicate', 'may', 'might','could','can','possibly', 'probably','likely','perhaps','uncertain','maybe',' conceivably' ,'tentative','tentatively' ,'tends to' , 'seems to']
 for i in range(0,len(x_train)):
-	text=x_train[i]
-	sentences = break_sentences(text) 
+	text=x_train[i].lower()
+	for item in char_remove:
+		text=text.replace(item,"")
+	ls=text.split(" ")
 	num_tentative=0
-	for item in list(sentences):
-		for token in item:
-			if token in list_tentative_words:
-				num_tentative=num_tentative+1
+	for item in ls:
+		if item in list_tentative_words:
+			num_tentative=num_tentative+1
 	feature_set[i].append(num_tentative)
-
 
 #Number of first, second, third person
 
@@ -213,54 +237,52 @@ list_second_person_pronouns=['you','your','yours']
 list_third_person_pronouns=['he','they','him','them','his', 'her','their','she','her','hers','theirs','it','its']
 
 for i in range(0,len(x_train)):
-	text=x_train[i]
-	sentences = break_sentences(text) 
-	num_tentative=0
-	for item in list(sentences):
-		for token in item:
-			if token in list_first_person_pronouns:
-				num_first_person=num_first_person+1
-			elif token in list_second_person_pronouns:
-					num_second_person=num_second_person+1;
-			elif token in list_third_person_pronouns:
-					num_third_person=num_third_person+1;
+	text=x_train[i].lower()
+	for item in char_remove:
+		text=text.replace(item,"")
+	ls=text.split(" ")
+	num_first_person=0
+	num_second_person=0
+	num_third_person=0
+	for item in ls:
+		if item in list_first_person_pronouns:
+			num_first_person=num_first_person+1
+		elif item in list_second_person_pronouns:
+			num_second_person=num_second_person+1
+		elif item in list_third_person_pronouns:
+			num_third_person=num_third_person+1
+	"""text=x_train[i]
+				sentences = break_sentences(text) 
+				num_tentative=0
+				for item in list(sentences):
+					for token in item:
+						if token in list_first_person_pronouns:
+							num_first_person=num_first_person+1
+						elif token in list_second_person_pronouns:
+								num_second_person=num_second_person+1;
+						elif token in list_third_person_pronouns:
+								num_third_person=num_third_person+1;"""
 	feature_set[i].append(num_first_person)
 	feature_set[i].append(num_second_person)
 	feature_set[i].append(num_third_person)
 
-#######################################################################################
-
-"""
-#Number of Sentences
 for i in range(0,len(x_train)):
-	text=x_train[i]
-	num_fullstops=text.count('.')
-	if num_fullstops==0:
-		num_fullstops=1
-	num_sentences=num_fullstops
-	feature_set[i].append(num_sentences)
+	text = x_train[i]
+	text=x_train[i].lower()
+	for item in char_remove:
+		text=text.replace(item,"")
+	ls=text.split(" ")
+	num_adj_adv=0;
+	para = word_tokenize(text)
+	tags = nltk.pos_tag(para)
 
+	counts = Counter(tag for word,tag in tags)
+	print (counts)
+	print (counts['JJ'])
+	num_adj_adv = counts['JJ'] + counts['JJR'] +counts['JJS'] + counts['RB'] + counts['RBR'] +counts['RBS']
+	print (num_adj_adv)
+	words = word_count(text) 
 
-#Number of Words
-#For number of words, we convert the pieces of texts into tokenized form and remove special characters like . and ,, i.e we consider only proper words
-# Tokenize and stem
-tkr = RegexpTokenizer('[a-zA-Z0-9@]+')
-stemmer = LancasterStemmer()
-
-tokenized_text = []
-
-for i, news in enumerate(x_train):
-    tokens = [stemmer.stem(t) for t in tkr.tokenize(news) if not t.startswith('@')]
-    tokenized_text.append(tokens)
-
-remove_list=[',','.','?',':','_','-','--','(',')','!','$']
-
-for i in range(0,len(tokenized_text)):
-	for item in remove_list:
-		tokenized_text[i].remove(item)
-	feature_set[i].append(len(tokenized_text))
-
-"""
-#3rd Feature- Grammatical Complexity
-#Flesh-Kincaid Grade Level
-
+	rate_adj_adv = num_adj_adv/words
+	feature_set[i].append(rate_adj_adv)
+#######################################################################################
