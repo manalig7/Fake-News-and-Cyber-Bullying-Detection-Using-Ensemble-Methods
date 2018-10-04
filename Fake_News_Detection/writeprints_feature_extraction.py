@@ -276,6 +276,16 @@ for i in range(0,len(x_train)):
 
 #Frequency of function words (66)
 func_words=['a','between','in','nor','some','upon','about','both','including','nothing','somebody','us','above','but','inside','of','someone','used','after','by','into','off','something','via','all','can','is','on','such','we','although','cos','it','once','than','what','am','do','its','one','that','whatever','among','down','latter','onto','the','when','an','each','less','opposite','their','where','and','either','like','or','them','whether','another','enough','little','our','these','which','any','every','lots','outside','they','while','anybody','everybody','many','over','this','who','anyone','everyone','me','own','those','whoever','anything','everything','more','past','though','whom','are','few','most','per','through','whose','around','following','much','plenty','till','will','as','for','must','plus','to','with','at','from','my','regarding','toward','within','be','have','near','same','towards','without','because','he','need','several','under','worth','before','her','neither','she','unless','would','behind','him','no','should','unlike','yes','below','i','nobody','since','until','you','beside','if','none','so','up','your']
+for i in range(0,len(x_train)):
+	text=x_train[i]
+	for item in char_remove:
+		text=text.replace(item,"")
+	func_count=0
+	ls=text.split(' ')
+	for j in range(0,len(ls)):
+		if ls[j] in func_words:
+			func_count=func_count+1
+	feature_set[i].append(func_count)
 
 #STRUCTURAL FEATURES
 
@@ -300,18 +310,28 @@ for i in range(0,len(x_train)):
 #Total number of paragraphs (69)  USELESS FEATURE!!!!!!!!!!!!!!!!!!
 for i in range(0,len(x_train)):
 	text=x_train[i]
-	num_paras=0
+	num_paras=1
 	for j in range(0,len(text)):
 		if text[j]=='\n' and (text[j-1]=='!' or text[j-1]=='?' or text[j-1]=='.'):
 			num_paras=num_paras+1
 	feature_set[i].append(num_paras)
 
 #Number of sentences per paragraph (70) USELESS FEATURE!!!!!!!!!!!!!!!!!!
+for i in range(0,len(x_train)):
+	num_sen_per_para=float(feature_set[i][68])/feature_set[i][69]
+	feature_set[i].append(num_sen_per_para)
+
 
 #Number of characters per paragraph (71) USELESS FEATURE!!!!!!!!!!!!!!!!!!
+for i in range(0,len(x_train)):
+	num_char_per_para=float(feature_set[i][0])/feature_set[i][69]
+	feature_set[i].append(num_char_per_para)
+
 
 #Number of words per paragraph (72) USELESS FEATURE!!!!!!!!!!!!!!!!!!
-
+for i in range(0,len(x_train)):
+	num_word_per_para=float(feature_set[i][31])/feature_set[i][69]
+	feature_set[i].append(num_word_per_para)
 
 #Has a greeting (73)
 greetings=["hello","good afternoon","good evening","good morning"]
@@ -324,10 +344,8 @@ for i in range(0,len(x_train)):
 			break
 	feature_set[i].append(flag)
 
-#Has separators between paragraphs (74)
 
-
-#Has quoted content  -Cite original message as part of replying message (Measuring the number of quotes)(75)
+#Has quoted content  -Cite original message as part of replying message (Measuring the number of quotes)(74)
 quotes=['"']
 for i in range(0,len(x_train)):
 	text=x_train[i]
@@ -339,5 +357,11 @@ for i in range(0,len(x_train)):
 	break
 	feature_set[i].append(num_quotes)	
 
-#Has URL (76)
-
+#Has URL (75)
+for i in range(0,len(x_train)):
+	text=x_train[i]
+	flag=0
+	if "https://" in text or "http://" in text or "www." in text:
+		flag=1
+		break
+	feature_set[i].append(flag)
