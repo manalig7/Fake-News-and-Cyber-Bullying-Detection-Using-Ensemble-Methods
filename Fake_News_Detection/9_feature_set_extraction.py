@@ -133,38 +133,38 @@ def gunning_fog(text,wordcount,avg_sen_len):
 #Number of Words 
 wordcount=[]
 
-for i in range(0,len(x_train)):
-	text=x_train[i]
+for i in range(0,len(x)):
+	text=x[i]
 	wordcount.append(word_count(text))
 	
 
 #Number of Sentences (0)
-for i in range(0,len(x_train)):
-	text=x_train[i]
+for i in range(0,len(x)):
+	text=x[i]
 	sentencecount=sentence_count(text)
 	feature_set[i].append(sentencecount)
 
 #Average Number of Syllables per word (1)
-for i in range(0,len(x_train)):
-	text=x_train[i]
+for i in range(0,len(x)):
+	text=x[i]
 	avg_syl=avg_syllables_per_word(text)
 	feature_set[i].append(avg_syl)
 
 #Average Number of Words per sentence(2)
-for i in range(0,len(x_train)):
-	text=x_train[i]
+for i in range(0,len(x)):
+	text=x[i]
 	avg_sen_len=avg_sentence_length(text,wordcount[i],feature_set[i][0])
 	feature_set[i].append(avg_sen_len)
 
 #Flesch Kincaid Score (3)
-for i in range(0,len(x_train)):
-	text=x_train[i]
+for i in range(0,len(x)):
+	text=x[i]
 	flesch=flesch_kincaid(text,feature_set[i][2],feature_set[i][1])
 	feature_set[i].append(flesch)
 
 #Gunning-Fog (4)
-for i in range(0,len(x_train)):
-    text=x_train[i]
+for i in range(0,len(x)):
+    text=x[i]
     #gf=gunning_fog(text,wordcount[i],feature_set[i][2])
     #gf=textstatistics.gunning_fog(self,text)
     #calc = readcalc.ReadCalc(text)
@@ -175,14 +175,14 @@ for i in range(0,len(x_train)):
     feature_set[i].append(gf)
 
 #Number of characters with whitespace (5)
-for i in range(0,len(x_train)):
-	text=x_train[i]
+for i in range(0,len(x)):
+	text=x[i]
 	num_char_w=len(text)
 	feature_set[i].append(num_char_w)
 
 #Number of characters without whitespace (6)
-for i in range(0,len(x_train)):
-	text=x_train[i]
+for i in range(0,len(x)):
+	text=x[i]
 	num_char=0
 	for j in range(0,len(text)):
 		if text[j]!=' ':
@@ -194,7 +194,7 @@ stemmer = LancasterStemmer()
 
 tokenized_corpus = []
 
-for i, news in enumerate(x_train):
+for i, news in enumerate(x):
     tokens = [stemmer.stem(t) for t in tkr.tokenize(news)]
     tokenized_corpus.append(tokens)
 
@@ -206,7 +206,7 @@ for i in range(0,len(tokenized_corpus)):
     feature_set[i].append(len(s))
 
 #Lexical Density or Complexity- Number of Unique Tokens Divided by total number of words (8)
-for i in range(0,len(x_train)):
+for i in range(0,len(x)):
     lex_density=feature_set[i][7]/float(wordcount[i])
     feature_set[i].append(lex_density)
 
