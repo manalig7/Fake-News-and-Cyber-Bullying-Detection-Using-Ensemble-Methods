@@ -32,7 +32,7 @@ y_train=[]
 
 for line in f:
 	ls=line.split('\t')
-	x.append((ls[0].decode('utf-8')).lower())
+	x.append((ls[0]).lower())
 	y_train.append(int(ls[1]))
 f.close()
 
@@ -45,7 +45,7 @@ y_test=[]
 
 for line in f:
 	ls=line.split('\t')
-	x.append((ls[0].decode('utf-8')).lower())
+	x.append((ls[0]).lower())
 	y_test.append(int(ls[1]))
 f.close()
 
@@ -184,42 +184,32 @@ for i in range(0,len(x)):
 wordcount=[]
 #########################################################################
 for i in range(0,len(x)):
-	text=x[i]
-
-#Number of Words 
+    text=x[i]
     wordcount.append(word_count(text))
-    
-#Number of Sentences (0)
     sentencecount=sentence_count(text)
     feature_set[i].append(sentencecount)
 
-#Average Number of Syllables per word (1)
     avg_syl=avg_syllables_per_word(text)
     feature_set[i].append(avg_syl)
 
-#Average Number of Words per sentence(2)
     avg_sen_len=avg_sentence_length(text,wordcount[i],feature_set[i][0])
     feature_set[i].append(avg_sen_len)
 
-#Flesch Kincaid Score (3)
     flesch=flesch_kincaid(text,feature_set[i][2],feature_set[i][1])
     feature_set[i].append(flesch)
 
-#Gunning-Fog (4)
     s = Textatistic(text)
-    gf=a.gunningfog_score
+    gf=s.gunningfog_score
     feature_set[i].append(gf)
 
-#Number of characters with whitespace (5)
     num_char_w=len(text)
     feature_set[i].append(num_char_w)
 
-#Number of characters without whitespace (6)
-	num_char=0
-	for j in range(0,len(text)):
-		if text[j]!=' ':
-			num_char=num_char+1
-	feature_set[i].append(num_char)
+    num_char=0
+    for j in range(0,len(text)):
+        if text[j]!=' ':
+            num_char=num_char+1
+    feature_set[i].append(num_char)
 
 tkr = RegexpTokenizer('[a-zA-Z0-9@]+')
 stemmer = LancasterStemmer()
@@ -253,21 +243,21 @@ from sklearn.metrics import confusion_matrix, precision_recall_fscore_support, r
 clf = MultinomialNB()
 clf.fit(x_train,y_train)
 
-print "\nAccuracy on Training Set :"
-print clf.score(x_train, y_train)
+print ("\nAccuracy on Training Set :")
+print (clf.score(x_train, y_train))
 
-print "Checking on Test Set"
-print "\nAccuracy on Testing Set :"
-print clf.score(x_test, y_test)
+print ("Checking on Test Set")
+print ("\nAccuracy on Testing Set :")
+print (clf.score(x_test, y_test))
 
 y_pred=clf.predict(x_test)
 
-print "\nPrecision Score"
-print precision_score(y_test, y_pred)
-print "\nRecall Score"
-print recall_score(y_test, y_pred)
-print "\nF1 Score"
-print f1_score(y_test, y_pred)
+print ("\nPrecision Score")
+print (precision_score(y_test, y_pred))
+print ("\nRecall Score")
+print (recall_score(y_test, y_pred))
+print ("\nF1 Score")
+print (f1_score(y_test, y_pred))
 
 
 print ("################### Random Forest Classifier ###############")
@@ -278,20 +268,20 @@ from sklearn.ensemble import RandomForestClassifier
 clf = RandomForestClassifier()
 clf.fit(x_train,y_train)
 
-print "\nAccuracy on Training Set :"
-print clf.score(x_train, y_train)
+print ("\nAccuracy on Training Set :")
+print (clf.score(x_train, y_train))
 
-print "Checking on Test Set"
-print "\nAccuracy on Testing Set :"
-print clf.score(x_test, y_test)
+print ("Checking on Test Set")
+print ("\nAccuracy on Testing Set :")
+print (clf.score(x_test, y_test))
 
 y_pred=clf.predict(x_test)
 
-print "\nPrecision Score"
-print precision_score(y_test, y_pred)
-print "\nRecall Score"
-print recall_score(y_test, y_pred)
-print "\nF1 Score"
-print f1_score(y_test, y_pred)
+print ("\nPrecision Score")
+print (precision_score(y_test, y_pred))
+print ("\nRecall Score")
+print (recall_score(y_test, y_pred))
+print ("\nF1 Score")
+print (f1_score(y_test, y_pred))
 
 
