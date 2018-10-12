@@ -74,7 +74,7 @@ def break_sentences(text):
 # Returns Number of Words in the text 
 def word_count(text): 
     sentences = break_sentences(text) 
-    words = 0
+    words = 0.00001
     for sentence in sentences: 
         words += len([token for token in sentence]) 
     return words 
@@ -82,7 +82,7 @@ def word_count(text):
 # Returns the number of sentences in the text 
 def sentence_count(text): 
     sentences = break_sentences(text) 
-    return len(list(sentences)) 
+    return len(list(sentences))+0.00001 
 
 def num_syllables(word): 
     return textstatistics().syllable_count(word) 
@@ -99,6 +99,7 @@ def avg_syllables_per_word(text):
 def avg_sentence_length(text,words,sentences): 
     #words = word_count(text) 
     #sentences = sentence_count(text) 
+   
     average_sentence_length = float(words / sentences) 
     return average_sentence_length 
 
