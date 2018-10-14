@@ -17,9 +17,13 @@ character count without whitespace, average syllables
 per word, sentence count, average sentence length, and an
 alternative readability measure.
 """
+#import sys  
+import string
+#reload(sys)  
+#sys.setdefaultencoding('utf8')
 import pandas as pd  
 import numpy as np
-import sys
+import unicodedata
 from nltk.stem.lancaster import LancasterStemmer
 from nltk.tokenize import RegexpTokenizer
 from nltk.tokenize import sent_tokenize, word_tokenize
@@ -185,6 +189,7 @@ for i in range(0,len(x)):
 wordcount=[]
 #########################################################################
 for i in range(0,len(x)):
+    print(i)
     text=x[i]
     wordcount.append(word_count(text))
     sentencecount=sentence_count(text)
@@ -198,11 +203,13 @@ for i in range(0,len(x)):
 
     flesch=flesch_kincaid(text,feature_set[i][2],feature_set[i][1])
     feature_set[i].append(flesch)
-
-    s = Textatistic(text)
-    gf=s.gunningfog_score
-    feature_set[i].append(gf)
-
+    #text=unicodedata.normalize('NFKD', text).encode('ascii','ignore')
+    try:
+        s = Textatistic(text)
+        gf=s.gunningfog_score
+        feature_set[i].append(gf)
+    except ZeroDivisionError:
+        feature_set[i].append(-1)
     num_char_w=len(text)
     feature_set[i].append(num_char_w)
 
