@@ -63,7 +63,7 @@ from nltk.tokenize import sent_tokenize, word_tokenize
 import string
 import nltk
 
-tsv = 'FakeNewsNet_Dataset/fakenewsnet_train.txt'
+tsv = 'FakeNewsNet_Dataset/trial.txt'
 f=open(tsv,'r')
 x_train=[]
 y_train=[]
@@ -396,10 +396,40 @@ for i in range(0,len(x_train)):
 			flag=flag+1
 	feature_set[i].append(flag)
 
+
+#A vocabulary richness measure defined by Yule (72)
+
+from nltk.stem.porter import PorterStemmer
+from itertools import groupby
+ 
+def words(entry):
+    return filter(lambda w: len(w), [w.strip("0123456789!:,.?(){}[]") for w in entry.split()])
+ 
+def yules_K_calc(entry):
+    freq_word = {}
+    stemmer = PorterStemmer() #Stemming or reducing it to root form
+    for w in words(entry):
+        w = stemmer.stem(w).lower()
+        try:
+            freq_word[w] += 1 #Increase the frequency of the word
+        except KeyError:
+            freq_word[w] = 1 #Add new entry
+ 
+    m1 = float(len(freq_word))
+    m2 = sum([len(list(g))*(freq**2) for freq,g in groupby(sorted(freq_word.values()))])
+    try:
+        yules_K= (m2-m1)/(m1*m1)
+    except ZeroDivisionError:
+        yules_K= 0
+    return yules_K
+
+for i in range(0,len(x_train)):
+	text=x_train[i].lower()
+	feature_set[i].append(yules_K_calc(text))
+
 for i in range(0,len(feature_set[0])):
 	print i, feature_set[0][i]
 
-#A vocabulary richness measure defined by Yule (72)
 
 
 # vocabulary richness measure defined by Simpson (73)
