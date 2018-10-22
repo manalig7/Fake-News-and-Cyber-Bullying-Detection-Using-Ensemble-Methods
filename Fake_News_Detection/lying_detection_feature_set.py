@@ -117,7 +117,43 @@ for i in range(0,len(x_train)):
 	wordcount=word_count(text)
 	feature_set[i].append(wordcount)
 
-#Number of Sentences (1)
+	#Number of Sentences (1)
+	sentencecount=sentence_count(text)
+	feature_set[i].append(sentencecount)
+
+	#Number of Syllables (2)
+	syl_count=num_syllables(text)
+	feature_set[i].append(syl_count)
+
+	#Average Number of Syllables per word (3)
+	avg_syl=avg_syllables_per_word(text)
+	feature_set[i].append(avg_syl)
+
+	#Average Number of Words per sentence(4)
+	avg_syl=avg_sentence_length(text,feature_set[i][0],feature_set[i][1])
+	feature_set[i].append(avg_syl)
+
+	#Flesch Kincaid Score (5)
+	flesch=flesch_kincaid(text,feature_set[i][4],feature_set[i][3])
+	feature_set[i].append(flesch)
+
+	sentences = break_sentences(text)
+	big_word_count=0
+	num_short=0
+	num_long=0
+	for item in list(sentences):
+		if len(item)<=short_sentence_cutoff:
+			num_short=num_short+1
+		else:
+			num_long=num_long+1
+		for token in item:
+			if len(text)>=6:
+				big_word_count=big_word_count+1;
+	feature_set[i].append(big_word_count)
+	feature_set[i].append(num_short)
+	feature_set[i].append(num_long)
+
+"""#Number of Sentences (1)
 for i in range(0,len(x_train)):
 	text=x_train[i]
 	sentencecount=sentence_count(text)
@@ -145,9 +181,20 @@ for i in range(0,len(x_train)):
 for i in range(0,len(x_train)):
 	text=x_train[i]
 	flesch=flesch_kincaid(text,feature_set[i][4],feature_set[i][3])
-	feature_set[i].append(flesch)
+	feature_set[i].append(flesch)"""
 
-#Number of big words
+
+char_remove=['.',',' ,'~' , '@', '#', '$', '%', '^', '&', '*', '-', '_', '=' ,'+', '>', '<', '[', ']', '{', '}', '/', '\\', '\|','"','\'','!']
+
+#Modal Verbs
+list_modal_verbs=['can','could','may','might','must','shall','should','will','would']
+list_conjunctions=['and','but','for', 'nor', 'or', 'so', 'yet', 'because', 'if' ,'as', 'since']
+list_tentative_words=[ 'suggests that' , 'appear' ,'indicate', 'may', 'might','could','can','possibly', 'probably','likely','perhaps','uncertain','maybe',' conceivably' ,'tentative','tentatively' ,'tends to' , 'seems to']
+list_first_person_pronouns=['I','we','me','us','my','our','mine','ours']
+list_second_person_pronouns=['you','your','yours']
+list_third_person_pronouns=['he','they','him','them','his', 'her','their','she','her','hers','theirs','it','its']
+
+"""#Number of big words
 for i in range(0,len(x_train)):
 	text=x_train[i]
 	sentences = break_sentences(text)
@@ -170,13 +217,10 @@ for i in range(0,len(x_train)):
 		else:
 			num_long=num_long+1
 	feature_set[i].append(num_short)
-	feature_set[i].append(num_long)
+	feature_set[i].append(num_long)"""
 
 
-char_remove=['.',',' ,'~' , '@', '#', '$', '%', '^', '&', '*', '-', '_', '=' ,'+', '>', '<', '[', ']', '{', '}', '/', '\\', '\|','"','\'','!']
-
-#Modal Verbs
-list_modal_verbs=['can','could','may','might','must','shall','should','will','would']
+	
 
 for i in range(0,len(x_train)):
 	text=x_train[i].lower()
@@ -184,94 +228,11 @@ for i in range(0,len(x_train)):
 		text=text.replace(item,"")
 	ls=text.split(" ")
 	count_modal=0
-	for item in ls:
-		if item in list_modal_verbs:
-			count_modal=count_modal+1
-
-	feature_set[i].append(count_modal)
-	"""
-	sentences = break_sentences(text) 
-	num_mod=0
-	for item in list(sentences):
-		for token in item:
-			if token in list_modal_verbs:
-				num_mod=num_mod+1
-	feature_set[i].append(num_mod)
-	"""
-
-list_conjunctions=['and','but','for', 'nor', 'or', 'so', 'yet', 'because', 'if' ,'as', 'since']
-for i in range(0,len(x_train)):
-	text=x_train[i].lower()
-	for item in char_remove:
-		text=text.replace(item,"")
-	ls=text.split(" ")
 	num_conjunct=0
-	for item in ls:
-		if item in list_conjunctions:
-			num_conjunct=num_conjunct+1
-	feature_set[i].append(num_conjunct)
-
-	"""sentences = break_sentences(text) 
-	num_conjunct=0
-	for item in list(sentences):
-		for token in item:
-			if token in list_conjunctions:
-				num_conjunct=num_conjunct+1"""
-
-list_tentative_words=[ 'suggests that' , 'appear' ,'indicate', 'may', 'might','could','can','possibly', 'probably','likely','perhaps','uncertain','maybe',' conceivably' ,'tentative','tentatively' ,'tends to' , 'seems to']
-for i in range(0,len(x_train)):
-	text=x_train[i].lower()
-	for item in char_remove:
-		text=text.replace(item,"")
-	ls=text.split(" ")
 	num_tentative=0
-	for item in ls:
-		if item in list_tentative_words:
-			num_tentative=num_tentative+1
-	feature_set[i].append(num_tentative)
-
-#Number of first, second, third person
-
-list_first_person_pronouns=['I','we','me','us','my','our','mine','ours']
-list_second_person_pronouns=['you','your','yours']
-list_third_person_pronouns=['he','they','him','them','his', 'her','their','she','her','hers','theirs','it','its']
-
-for i in range(0,len(x_train)):
-	text=x_train[i].lower()
-	for item in char_remove:
-		text=text.replace(item,"")
-	ls=text.split(" ")
 	num_first_person=0
 	num_second_person=0
 	num_third_person=0
-	for item in ls:
-		if item in list_first_person_pronouns:
-			num_first_person=num_first_person+1
-		elif item in list_second_person_pronouns:
-			num_second_person=num_second_person+1
-		elif item in list_third_person_pronouns:
-			num_third_person=num_third_person+1
-	"""text=x_train[i]
-				sentences = break_sentences(text) 
-				num_tentative=0
-				for item in list(sentences):
-					for token in item:
-						if token in list_first_person_pronouns:
-							num_first_person=num_first_person+1
-						elif token in list_second_person_pronouns:
-								num_second_person=num_second_person+1;
-						elif token in list_third_person_pronouns:
-								num_third_person=num_third_person+1;"""
-	feature_set[i].append(num_first_person)
-	feature_set[i].append(num_second_person)
-	feature_set[i].append(num_third_person)
-
-for i in range(0,len(x_train)):
-	text = x_train[i]
-	text=x_train[i].lower()
-	for item in char_remove:
-		text=text.replace(item,"")
-	ls=text.split(" ")
 	num_adj_adv=0;
 	para = word_tokenize(text)
 	tags = nltk.pos_tag(para)
@@ -280,9 +241,95 @@ for i in range(0,len(x_train)):
 	print (counts)
 	print (counts['JJ'])
 	num_adj_adv = counts['JJ'] + counts['JJR'] +counts['JJS'] + counts['RB'] + counts['RBR'] +counts['RBS']
-	print (num_adj_adv)
+	print ("number of adj adv",num_adj_adv)
 	words = word_count(text) 
 
 	rate_adj_adv = num_adj_adv/words
-	feature_set[i].append(rate_adj_adv)
-#######################################################################################
+	print ("rate_adj_adv : ",rate_adj_adv)
+	for item in ls:
+		if item in list_modal_verbs:
+			count_modal=count_modal+1
+		if item in list_conjunctions:
+				num_conjunct=num_conjunct+1
+		if item in list_tentative_words:
+				num_tentative=num_tentative+1
+		if item in list_first_person_pronouns:
+				num_first_person=num_first_person+1
+		elif item in list_second_person_pronouns:
+				num_second_person=num_second_person+1
+		elif item in list_third_person_pronouns:
+			num_third_person=num_third_person+1
+
+		feature_set[i].append(count_modal)
+		feature_set[i].append(num_conjunct)
+		feature_set[i].append(num_tentative)
+		feature_set[i].append(num_first_person)
+		feature_set[i].append(num_second_person)
+		feature_set[i].append(num_third_person)
+		feature_set[i].append(rate_adj_adv)
+
+	"""for i in range(0,len(x_train)):
+		text=x_train[i].lower()
+		for item in char_remove:
+			text=text.replace(item,"")
+		ls=text.split(" ")
+		num_conjunct=0
+		for item in ls:
+			if item in list_conjunctions:
+				num_conjunct=num_conjunct+1
+		feature_set[i].append(num_conjunct)
+
+
+	for i in range(0,len(x_train)):
+		text=x_train[i].lower()
+		for item in char_remove:
+			text=text.replace(item,"")
+		ls=text.split(" ")
+		num_tentative=0
+		for item in ls:
+			if item in list_tentative_words:
+				num_tentative=num_tentative+1
+		feature_set[i].append(num_tentative)
+
+	#Number of first, second, third person pronouns
+
+
+	for i in range(0,len(x_train)):
+		text=x_train[i].lower()
+		for item in char_remove:
+			text=text.replace(item,"")
+		ls=text.split(" ")
+		num_first_person=0
+		num_second_person=0
+		num_third_person=0
+		for item in ls:
+			if item in list_first_person_pronouns:
+				num_first_person=num_first_person+1
+			elif item in list_second_person_pronouns:
+				num_second_person=num_second_person+1
+			elif item in list_third_person_pronouns:
+				num_third_person=num_third_person+1
+		feature_set[i].append(num_first_person)
+		feature_set[i].append(num_second_person)
+		feature_set[i].append(num_third_person)
+
+	for i in range(0,len(x_train)):
+		text = x_train[i]
+		text=x_train[i].lower()
+		for item in char_remove:
+			text=text.replace(item,"")
+		ls=text.split(" ")
+		num_adj_adv=0;
+		para = word_tokenize(text)
+		tags = nltk.pos_tag(para)
+
+		counts = Counter(tag for word,tag in tags)
+		print (counts)
+		print (counts['JJ'])
+		num_adj_adv = counts['JJ'] + counts['JJR'] +counts['JJS'] + counts['RB'] + counts['RBR'] +counts['RBS']
+		print (num_adj_adv)
+		words = word_count(text) 
+
+		rate_adj_adv = num_adj_adv/words
+		feature_set[i].append(rate_adj_adv)"""
+	#######################################################################################
