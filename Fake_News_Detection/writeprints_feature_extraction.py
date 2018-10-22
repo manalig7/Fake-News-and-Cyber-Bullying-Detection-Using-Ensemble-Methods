@@ -63,7 +63,7 @@ from nltk.tokenize import sent_tokenize, word_tokenize
 import string
 import nltk
 
-tsv = 'FakeNewsNet_Dataset/trial.txt'
+tsv = 'Finaldataset/finaldataset_train.txt'
 f=open(tsv,'r')
 x_train=[]
 y_train=[]
@@ -77,6 +77,25 @@ feature_set=[]
 
 for i in range(0,len(x_train)):
 	feature_set.append([])
+
+f.close()
+
+tsv = 'Finaldataset/finaldataset_test.txt'
+f=open(tsv,'r')
+x_test=[]
+y_test=[]
+
+for line in f:
+	ls=line.split('\t')
+	x_test.append((ls[0].decode('utf-8')))
+	y_test.append(int(ls[1]))
+
+feature_set_test=[]
+
+for i in range(0,len(x_test)):
+	feature_set_test.append([])
+
+f.close()
 
 ##############################FUNCTIONS#############################
 
@@ -427,9 +446,10 @@ for i in range(0,len(x_train)):
 	text=x_train[i].lower()
 	feature_set[i].append(yules_K_calc(text))
 
+"""
 for i in range(0,len(feature_set[0])):
 	print i, feature_set[0][i]
-
+"""
 
 
 # vocabulary richness measure defined by Simpson (73)
@@ -444,11 +464,342 @@ for i in range(0,len(feature_set[0])):
 #A vocabulary richness measure defined by Honore (76)
 
 
-f=open('writeprints_features.tsv','w+')
+##############################FEATURES FOR TEST###############################
+
+
+#CHARACTER BASED FEATURES
+#Number of Characters (0)
+for i in range(0,len(x_test)):
+	text=x_test[i]
+	charcount=len(text)
+	feature_set_test[i].append(charcount)
+
+#Percentage of Digits (1)
+for i in range(0,len(x_test)):
+	text=x_test[i]
+	digcount=0
+	for j in range(0,len(text)):
+		if text[j].isdigit():
+			digcount=digcount+1
+	if feature_set_test[i][0]!=0:
+		digratio=float(digcount)/feature_set_test[i][0]
+	else:
+		digratio=0.0001
+	feature_set_test[i].append(digratio)
+
+#Percentage of Upper case letters (2)
+for i in range(0,len(x_test)):
+	text=x_test[i]
+	upcount=0
+	for j in range(0,len(text)):
+		if text[j].isupper():
+			upcount=upcount+1
+	if feature_set_test[i][0]!=0:
+		upratio=float(upcount)/feature_set_test[i][0]
+	else:
+		upratio=0.0001
+	feature_set_test[i].append(upratio)
+
+#Percentage of whitespace (3)
+for i in range(0,len(x_test)):
+	text=x_test[i]
+	whitecount=0
+	for j in range(0,len(text)):
+		if text[j]==" ":
+			whitecount=whitecount+1
+	if feature_set_test[i][0]!=0:
+		whiteratio=float(whitecount)/feature_set_test[i][0]
+	else:
+		whiteratio=0.0001
+	feature_set_test[i].append(whiteratio)
+
+#Frequency of each letter (4-29)
+letters=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+for i in range(0,len(x_test)):
+	text=x_test[i].lower()
+	for j in range(0,len(letters)):
+		count=0
+		for k in range(0,len(text)):
+			if text[k]==letters[j]:
+				count=count+1
+		feature_set_test[i].append(count)
+
+#Frequency of special characters (30)
+spchar=['~' , '@', '#', '$', '%', '^', '&', '*', '-', '_', '=' ,'+', '>', '<', '[', ']', '{', '}', '/', '\\', '\|']
+for i in range(0,len(x_test)):
+	text=x_test[i]
+	count=0
+	for k in range(0,len(text)):
+			if text[k] in spchar:
+				count=count+1
+	feature_set_test[i].append(count)
+
+#WORD BASED FEATURES
+char_remove=['.',',' ,'~' , '@', '#', '$', '%', '^', '&', '*', '-', '_', '=' ,'+', '>', '<', '[', ']', '{', '}', '/', '\\', '\|','"','\'','!']
+
+#Total number of words (31)
+for i in range(0,len(x_test)):
+	text=x_test[i]
+	for item in char_remove:
+		text=text.replace(item,"")
+	wordcount=word_count(text)
+	feature_set_test[i].append(wordcount)
+
+#Percentage number of short words (less than 4 chracters) and Percentage of characters in words, Average word length(32,33,34)
+for i in range(0,len(x_test)):
+	text=x_test[i]
+	for item in char_remove:
+		text=text.replace(item,"")
+	ls=text.split(" ")
+	count=0
+	num_char=0
+	for item in ls:
+		if len(item)<4:
+			count=count+1
+		num_char=num_char+len(item)
+	if feature_set_test[i][31]!=0:
+		shortratio=float(count)/feature_set_test[i][31]
+	else:
+		shortratio=0.0001
+	if feature_set_test[i][0]!=0:
+		word_char_ratio=float(num_char)/feature_set_test[i][0]
+	else:
+		word_char_ratio=0.0001
+	if feature_set_test[i][31]!=0:
+		av_word_length=float(num_char)/feature_set_test[i][31]
+	else:
+		av_word_length=0.0001
+	feature_set_test[i].append(shortratio)
+	feature_set_test[i].append(word_char_ratio)
+
+#Average sentence length in terms of character (35) (Measuring all the characters including whitespaces)
+for i in range(0,len(x_test)):
+	text=x_test[i]
+	count=0
+	avg=0
+	num_sentences=1
+	for j in range(0,len(text)):
+		if text[j]=='!' or text[j]=='?' or text[j]=='.':
+			avg=avg+count
+			num_sentences=num_sentences+1
+			count=0
+		else:
+			count=count+1
+	avg=float(avg)/num_sentences
+	feature_set_test[i].append(avg)
+
+
+#Average sentence length in terms of word (36) -Number of words by number of sentences
+for i in range(0,len(x_test)):
+	text=x_test[i]
+	num_sentences=1
+	for j in range(0,len(text)):
+		if text[j]=='!' or text[j]=='?' or text[j]=='.':
+			num_sentences=num_sentences+1
+	avg_sen_len_words=float(feature_set_test[i][31])/num_sentences
+	feature_set_test[i].append(avg_sen_len_words)
+
+#Total different words (37)
+for i in range(0,len(x_test)):
+	text=x_test[i]
+	for item in char_remove:
+		text=text.replace(item,"")
+	ls=text.split(' ')
+	s=set(ls)
+	feature_set_test[i].append(len(s))
+
+#Frequency of once-occurring words (38)
+for i in range(0,len(x_test)):
+	text=x_test[i]
+	for item in char_remove:
+		text=text.replace(item,"")
+	hapax=hapaxlegomena(text)
+	feature_set_test[i].append(hapax)
+
+#Frequency of twice-occurring words (39)
+for i in range(0,len(x_test)):
+	text=x_test[i]
+	for item in char_remove:
+		text=text.replace(item,"")
+	dis=dislegomena(text)
+	feature_set_test[i].append(dis)
+
+
+#Word length frequency distribution /Mnumber of words(20 features) (40-59) Frequency of words in different length 
+
+for i in range(0,len(x_test)):
+	word_freq=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+	text=x_test[i]
+	for item in char_remove:
+		text=text.replace(item,"")
+	ls=text.split(' ')
+	for j in range(0,len(ls)):
+		length=len(ls[j])
+		if length>=1 and length<=20:
+			word_freq[length-1]=word_freq[length-1]+1
+	for item in word_freq:
+		feature_set_test[i].append(item)
+
+
+#SYNTACTIC FEATURES
+
+#Frequency of punctuations (60)
+for i in range(0,len(x_test)):
+	text=x_test[i]
+	num_punc=0
+	for j in range(0,len(text)):
+		if text[j] in string.punctuation:
+			num_punc=num_punc+1
+	feature_set_test[i].append(num_punc)
+
+#Frequency of function words (61)
+func_words=['a','between','in','nor','some','upon','about','both','including','nothing','somebody','us','above','but','inside','of','someone','used','after','by','into','off','something','via','all','can','is','on','such','we','although','cos','it','once','than','what','am','do','its','one','that','whatever','among','down','latter','onto','the','when','an','each','less','opposite','their','where','and','either','like','or','them','whether','another','enough','little','our','these','which','any','every','lots','outside','they','while','anybody','everybody','many','over','this','who','anyone','everyone','me','own','those','whoever','anything','everything','more','past','though','whom','are','few','most','per','through','whose','around','following','much','plenty','till','will','as','for','must','plus','to','with','at','from','my','regarding','toward','within','be','have','near','same','towards','without','because','he','need','several','under','worth','before','her','neither','she','unless','would','behind','him','no','should','unlike','yes','below','i','nobody','since','until','you','beside','if','none','so','up','your']
+for i in range(0,len(x_test)):
+	text=x_test[i].lower()
+	for item in char_remove:
+		text=text.replace(item,"")
+	func_count=0
+	ls=text.split(' ')
+	for j in range(0,len(ls)):
+		if ls[j] in func_words:
+			func_count=func_count+1
+	feature_set_test[i].append(func_count)
+
+#STRUCTURAL FEATURES
+
+#Total number of lines (62).   USELESS FEATURE!!!!!!!!!!!!!!!!!!
+for i in range(0,len(x_test)):
+	text=x_test[i]
+	num_lines=0
+	for j in range(0,len(text)):
+		if text[j]=='\n':
+			num_lines=num_lines+1
+	feature_set_test[i].append(num_lines)
+
+#Total number of sentences (63)
+for i in range(0,len(x_test)):
+	text=x_test[i]
+	num_sentences=0
+	for j in range(0,len(text)):
+		if text[j]=='!' or text[j]=='?' or text[j]=='.':
+			num_sentences=num_sentences+1
+	feature_set_test[i].append(num_sentences)
+
+#Total number of paragraphs (64)  USELESS FEATURE!!!!!!!!!!!!!!!!!!
+for i in range(0,len(x_test)):
+	text=x_test[i]
+	num_paras=1
+	for j in range(0,len(text)):
+		if text[j]=='\n' and (text[j-1]=='!' or text[j-1]=='?' or text[j-1]=='.'):
+			num_paras=num_paras+1
+	feature_set_test[i].append(num_paras)
+
+#Number of sentences per paragraph (65) USELESS FEATURE!!!!!!!!!!!!!!!!!!
+for i in range(0,len(x_test)):
+	num_sen_per_para=float(feature_set_test[i][63])/feature_set_test[i][64]
+	feature_set_test[i].append(num_sen_per_para)
+
+
+#Number of characters per paragraph (66) USELESS FEATURE!!!!!!!!!!!!!!!!!!
+for i in range(0,len(x_test)):
+	num_char_per_para=float(feature_set_test[i][0])/feature_set_test[i][64]
+	feature_set_test[i].append(num_char_per_para)
+
+
+#Number of words per paragraph (67) USELESS FEATURE!!!!!!!!!!!!!!!!!!
+for i in range(0,len(x_test)):
+	num_word_per_para=float(feature_set_test[i][31])/feature_set_test[i][64]
+	feature_set_test[i].append(num_word_per_para)
+
+#Has a greeting (68)
+greetings=["hello","good afternoon","good evening","good morning"]
+for i in range(0,len(x_test)):
+	text=x_test[i].lower()
+	flag=0
+	for j in range(0,len(greetings)):
+		if greetings[j] in text:
+			flag=1
+			break
+	feature_set_test[i].append(flag)
+
+
+#Has quoted content  -Cite original message as part of replying message (Measuring the number of quotes)(69)
+quotes=['"']
+for i in range(0,len(x_test)):
+	text=x_test[i]
+	num_quotes=0
+	for j in range(0,len(text)):
+		if text[j] in quotes:
+			num_quotes=num_quotes+1
+	feature_set_test[i].append(num_quotes)	
+
+#Has URL (70)
+for i in range(0,len(x_test)):
+	text=x_test[i]
+	flag=0
+	if "https://" in text or "http://" in text or "www." in text:
+		flag=1
+	feature_set_test[i].append(flag)
+
+
+
+#Frequency of content specific keyword (71)
+content_specific=['clinton','trump','liberal','republican','immigrants','feminist','liberalism','republican','syria','syrian','war','president']
+for i in range(0,len(x_test)):
+	text=x_test[i].lower()
+	for item in char_remove:
+		text=text.replace(item,"")
+	flag=0
+	ls=text.split(' ')
+	for item in ls:
+		if item in content_specific:
+			flag=flag+1
+	feature_set_test[i].append(flag)
+
+#Yule's K (72)
+for i in range(0,len(x_test)):
+	text=x_test[i].lower()
+	feature_set_test[i].append(yules_K_calc(text))
+
+for i in range(0,len(feature_set)):
+	print "Lengths of Feature Sets"
+	print len(feature_set[i])
+
+f=open('writeprints_features_final.tsv','w')
 for i in range(0,len(feature_set)):
 	for j in range(0,len(feature_set[i])):
 		f.write(str(feature_set[i][j])+"\t")
 	f.write(str(y_train[i]))
 	f.write("\n")
 f.close()
+
+
+print ("################### Random Forest Classifier ###############")
+
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import confusion_matrix, precision_recall_fscore_support, recall_score, precision_score, f1_score
+
+
+clf = RandomForestClassifier()
+clf.fit(feature_set,y_train)
+
+print ("\nAccuracy on Training Set :")
+print (clf.score(feature_set, y_train))
+
+print ("Checking on Test Set")
+print ("\nAccuracy on Testing Set :")
+print (clf.score(feature_set_test, y_test))
+
+y_pred=clf.predict(feature_set_test)
+
+print ("\nPrecision Score")
+print (precision_score(y_test, y_pred))
+print ("\nRecall Score")
+print (recall_score(y_test, y_pred))
+print ("\nF1 Score")
+print (f1_score(y_test, y_pred))
+
+
+
+
 
