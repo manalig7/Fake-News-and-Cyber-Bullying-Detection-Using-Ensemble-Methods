@@ -144,6 +144,16 @@ def flesch_kincaid(text,avg_sen_len,avg_syl):
 
 #Number of Words (0)
 
+char_remove=['.',',' ,'~' , '@', '#', '$', '%', '^', '&', '*', '-', '_', '=' ,'+', '>', '<', '[', ']', '{', '}', '/', '\\', '\|','"','\'','!']
+
+#Modal Verbs
+list_modal_verbs=['can','could','may','might','must','shall','should','will','would']
+list_conjunctions=['and','but','for', 'nor', 'or', 'so', 'yet', 'because', 'if' ,'as', 'since']
+list_tentative_words=[ 'suggests that' , 'appear' ,'indicate', 'may', 'might','could','can','possibly', 'probably','likely','perhaps','uncertain','maybe',' conceivably' ,'tentative','tentatively' ,'tends to' , 'seems to']
+list_first_person_pronouns=['I','we','me','us','my','our','mine','ours']
+list_second_person_pronouns=['you','your','yours']
+list_third_person_pronouns=['he','they','him','them','his', 'her','their','she','her','hers','theirs','it','its']
+
 for i in range(0,len(x)):
 	text=x[i]
 	wordcount=word_count(text)
@@ -188,21 +198,6 @@ for i in range(0,len(x)):
 	feature_set[i].append(num_long)
 	
 
-
-char_remove=['.',',' ,'~' , '@', '#', '$', '%', '^', '&', '*', '-', '_', '=' ,'+', '>', '<', '[', ']', '{', '}', '/', '\\', '\|','"','\'','!']
-
-#Modal Verbs
-list_modal_verbs=['can','could','may','might','must','shall','should','will','would']
-list_conjunctions=['and','but','for', 'nor', 'or', 'so', 'yet', 'because', 'if' ,'as', 'since']
-list_tentative_words=[ 'suggests that' , 'appear' ,'indicate', 'may', 'might','could','can','possibly', 'probably','likely','perhaps','uncertain','maybe',' conceivably' ,'tentative','tentatively' ,'tends to' , 'seems to']
-list_first_person_pronouns=['I','we','me','us','my','our','mine','ours']
-list_second_person_pronouns=['you','your','yours']
-list_third_person_pronouns=['he','they','him','them','his', 'her','their','she','her','hers','theirs','it','its']
-
-for j in range(0,len(feature_set)):
-	print (len(feature_set[j]),end=',')
-
-for i in range(0,len(x)):
 	text=x[i].lower()
 	for item in char_remove:
 		text=text.replace(item,"")
@@ -216,17 +211,15 @@ for i in range(0,len(x)):
 	num_adj_adv=0;
 
 
-	"""para = word_tokenize(text)
-				tags = nltk.pos_tag(para)
+	para = word_tokenize(text)
+	tags = nltk.pos_tag(para)
 			
-				counts = Counter(tag for word,tag in tags)
+	counts = Counter(tag for word,tag in tags)
 				
-				num_adj_adv = counts['JJ'] + counts['JJR'] +counts['JJS'] + counts['RB'] + counts['RBR'] +counts['RBS']"""
-	#print ("number of adj adv",type(num_adj_adv))
+	num_adj_adv = counts['JJ'] + counts['JJR'] +counts['JJS'] + counts['RB'] + counts['RBR'] +counts['RBS']
 	words = word_count(text) 
 
 	rate_adj_adv = num_adj_adv/words
-	#print ("rate_adj_adv : ",rate_adj_adv)
 	for item in ls:
 		if item in list_modal_verbs:
 			count_modal=count_modal+1
@@ -253,7 +246,7 @@ for i in range(0,len(x)):
 		
 	feature_set[i].append(num_third_person)
 		
-		#feature_set[i].append(rate_adj_adv)
+	feature_set[i].append(rate_adj_adv)
 		
 
 print ("################### Random Forest Classifier ###############")
