@@ -63,14 +63,14 @@ from nltk.tokenize import sent_tokenize, word_tokenize
 import string
 import nltk
 
-tsv = 'Finaldataset/finaldataset_train.txt'
+tsv = 'Finaldataset/train.txt'
 f=open(tsv,'r')
 x_train=[]
 y_train=[]
 
 for line in f:
 	ls=line.split('\t')
-	x_train.append((ls[0].decode('utf-8')))
+	x_train.append((ls[0]))
 	y_train.append(int(ls[1]))
 
 feature_set=[]
@@ -87,7 +87,7 @@ y_test=[]
 
 for line in f:
 	ls=line.split('\t')
-	x_test.append((ls[0].decode('utf-8')))
+	x_test.append((ls[0]))
 	y_test.append(int(ls[1]))
 
 feature_set_test=[]
@@ -127,7 +127,7 @@ def dislegomena(text):
 
 #CHARACTER BASED FEATURES
 #Number of Characters (0)
-for i in range(0,len(x_train)):
+"""for i in range(0,len(x_train)):
 	text=x_train[i]
 	charcount=len(text)
 	feature_set[i].append(charcount)
@@ -377,7 +377,6 @@ for i in range(0,len(x_train)):
 	for j in range(0,len(greetings)):
 		if greetings[j] in text:
 			flag=1
-			break
 	feature_set[i].append(flag)
 
 
@@ -397,7 +396,6 @@ for i in range(0,len(x_train)):
 	flag=0
 	if "https://" in text or "http://" in text or "www." in text:
 		flag=1
-		break
 	feature_set[i].append(flag)
 
 
@@ -445,7 +443,7 @@ def yules_K_calc(entry):
 for i in range(0,len(x_train)):
 	text=x_train[i].lower()
 	feature_set[i].append(yules_K_calc(text))
-
+"""
 """
 for i in range(0,len(feature_set[0])):
 	print i, feature_set[0][i]
@@ -762,17 +760,24 @@ for i in range(0,len(x_test)):
 	feature_set_test[i].append(yules_K_calc(text))
 
 for i in range(0,len(feature_set)):
-	print "Lengths of Feature Sets"
-	print len(feature_set[i])
+	print ("Lengths of Feature Sets")
+	print (len(feature_set[i]))
 
-f=open('writeprints_features_final.tsv','w')
+"""f=open('writeprints_features_final.tsv','w')
 for i in range(0,len(feature_set)):
 	for j in range(0,len(feature_set[i])):
 		f.write(str(feature_set[i][j])+"\t")
 	f.write(str(y_train[i]))
 	f.write("\n")
-f.close()
+f.close()"""
 
+f=open('writeprints_features_final_test.tsv','w')
+for i in range(0,len(feature_set_test)):
+	for j in range(0,len(feature_set_test[i])):
+		f.write(str(feature_set_test[i][j])+"\t")
+	f.write(str(y_test[i]))
+	f.write("\n")
+f.close()
 
 print ("################### Random Forest Classifier ###############")
 
