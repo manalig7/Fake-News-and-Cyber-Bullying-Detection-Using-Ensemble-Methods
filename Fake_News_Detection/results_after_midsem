@@ -1,0 +1,215 @@
+ACCURACIES WITH RANDOM FOREST WITH WRITEPRINTS AFTER FEATURE SELECTION USING CHI SQUARE
+######################################################################
+1. Selected Features =35
+Accuracy on Training Set :
+0.9883441258094358
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.753698224852071
+
+Precision Score
+0.7770382695507487
+
+Recall Score
+0.7012012012012012
+
+F1 Score
+0.7371744277821625
+
+2. Selected Features =40
+Accuracy on Training Set :
+0.9909343200740055
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.7692307692307693
+
+Precision Score
+0.7882736156351792
+
+Recall Score
+0.7267267267267268
+
+F1 Score
+0.75625
+
+3. Selected Features =45
+Accuracy on Training Set :
+0.9911193339500463
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.7514792899408284
+
+Precision Score
+0.7777777777777778
+
+Recall Score
+0.6936936936936937
+
+F1 Score
+0.7333333333333334
+
+4. Selected Features =50
+Accuracy on Training Set :
+0.9898242368177613
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.7884615384615384
+
+Precision Score
+0.8135313531353136
+
+Recall Score
+0.7402402402402403
+
+F1 Score
+0.7751572327044025
+
+5. Selected Features =55
+Accuracy on Training Set :
+0.9892691951896392
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.7936390532544378
+
+Precision Score
+0.8187808896210873
+
+Recall Score
+0.7462462462462462
+
+F1 Score
+0.7808326787117046
+
+6. Selected Features =60
+Accuracy on Training Set :
+0.9929694727104533
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.8054733727810651
+
+Precision Score
+0.8276422764227642
+
+Recall Score
+0.7642642642642643
+
+F1 Score
+0.7946916471506636
+
+7. Selected Features =65
+Accuracy on Training Set :
+0.9942645698427383
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.8121301775147929
+
+Precision Score
+0.8366013071895425
+
+Recall Score
+0.7687687687687688
+
+F1 Score
+0.8012519561815336
+
+8. Selected Features =70
+Accuracy on Training Set :
+0.9922294172062904
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.8091715976331361
+
+Precision Score
+0.8217665615141956
+
+Recall Score
+0.7822822822822822
+
+F1 Score
+0.8015384615384616
+
+Number of features=65 seems to be a reasonable selection
+######################################################################
+
+WITH RECURSIVE FEATURE SELECTION
+
+1. Number of Features=35
+Accuracy on Training Set :
+0.9914893617021276
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.8158284023668639
+
+Precision Score
+0.8232558139534883
+
+Recall Score
+0.7972972972972973
+
+F1 Score
+0.8100686498855835
+
+2. Number of Features=40
+Accuracy on Training Set :
+0.9907493061979649
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.8224852071005917
+
+Precision Score
+0.8435483870967742
+
+Recall Score
+0.7852852852852853
+
+F1 Score
+0.8133748055987559
+
+3. Number of Features=45
+Accuracy on Training Set :
+0.9914893617021276
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.8269230769230769
+
+Precision Score
+0.8375
+
+Recall Score
+0.8048048048048048
+
+F1 Score
+0.8208269525267995
+
+3. Number of Features=50
+Accuracy on Training Set :
+0.9924144310823312
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.8365384615384616
+
+Precision Score
+0.8665568369028006
+
+Recall Score
+0.7897897897897898
+
+F1 Score
+0.826394344069128
+
+
+
+
+######################################################################
