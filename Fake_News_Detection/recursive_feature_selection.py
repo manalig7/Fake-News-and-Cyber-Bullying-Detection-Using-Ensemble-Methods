@@ -122,11 +122,22 @@ for item in selected_feature_names:
 
 #Implementation of Random Forest Classifier
 
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.naive_bayes import GaussianNB
 from sklearn.ensemble import RandomForestClassifier
+from sklearn import svm
 from sklearn.metrics import confusion_matrix, precision_recall_fscore_support, recall_score, precision_score, f1_score
-
+from sklearn.ensemble import GradientBoostingClassifier
+"""
 clf = RandomForestClassifier()
+clf = MultinomialNB(alpha=1.0, fit_prior=True, class_prior=None)
+clf = GaussianNB()
+clf=svm.SVC(gamma='auto')
+"""
+clf = GradientBoostingClassifier(learning_rate=0.1, n_estimators=1000,max_depth=3, min_samples_split=5, min_samples_leaf=1, subsample=1,max_features='sqrt', random_state=10)
+
 clf.fit(feature_set,y_train)
+
 
 print ("\nAccuracy on Training Set :")
 print (clf.score(feature_set, y_train))

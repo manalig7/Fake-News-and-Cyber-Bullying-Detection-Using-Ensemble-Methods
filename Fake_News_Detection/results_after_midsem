@@ -213,3 +213,132 @@ F1 Score
 
 
 ######################################################################
+RECURSIVE FEATURE ELIMINATION WITH 50 FEATURES USING DIFFERENT CLASSIFIERS ON WRITEPRINTS
+
+1. RANDOM FOREST
+Accuracy on Training Set :
+0.9924144310823312
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.8365384615384616
+
+Precision Score
+0.8665568369028006
+
+Recall Score
+0.7897897897897898
+
+F1 Score
+0.826394344069128
+
+2. NAIVE BAYES (MULTINOMIAL)
+
+Accuracy on Training Set :
+0.6943570767807585
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.6678994082840237
+
+Precision Score
+0.6371681415929203
+
+Recall Score
+0.7567567567567568
+
+F1 Score
+0.6918325326012355
+
+3. NAIVE BAYES (GAUSSIAN)
+
+Accuracy on Training Set :
+0.7071230342275671
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.7004437869822485
+
+Precision Score
+0.7101449275362319
+
+Recall Score
+0.6621621621621622
+
+F1 Score
+0.6853146853146853
+
+4. SVM
+
+Accuracy on Training Set :
+0.9998149861239592
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.5266272189349113
+
+Precision Score
+0.5099693251533742
+
+Recall Score
+0.9984984984984985
+
+F1 Score
+0.6751269035532994
+
+5. GRADIENT BOOSTING CLASSIFIER
+
+PARAMETERS: learning_rate=0.1, n_estimators=100,max_depth=3, min_samples_split=2, min_samples_leaf=1, subsample=1,max_features='sqrt', random_state=10
+
+Accuracy on Training Set :
+0.8740055504162813
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.8365384615384616
+
+Precision Score
+0.8296296296296296
+
+Recall Score
+0.8408408408408409
+
+F1 Score
+0.8351976137211036
+
+PARAMETERS: learning_rate=0.1, n_estimators=200,max_depth=3, min_samples_split=5, min_samples_leaf=1, subsample=1,max_features='sqrt', random_state=10
+
+Accuracy on Training Set :
+0.9063829787234042
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.8483727810650887
+
+Precision Score
+0.8404726735598228
+
+Recall Score
+0.8543543543543544
+
+F1 Score
+0.8473566641846613
+
+PARAMETERS: learning_rate=0.1, n_estimators=500,max_depth=3, min_samples_split=5, min_samples_leaf=1, subsample=1,max_features='sqrt', random_state=10
+Accuracy on Training Set :
+0.957631822386679
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.8542899408284024
+
+Precision Score
+0.8526315789473684
+
+Recall Score
+0.8513513513513513
+
+F1 Score
+0.8519909842223891
+
+######################################################################
