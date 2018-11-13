@@ -1,0 +1,63 @@
+### Chi-Squared  ###
+
+5405
+CountVectors
+10413
+(6757, 76035)
+/usr/lib/python2.7/dist-packages/sklearn/feature_selection/univariate_selection.py:165: RuntimeWarning: invalid value encountered in divide
+  chisq /= f_exp
+(1352, 10000)
+################# Naive Bayes Classifier ####################
+
+Accuracy on Training Set :
+0.933765032377
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.835059171598
+
+Precision Score
+0.848818897638
+
+Recall Score
+0.809309309309
+
+F1 Score
+0.8285933897
+################### Random Forest Classifier ###############
+
+Accuracy on Training Set :
+0.971137835338
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.778846153846
+
+Precision Score
+0.896328293737
+
+Recall Score
+0.623123123123
+
+F1 Score
+0.735163861825
+################### Logistic regression Classifier ###############
+
+Accuracy on Training Set :
+0.96355226642
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.849112426036
+
+Precision Score
+0.845808383234
+
+Recall Score
+0.848348348348
+
+F1 Score
+0.847076461769
+
+
+### trial 2 ###

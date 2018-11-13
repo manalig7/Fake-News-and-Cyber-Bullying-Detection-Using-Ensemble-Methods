@@ -1,0 +1,117 @@
+### Chi-Square test ###
+
+TfIdf-Vectors
+/usr/lib/python2.7/dist-packages/sklearn/feature_selection/univariate_selection.py:165: RuntimeWarning: invalid value encountered in divide
+  chisq /= f_exp
+(1352, 25000)
+################# Naive Bayes Classifier ####################
+
+Accuracy on Training Set :
+0.893246993525
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.828402366864
+
+Precision Score
+0.957805907173
+
+Recall Score
+0.681681681682
+
+F1 Score
+0.79649122807
+################### Random Forest Classifier ###############
+
+Accuracy on Training Set :
+0.994634597595
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.820266272189
+
+Precision Score
+0.851913477537
+
+Recall Score
+0.768768768769
+
+F1 Score
+0.808208366219
+################### Logistic regression Classifier ###############
+
+Accuracy on Training Set :
+0.936540240518
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.891272189349
+
+Precision Score
+0.874458874459
+
+Recall Score
+0.90990990991
+
+F1 Score
+0.891832229581
+
+
+## trial 2 ##
+
+################# Naive Bayes Classifier ####################
+
+Accuracy on Training Set :
+0.913228492137
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.864644970414
+
+Precision Score
+0.944751381215
+
+Recall Score
+0.77027027027
+
+F1 Score
+0.848635235732
+################### Random Forest Classifier ###############
+
+Accuracy on Training Set :
+0.997039777983
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.822485207101
+
+Precision Score
+0.849180327869
+
+Recall Score
+0.777777777778
+
+F1 Score
+0.811912225705
+################### Logistic regression Classifier ###############
+
+Accuracy on Training Set :
+0.92710453284
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.889053254438
+
+Precision Score
+0.876093294461
+
+Recall Score
+0.902402402402
+
+F1 Score
+0.889053254438
+
+
+### RFE ###
+
+### PCA ###
