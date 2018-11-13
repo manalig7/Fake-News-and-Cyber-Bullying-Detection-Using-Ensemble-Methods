@@ -61,3 +61,63 @@ F1 Score
 
 
 ### trial 2 ###
+
+5405
+CountVectors
+10413
+(6757, 76035)
+/usr/lib/python2.7/dist-packages/sklearn/feature_selection/univariate_selection.py:165: RuntimeWarning: invalid value encountered in divide
+  chisq /= f_exp
+(1352, 25000)
+################# Naive Bayes Classifier ####################
+
+Accuracy on Training Set :
+0.948936170213
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.849852071006
+
+Precision Score
+0.881383855025
+
+Recall Score
+0.803303303303
+
+F1 Score
+0.840534171249
+################### Random Forest Classifier ###############
+
+Accuracy on Training Set :
+0.981868640148
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.758136094675
+
+Precision Score
+0.889655172414
+
+Recall Score
+0.581081081081
+
+F1 Score
+0.702997275204
+################### Logistic regression Classifier ###############
+
+Accuracy on Training Set :
+0.986123959297
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.850591715976
+
+Precision Score
+0.9
+
+Recall Score
+0.783783783784
+
+F1 Score
+0.837881219904
+
