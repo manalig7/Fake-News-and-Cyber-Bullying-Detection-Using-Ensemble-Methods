@@ -3,6 +3,7 @@ import warnings
 warnings.filterwarnings(action = 'ignore') 
 from nltk.tokenize import RegexpTokenizer
 from gensim.models import Word2Vec
+from sklearn.metrics import confusion_matrix, precision_recall_fscore_support, recall_score, precision_score, f1_score
 
 
 def fit_transform(d):
@@ -69,10 +70,12 @@ f.close()
 
 pad_len=max(lent)
 
-model_W2V = Word2Vec(data, size=10, window=5, min_count=1, workers=5, sg=0)
+model_W2V = Word2Vec(data, size=10, window=5, min_count=1, workers=5, sg=0,max_vocab_size=10000)
 
 print "SG W2V model_done!"
 
+voc=list(model_W2V.wv.vocab)
+print(len(voc))
 XVAL=fit_transform(data)
 
 print ("Transformed!!")
@@ -87,7 +90,6 @@ print(np.array(x_test).shape)
 print("################# Naive Bayes Classifier ####################")
 
 from sklearn.naive_bayes import GaussianNB
-from sklearn.metrics import confusion_matrix, precision_recall_fscore_support, recall_score, precision_score, f1_score
 
 clf = GaussianNB()
 clf.fit(x_train,y_train)

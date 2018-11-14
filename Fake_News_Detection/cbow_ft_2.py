@@ -3,6 +3,8 @@ import warnings
 warnings.filterwarnings(action = 'ignore') 
 from nltk.tokenize import RegexpTokenizer
 from gensim.models import FastText
+from sklearn.metrics import confusion_matrix, precision_recall_fscore_support, recall_score, precision_score, f1_score
+
 
 
 def fit_transform(d):
@@ -18,8 +20,6 @@ def fit_transform(d):
 				temp.append(0)		
 		res.append(temp)
 	return res
-
-x = []
 
 
 x = []
@@ -56,26 +56,27 @@ f=open(tsv1,'r')
 y_test=[]
 
 #data1=[]
-def fit_transform(d):
-	res=[]
-	for i in range(0,len(d)):
-		temp=[]	
-		for j in range(0,len(voc)):
-			#print(voc[j])
-			if voc[j] in d[i]:
-				#print 	(np.mean(model_W2V.wv[voc[j]]))	
-				temp.append(np.mean(model_W2V.wv[voc[j]]))
-			else :
-				temp.append(0)		
-		res.append(temp)
-	return res
+for line in f:
+	ls=line.split('\t')
+	x.append(ls[0])
+	temp = [] 
+	#print(ls[0])
+	for j in tokenizer.tokenize(ls[0].decode('utf-8')):
+		#print(j) 
+	       	temp.append(j) 
+	data.append(temp)
+	lent.append(len(temp))  
+	y_test.append(int(ls[1]))
 f.close()
 
 pad_len=max(lent)
 
-model_FT = FastText(data, size=10, window=5, min_count=1, workers=5, sg=1)
+model_FT = FastText(data, size=10, window=5, min_count=1, workers=5, sg=1,max_vocab_size=10000)
 
 print "CBOW FT model_done!"
+
+voc=list(model_FT.wv.vocab)
+print(len(voc))
 
 XVAL=fit_transform(data)
 
@@ -93,7 +94,6 @@ print(np.array(x_test).shape)
 print("################# Naive Bayes Classifier ####################")
 
 from sklearn.naive_bayes import GaussianNB
-from sklearn.metrics import confusion_matrix, precision_recall_fscore_support, recall_score, precision_score, f1_score
 
 clf = GaussianNB()
 clf.fit(x_train,y_train)

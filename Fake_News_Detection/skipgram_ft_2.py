@@ -3,6 +3,7 @@ import warnings
 warnings.filterwarnings(action = 'ignore') 
 from nltk.tokenize import RegexpTokenizer
 from gensim.models import FastText
+from sklearn.metrics import confusion_matrix, precision_recall_fscore_support, recall_score, precision_score, f1_score
 
 
 def fit_transform(d):
@@ -69,11 +70,14 @@ f.close()
 
 pad_len=max(lent)
 
-model_FT = FastText(data, size=10, window=5, min_count=1, workers=5, sg=1)
+model_FT = FastText(data, size=10, window=5, min_count=1, workers=5, sg=1,max_vocab_size=10000)
 
 print "SG FT model_done!"
 
-XVAL=fit_transform(voc)
+voc=list(model_FT.wv.vocab)
+print(len(voc))
+XVAL=fit_transform(data)
+
 
 print ("Transformed!!")
 
@@ -88,7 +92,6 @@ print(np.array(x_test).shape)
 print("################# Naive Bayes Classifier ####################")
 
 from sklearn.naive_bayes import GaussianNB
-from sklearn.metrics import confusion_matrix, precision_recall_fscore_support, recall_score, precision_score, f1_score
 
 clf = GaussianNB()
 clf.fit(x_train,y_train)
