@@ -1,16 +1,12 @@
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics import confusion_matrix, precision_recall_fscore_support, recall_score, precision_score, f1_score
-from nltk.stem import WordNetLemmatizer
 from sklearn.feature_selection import chi2
 from sklearn.feature_selection import RFE
 from sklearn.linear_model import LogisticRegression
-from nltk.stem.porter import PorterStemmer
 from sklearn.feature_selection import SelectKBest
 
 
-ps = PorterStemmer()
-lem = WordNetLemmatizer()
 
 tsv = 'dataset/finaldataset_train.txt'
 f=open(tsv,'r')
@@ -19,11 +15,12 @@ y_train=[]
 
 for line in f:
 	ls=line.split('\t')
-	x_train.append(ps.stem(lem.lemmatize(ls[0].decode('utf-8'))))
+	x_train.append(ls[0].decode('utf-8'))
 	y_train.append(int(ls[1]))
 f.close()
 
 m=len(x_train)
+print (m)
 
 data = x_train
 
@@ -35,10 +32,11 @@ y_test=[]
 
 for line in f:
 	ls=line.split('\t')
-	x_test.append(ps.stem(lem.lemmatize(ls[0].decode('utf-8'))))
-	data.append(ps.stem(lem.lemmatize(ls[0].decode('utf-8'))))
+	x_test.append(ls[0].decode('utf-8'))
+	data.append(ls[0].decode('utf-8'))
 	y_test.append(int(ls[1]))
 f.close()
+
 
 
 print "TfIdf-Vectors"

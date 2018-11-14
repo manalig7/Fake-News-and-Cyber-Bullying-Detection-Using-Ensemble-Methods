@@ -1,5 +1,6 @@
-### Chi-Square test ###
+### Chi squared ###
 
+5405
 TfIdf-Vectors
 /usr/lib/python2.7/dist-packages/sklearn/feature_selection/univariate_selection.py:165: RuntimeWarning: invalid value encountered in divide
   chisq /= f_exp
@@ -7,20 +8,80 @@ TfIdf-Vectors
 ################# Naive Bayes Classifier ####################
 
 Accuracy on Training Set :
-0.893246993525
+0.893432007401
 Checking on Test Set
 
 Accuracy on Testing Set :
-0.828402366864
+0.829142011834
 
 Precision Score
-0.957805907173
+0.955974842767
 
 Recall Score
-0.681681681682
+0.684684684685
 
 F1 Score
-0.79649122807
+0.797900262467
+################### Random Forest Classifier ###############
+
+Accuracy on Training Set :
+0.995004625347
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.818786982249
+
+Precision Score
+0.846787479407
+
+Recall Score
+0.771771771772
+
+F1 Score
+0.807541241163
+################### Logistic regression Classifier ###############
+
+Accuracy on Training Set :
+0.937095282146
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.89275147929
+
+Precision Score
+0.875901875902
+
+Recall Score
+0.911411411411
+
+F1 Score
+0.893303899926
+
+
+## trial 2 ##
+
+5405
+TfIdf-Vectors
+/usr/lib/python2.7/dist-packages/sklearn/feature_selection/univariate_selection.py:165: RuntimeWarning: invalid value encountered in divide
+  chisq /= f_exp
+(1352, 10000)
+################# Naive Bayes Classifier ####################
+
+Accuracy on Training Set :
+0.913598519889
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.864644970414
+
+Precision Score
+0.946395563771
+
+Recall Score
+0.768768768769
+
+F1 Score
+0.848384424192
 ################### Random Forest Classifier ###############
 
 Accuracy on Training Set :
@@ -28,71 +89,16 @@ Accuracy on Training Set :
 Checking on Test Set
 
 Accuracy on Testing Set :
-0.820266272189
+0.823224852071
 
 Precision Score
-0.851913477537
+0.849427168576
 
 Recall Score
-0.768768768769
+0.779279279279
 
 F1 Score
-0.808208366219
-################### Logistic regression Classifier ###############
-
-Accuracy on Training Set :
-0.936540240518
-Checking on Test Set
-
-Accuracy on Testing Set :
-0.891272189349
-
-Precision Score
-0.874458874459
-
-Recall Score
-0.90990990991
-
-F1 Score
-0.891832229581
-
-
-## trial 2 ##
-
-################# Naive Bayes Classifier ####################
-
-Accuracy on Training Set :
-0.913228492137
-Checking on Test Set
-
-Accuracy on Testing Set :
-0.864644970414
-
-Precision Score
-0.944751381215
-
-Recall Score
-0.77027027027
-
-F1 Score
-0.848635235732
-################### Random Forest Classifier ###############
-
-Accuracy on Training Set :
-0.997039777983
-Checking on Test Set
-
-Accuracy on Testing Set :
-0.822485207101
-
-Precision Score
-0.849180327869
-
-Recall Score
-0.777777777778
-
-F1 Score
-0.811912225705
+0.812842599843
 ################### Logistic regression Classifier ###############
 
 Accuracy on Training Set :
@@ -100,18 +106,14 @@ Accuracy on Training Set :
 Checking on Test Set
 
 Accuracy on Testing Set :
-0.889053254438
+0.890532544379
 
 Precision Score
-0.876093294461
+0.877551020408
 
 Recall Score
-0.902402402402
+0.903903903904
 
 F1 Score
-0.889053254438
+0.890532544379
 
-
-### RFE ###
-
-### PCA ###
