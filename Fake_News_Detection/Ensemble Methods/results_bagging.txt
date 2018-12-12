@@ -1,0 +1,11 @@
+Accuracy on Testing Set
+0.790680473373
+
+Precision Score
+0.8401420959147424
+
+Recall Score
+0.7102102102102102
+
+F1 Score
+0.7697314890154596
