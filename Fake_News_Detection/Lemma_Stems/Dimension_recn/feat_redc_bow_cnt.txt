@@ -1,0 +1,126 @@
+### Chi-Square test ###
+
+5405
+CountVectors
+9575
+(6757, 60543)
+/usr/lib/python2.7/dist-packages/sklearn/feature_selection/univariate_selection.py:165: RuntimeWarning: invalid value encountered in divide
+  chisq /= f_exp
+(1352, 25000)
+################# Naive Bayes Classifier ####################
+
+Accuracy on Training Set :
+0.943570767808
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.841715976331
+
+Precision Score
+0.871710526316
+
+Recall Score
+0.795795795796
+
+F1 Score
+0.832025117739
+################### Random Forest Classifier ###############
+
+Accuracy on Training Set :
+0.976688251619
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.748520710059
+
+Precision Score
+0.846808510638
+
+Recall Score
+0.597597597598
+
+F1 Score
+0.700704225352
+################### Logistic regression Classifier ###############
+
+Accuracy on Training Set :
+0.972247918594
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.829142011834
+
+Precision Score
+0.825112107623
+
+Recall Score
+0.828828828829
+
+F1 Score
+0.826966292135
+
+
+### trial 2 ###
+5405
+CountVectors
+9575
+(6757, 60543)
+/usr/lib/python2.7/dist-packages/sklearn/feature_selection/univariate_selection.py:165: RuntimeWarning: invalid value encountered in divide
+  chisq /= f_exp
+(1352, 10000)
+################# Naive Bayes Classifier ####################
+
+Accuracy on Training Set :
+0.925624421832
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.829881656805
+
+Precision Score
+0.848242811502
+
+Recall Score
+0.797297297297
+
+F1 Score
+0.821981424149
+################### Random Forest Classifier ###############
+
+Accuracy on Training Set :
+0.958186864015
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.752218934911
+
+Precision Score
+0.763116057234
+
+Recall Score
+0.720720720721
+
+F1 Score
+0.741312741313
+################### Logistic regression Classifier ###############
+
+Accuracy on Training Set :
+0.960037002775
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.832840236686
+
+Precision Score
+0.820699708455
+
+Recall Score
+0.845345345345
+
+F1 Score
+0.832840236686
+
+
+### RFE ###
+
+### PCA ###

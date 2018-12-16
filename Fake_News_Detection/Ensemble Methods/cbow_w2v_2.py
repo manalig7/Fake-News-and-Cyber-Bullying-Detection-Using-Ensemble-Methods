@@ -68,7 +68,7 @@ f.close()
 
 #pad_len=max(lent)
 
-model_W2V = Word2Vec(data, size=10, window=5, min_count=5, workers=5, sg=0,max_vocab_size=10000)
+model_W2V = Word2Vec(data, size=10, window=5, min_count=1, workers=5, sg=0,max_vocab_size=10000)
 
 print "CBOW W2V model_done!"
 

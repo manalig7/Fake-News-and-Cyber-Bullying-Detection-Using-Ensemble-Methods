@@ -2,7 +2,7 @@ import numpy as np
 import warnings 
 warnings.filterwarnings(action = 'ignore') 
 from nltk.tokenize import RegexpTokenizer
-from gensim.models import Word2Vec
+from gensim.models import FastText
 from sklearn.metrics import confusion_matrix, precision_recall_fscore_support, recall_score, precision_score, f1_score
 
 
@@ -14,11 +14,12 @@ def fit_transform(d):
 			#print(voc[j])
 			if voc[j] in d[i]:
 				#print 	(np.mean(model_W2V.wv[voc[j]]))	
-				temp.append(np.mean(model_W2V.wv[voc[j]]))
+				temp.append(np.mean(model_FT.wv[voc[j]]))
 			else :
 				temp.append(0)		
 		res.append(temp)
 	return res
+
 
 x = []
 ##### training dataset #####
@@ -27,7 +28,7 @@ tsv = 'dataset/finaldataset_train.txt'
 f=open(tsv,'r')
 y_train=[]
 data=[]
-#lent=[]
+lent=[]
 
 tokenizer = RegexpTokenizer(' ', gaps=True)
 
@@ -40,7 +41,7 @@ for line in f :
 		#print(j) 
 	       	temp.append(j) 
 	data.append(temp)
-	#lent.append(len(temp)) 
+	lent.append(len(temp)) 
 	y_train.append(int(ls[1]))
 f.close()
 
@@ -62,20 +63,21 @@ for line in f:
 	for j in tokenizer.tokenize(ls[0].decode('utf-8')):
 		#print(j) 
 	       	temp.append(j) 
-	data.append(temp) 
+	data.append(temp)
+	lent.append(len(temp))  
 	y_test.append(int(ls[1]))
 f.close()
 
-#pad_len=max(lent)
+pad_len=max(lent)
 
-model_W2V = Word2Vec(data, size=10, window=5, min_count=5, workers=5, sg=0,max_vocab_size=10000)
+model_FT = FastText(data, size=10, window=5, min_count=1, workers=5, sg=1,max_vocab_size=10000)
 
-print "CBOW W2V model_done!"
+print "SG FT model_done!"
 
-voc=list(model_W2V.wv.vocab)
+voc=list(model_FT.wv.vocab)
 print(len(voc))
-
 XVAL=fit_transform(data)
+
 
 print ("Transformed!!")
 
@@ -85,7 +87,6 @@ print(np.array(x_train).shape)
 x_test = []
 x_test=XVAL[m:]
 print(np.array(x_test).shape)
-
 
 
 print("################# Naive Bayes Classifier ####################")
@@ -136,7 +137,6 @@ print recall_score(y_test, y_pred)
 print "\nF1 Score"
 print f1_score(y_test, y_pred)
 
-
 print ("################### Logistic regression Classifier ###############")
 
 from sklearn.linear_model import LogisticRegression
@@ -159,3 +159,4 @@ print "\nRecall Score"
 print recall_score(y_test, y_pred)
 print "\nF1 Score"
 print f1_score(y_test, y_pred)
+

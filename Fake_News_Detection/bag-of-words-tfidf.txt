@@ -1,0 +1,35 @@
+TfIdf-Vectors
+################# Naive Bayes Classifier ####################
+
+Accuracy on Training Set :
+0.867900092507
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.789201183432
+
+Precision Score
+0.968058968059
+
+Recall Score
+0.591591591592
+
+F1 Score
+0.734389561976
+################### Random Forest Classifier ###############
+
+Accuracy on Training Set :
+0.994449583719
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.805473372781
+
+Precision Score
+0.843270868825
+
+Recall Score
+0.743243243243
+
+F1 Score
+0.790103750998
