@@ -1,0 +1,26 @@
+### Voting results CBOW W2V ###
+
+## Ensemble 1 ##
+eclf1 = VotingClassifier(estimators=[('gb', clf1), ('lr', clf2), ('rf', clf3)], voting='hard')
+Accuracy on Training Set :
+0.8710453284
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.817307692308
+
+Precision Score
+0.758961681088
+
+Recall Score
+0.921921921922
+
+F1 Score
+0.832542372881
+
+
+## Ensemble 2 ##
+eclf1 = VotingClassifier(estimators=[('gb', clf1), ('lr', clf2), ('ada', clf5)], voting='hard')
+
+
+## Ensemble 3 ##
