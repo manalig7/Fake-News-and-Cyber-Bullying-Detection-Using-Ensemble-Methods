@@ -21,6 +21,62 @@ F1 Score
 
 ## Ensemble 2 ##
 eclf1 = VotingClassifier(estimators=[('gb', clf1), ('lr', clf2), ('ada', clf5)], voting='hard')
+Accuracy on Training Set :
+
+0.872525439408
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.841715976331
+
+Precision Score
+0.779012345679
+
+Recall Score
+0.947447447447
+
+F1 Score
+0.855013550136
+
+
 
 
 ## Ensemble 3 ##
+
+*****   VotingClassifier(estimators=[ ('lr', clf2), ('rf', clf3), ('ada', clf5)], voting='hard')
+
+Accuracy on Training Set :
+0.994819611471
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.91124260355
+
+Precision Score
+0.90625
+
+Recall Score
+0.914414414414
+
+F1 Score
+0.910313901345
+
+
+## Only Random Forest ##
+
+Accuracy on Training Set :
+0.995744680851
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.883875739645
+
+Precision Score
+0.9072
+
+Recall Score
+0.851351351351
+
+F1 Score
+0.878388845856
+
