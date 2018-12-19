@@ -45,6 +45,8 @@ F1 Score
 
 *****   VotingClassifier(estimators=[ ('lr', clf2), ('rf', clf3), ('ada', clf5)], voting='hard')
 
+
+### run 1 ###
 Accuracy on Training Set :
 0.994819611471
 Checking on Test Set
@@ -60,6 +62,25 @@ Recall Score
 
 F1 Score
 0.910313901345
+
+### run 2 ###
+
+Accuracy on Training Set :
+0.993709528215
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.917159763314
+
+Precision Score
+0.907352941176
+
+Recall Score
+0.926426426426
+
+F1 Score
+0.916790490342
+
 
 
 ## Only Random Forest ##
