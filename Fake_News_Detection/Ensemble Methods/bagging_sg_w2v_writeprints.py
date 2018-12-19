@@ -17,7 +17,100 @@ from sklearn.feature_selection import chi2
 from sklearn.feature_selection import RFE
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
-#URL for loading the dataset
+##########################FOR SQ W2V###########################
+#############################################################
+import numpy as np
+import warnings 
+warnings.filterwarnings(action = 'ignore') 
+from nltk.tokenize import RegexpTokenizer
+from gensim.models import Word2Vec
+from sklearn.metrics import confusion_matrix, precision_recall_fscore_support, recall_score, precision_score, f1_score
+
+
+def fit_transform(d):
+	res=[]
+	for i in range(0,len(d)):
+		temp=[]	
+		for j in range(0,len(voc)):
+			#print(voc[j])
+			if voc[j] in d[i]:
+				#print 	(np.mean(model_W2V.wv[voc[j]]))	
+				temp.append(np.mean(model_W2V.wv[voc[j]]))
+			else :
+				temp.append(0)		
+		res.append(temp)
+	return res
+
+
+x = []
+##### training dataset #####
+
+tsv = 'Finaldataset/finaldataset_train.txt'
+f=open(tsv,'r')
+y_train=[]
+data=[]
+lent=[]
+
+tokenizer = RegexpTokenizer(' ', gaps=True)
+
+for line in f :
+	ls=line.split('\t')
+	x.append(ls[0])
+	temp = [] 
+	#print(ls[0])
+	for j in tokenizer.tokenize(ls[0].decode('utf-8')):
+		#print(j) 
+	       	temp.append(j) 
+	data.append(temp)
+	lent.append(len(temp)) 
+	y_train.append(int(ls[1]))
+f.close()
+
+m=len(x)
+
+#print(max(lent))
+
+##### testing dataset #####
+tsv1 = 'Finaldataset/finaldataset_test.txt'
+f=open(tsv1,'r')
+y_test=[]
+
+#data1=[]
+for line in f:
+	ls=line.split('\t')
+	x.append(ls[0])
+	temp = [] 
+	#print(ls[0])
+	for j in tokenizer.tokenize(ls[0].decode('utf-8')):
+		#print(j) 
+	       	temp.append(j) 
+	data.append(temp)
+	lent.append(len(temp))  
+	y_test.append(int(ls[1]))
+f.close()
+
+pad_len=max(lent)
+
+model_W2V = Word2Vec(data, size=10, window=5, min_count=1, workers=5, sg=0,max_vocab_size=10000)
+
+#print "SG W2V model_done!"
+
+voc=list(model_W2V.wv.vocab)
+#	print(len(voc))
+XVAL=fit_transform(data)
+
+#print ("Transformed!!")
+
+x_train=[]
+x_train=XVAL[:m]
+#print(np.array(x_train).shape)
+x_test = []
+x_test=XVAL[m:]
+#print(np.array(x_test).shape)
+x_train_sg=x_train
+x_test_sg=x_test
+##################################################################
+##################################################################
 
 
 #Define the attribute names
@@ -109,8 +202,10 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn import svm
 from sklearn.metrics import confusion_matrix, precision_recall_fscore_support, recall_score, precision_score, f1_score
 from sklearn.ensemble import GradientBoostingClassifier
+from sklearn.linear_model import LogisticRegression
 import random
 clf = RandomForestClassifier()
+clf1 = LogisticRegression(random_state=0, solver='lbfgs')
 predictions=[]
 for p in range(0,len(feature_set_test)):
 	predictions.append([])
@@ -119,14 +214,20 @@ for p in range(0,len(feature_set_test)):
 for i in range(0,n_writeprints):
 	temp_list=[]
 	temp_list_y=[]
+	temp_list_sg=[]
 	for j in range(0,size_writeprints):
 		num=random.randint(0,len(feature_set)-1)
 		temp_list.append(feature_set[num])
+		temp_list_sg.append(x_train_sg[num])
 		temp_list_y.append(y_train[num])
 	clf.fit(temp_list,temp_list_y)
+	clf1.fit(temp_list_sg,temp_list_y)
 	pred=clf.predict(feature_set_test)
+	pred_sg=clf1.predict(x_test_sg)
 	for p in range(0,len(pred)):
 		predictions[p].append(pred[p])
+	for p in range(0,len(pred_sg)):
+		predictions[p].append(pred_sg[p])
 
 for i in range(0,len(predictions)):
 	for j in range(0,len(predictions[i])):
@@ -154,4 +255,3 @@ print ("\nRecall Score")
 print (recall_score(y_test, final_pred))
 print ("\nF1 Score")
 print (f1_score(y_test, final_pred))
-
