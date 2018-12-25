@@ -1,0 +1,13 @@
+Skipgram w2v and writeprints features
+
+Accuracy on Testing Set :
+0.8646449704142012
+
+Precision Score
+0.8653555219364599
+
+Recall Score
+0.8588588588588588
+
+F1 Score
+0.8620949510173322
