@@ -1,0 +1,69 @@
+### Voting result ###
+
+### Ensemble 1 ###
+
+# eclf1 = VotingClassifier(estimators=[('mnb', clf1), ('lr', clf2), ('ada', clf5)], voting='hard') #
+
+Accuracy on Training Set :
+0.844958371878
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.808431952663
+
+Precision Score
+0.766710353866
+
+Recall Score
+0.878378378378
+
+F1 Score
+0.818754373688
+
+
+### Ensemble 2 ###
+#eclf1 = VotingClassifier(estimators=[('bag', clf4), ('lr', clf2), ('ada', clf5)], voting='hard')#
+
+## high time complexity ##
+
+Accuracy on Training Set :
+0.878445883441
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.840236686391
+
+Precision Score
+0.817796610169
+
+Recall Score
+0.869369369369
+
+F1 Score
+0.842794759825
+
+
+
+### Ensemble 3 ###
+# eclf1 = VotingClassifier(estimators=[('mnb', clf1), ('lr', clf2), ('ada', clf5)], voting='hard', weights=[2,2,1]) #
+
+Accuracy on Training Set :
+0.844958371878
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.808431952663
+
+Precision Score
+0.766710353866
+
+Recall Score
+0.878378378378
+
+F1 Score
+0.818754373688
+
+
+### Ensemble 4 ###
+#eclf1 = VotingClassifier(estimators=[ ('lr', clf2),('bag', clf4), ('ada', clf5)], voting='hard',weights=[2,1,1])#
+

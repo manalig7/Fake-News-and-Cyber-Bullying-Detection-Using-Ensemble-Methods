@@ -1,0 +1,54 @@
+USING ONLY WRITEPRINTS
+Accuracy on Testing Set
+n_writeprints=10
+0.790680473373
+
+Precision Score
+0.8401420959147424
+
+Recall Score
+0.7102102102102102
+
+F1 Score
+0.7697314890154596
+
+
+USING BOTH SKIPGRAM W2V AND WRITEPRINTS
+n_writeprints=10
+Accuracy on Testing Set
+0.909023668639
+
+Precision Score
+0.9289099526066351
+
+Recall Score
+0.8828828828828829
+
+F1 Score
+0.905311778290993
+
+n_writeprints=15
+Accuracy on Testing Set
+0.886834319527
+
+Precision Score
+0.8976744186046511
+
+Recall Score
+0.8693693693693694
+
+F1 Score
+0.8832951945080093
+
+n_writeprints=8
+Accuracy on Testing Set
+0.882396449704
+
+Precision Score
+0.9121951219512195
+
+Recall Score
+0.8423423423423423
+
+F1 Score
+0.8758782201405152

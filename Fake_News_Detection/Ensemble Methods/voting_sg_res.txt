@@ -1,0 +1,126 @@
+### Voting results SG W2V ###
+
+## Ensemble 1 ##
+eclf1 = VotingClassifier(estimators=[('gb', clf1), ('lr', clf2), ('rf', clf3)], voting='hard')
+
+Accuracy on Training Set :
+0.850138760407
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.798076923077
+
+Precision Score
+0.735329341317
+
+Recall Score
+0.921921921922
+
+F1 Score
+0.818121252498
+
+
+## Ensemble 2 ##
+eclf1 = VotingClassifier(estimators=[('gb', clf1), ('lr', clf2), ('ada', clf5)], voting='hard')
+
+Accuracy on Training Set :
+0.859944495837
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.833579881657
+
+Precision Score
+0.767272727273
+
+Recall Score
+0.95045045045
+
+F1 Score
+0.849094567404
+
+
+
+## Ensemble 3 ##
+*****   VotingClassifier(estimators=[ ('lr', clf2), ('rf', clf3), ('ada', clf5)], voting='hard')
+
+
+### run 1 ###
+
+Accuracy on Training Set :
+0.993709528215
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.917899408284
+
+Precision Score
+0.908689248895
+
+Recall Score
+0.926426426426
+
+F1 Score
+0.917472118959
+
+
+### run 2 ###
+
+Accuracy on Training Set :
+0.994264569843
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.914201183432
+
+Precision Score
+0.904411764706
+
+Recall Score
+0.923423423423
+
+F1 Score
+0.91381872214
+
+
+
+
+## Only Random Forest ##
+
+## Run 1 ##
+
+Accuracy on Training Set :
+0.996669750231
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.869082840237
+
+Precision Score
+0.885039370079
+
+Recall Score
+0.843843843844
+
+F1 Score
+0.863950807071
+
+
+## Run 2 ##
+
+Accuracy on Training Set :
+0.996484736355
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.87573964497
+
+Precision Score
+0.900321543408
+
+Recall Score
+0.840840840841
+
+F1 Score
+0.869565217391
+
