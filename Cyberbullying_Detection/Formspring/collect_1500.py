@@ -1,5 +1,5 @@
 
-f=open('formspring_modified_2.tsv','r')
+f=open('formspring_modified_1.tsv','r')
 
 text=[]
 labels=[]
@@ -19,7 +19,7 @@ for line in f:
 
 f.close()
 
-g=open('selected_1500.txt','w')
+g=open('selected_1500_with_sp_ch.txt','w')
 
 for i in range(0,len(labels)):
 	g.write(text[i]+'\t'+str(labels[i])+'\n')
