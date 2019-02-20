@@ -1,0 +1,103 @@
+BASIC CLASSIFIER RESULTS
+################## RANDOM FOREST #####################
+
+Accuracy on Training Set :
+0.9922294172062904
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.8247041420118343
+
+Precision Score
+0.8421052631578947
+
+Recall Score
+0.7927927927927928
+
+F1 Score
+0.8167053364269141
+################## MULTI NB #####################
+
+Accuracy on Training Set :
+0.6943570767807585
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.6678994082840237
+
+Precision Score
+0.6371681415929203
+
+Recall Score
+0.7567567567567568
+
+F1 Score
+0.6918325326012355
+################## GAUSSIAN NB #####################
+
+Accuracy on Training Set :
+0.7071230342275671
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.7004437869822485
+
+Precision Score
+0.7101449275362319
+
+Recall Score
+0.6621621621621622
+
+F1 Score
+0.6853146853146853
+################## KNN #####################
+
+Accuracy on Training Set :
+0.7946345975948196
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.6715976331360947
+
+Precision Score
+0.6831683168316832
+
+Recall Score
+0.6216216216216216
+
+F1 Score
+0.6509433962264152
+################## SVM #####################
+
+Accuracy on Training Set :
+0.9998149861239592
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.5273668639053254
+
+Precision Score
+0.5103448275862069
+
+Recall Score
+1.0
+
+F1 Score
+0.6757990867579908
+################## LOGISTIC REGRESSION #####################
+
+Accuracy on Training Set :
+0.7753931544865865
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.7551775147928994
+
+Precision Score
+0.7122940430925222
+
+Recall Score
+0.8438438438438438
+
+F1 Score
+0.7725085910652921
