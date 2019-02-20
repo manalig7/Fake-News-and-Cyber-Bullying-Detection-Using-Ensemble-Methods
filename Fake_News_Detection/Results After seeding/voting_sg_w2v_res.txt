@@ -1,0 +1,8 @@
+#### Trial 1 ####
+
+### eclf1 = VotingClassifier(estimators=[ ('lr', clf2), ('rf', clf3), ('ada', clf5)], voting='hard')
+
+
+### eclf1 = VotingClassifier(estimators=[ ('gb', clf1), ('rf', clf3), ('lr', clf2)], voting='hard') ####
+
+### eclf1 = VotingClassifier(estimators=[ ('gb', clf1), ('ada', clf5), ('lr', clf2)], voting='hard') ####

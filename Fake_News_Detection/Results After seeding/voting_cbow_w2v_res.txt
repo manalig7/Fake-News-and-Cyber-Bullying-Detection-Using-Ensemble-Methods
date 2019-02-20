@@ -1,0 +1,56 @@
+#### Trial 1 ####
+
+### eclf1 = VotingClassifier(estimators=[ ('lr', clf2), ('rf', clf3), ('ada', clf5)], voting='hard')
+Accuracy on Training Set :
+0.993894542091
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.911982248521
+
+Precision Score
+0.902798232695
+
+Recall Score
+0.92042042042
+
+F1 Score
+0.911524163569
+
+
+### eclf1 = VotingClassifier(estimators=[ ('gb', clf1), ('rf', clf3), ('lr', clf2)], voting='hard') ####
+Accuracy on Training Set :
+0.872710453284
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.82100591716
+
+Precision Score
+0.765664160401
+
+Recall Score
+0.917417417417
+
+F1 Score
+0.834699453552
+
+
+### eclf1 = VotingClassifier(estimators=[ ('gb', clf1), ('ada', clf5), ('lr', clf2)], voting='hard') ####
+
+Accuracy on Training Set :
+0.872340425532
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.83949704142
+
+Precision Score
+0.778881987578
+
+Recall Score
+0.941441441441
+
+F1 Score
+0.852481305235
+
