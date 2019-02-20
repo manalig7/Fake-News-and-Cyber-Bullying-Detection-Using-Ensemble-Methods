@@ -1,0 +1,118 @@
+#### trial 1 ####
+
+CBOW W2V model_done!
+4442
+Transformed!!
+(5405, 4442)
+(1352, 4442)
+################# Naive Bayes Classifier ####################
+
+Accuracy on Training Set :
+0.842923219241
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.792899408284
+
+Precision Score
+0.738861386139
+
+Recall Score
+0.896396396396
+
+F1 Score
+0.810040705563
+################### Random Forest Classifier ###############
+
+Accuracy on Training Set :
+0.995559666975
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.858727810651
+
+Precision Score
+0.882447665056
+
+Recall Score
+0.822822822823
+
+F1 Score
+0.851592851593
+################### Logistic regression Classifier ###############
+
+Accuracy on Training Set :
+0.98926919519
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.924556213018
+
+Precision Score
+0.920895522388
+
+Recall Score
+0.926426426426
+
+F1 Score
+0.923652694611
+
+
+#### trial 2 ####
+CBOW W2V model_done!
+4442
+Transformed!!
+(5405, 4442)
+(1352, 4442)
+################# Naive Bayes Classifier ####################
+
+Accuracy on Training Set :
+0.842923219241
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.792899408284
+
+Precision Score
+0.738861386139
+
+Recall Score
+0.896396396396
+
+F1 Score
+0.810040705563
+################### Random Forest Classifier ###############
+
+Accuracy on Training Set :
+0.995559666975
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.858727810651
+
+Precision Score
+0.882447665056
+
+Recall Score
+0.822822822823
+
+F1 Score
+0.851592851593
+################### Logistic regression Classifier ###############
+
+Accuracy on Training Set :
+0.98926919519
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.924556213018
+
+Precision Score
+0.920895522388
+
+Recall Score
+0.926426426426
+
+F1 Score
+0.923652694611
+

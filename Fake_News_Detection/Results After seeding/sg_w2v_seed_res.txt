@@ -1,0 +1,59 @@
+#### trial 1 ####
+
+SG W2V model_done!
+4442
+Transformed!!
+(5405, 4442)
+(1352, 4442)
+################# Naive Bayes Classifier ####################
+
+Accuracy on Training Set :
+0.826456984274
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.777366863905
+
+Precision Score
+0.71546635183
+
+Recall Score
+0.90990990991
+
+F1 Score
+0.801057501652
+################### Random Forest Classifier ###############
+
+Accuracy on Training Set :
+0.995929694727
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.85798816568
+
+Precision Score
+0.872641509434
+
+Recall Score
+0.833333333333
+
+F1 Score
+0.852534562212
+################### Logistic regression Classifier ###############
+
+Accuracy on Training Set :
+0.966882516189
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.918639053254
+
+Precision Score
+0.91124260355
+
+Recall Score
+0.924924924925
+
+F1 Score
+0.918032786885
+
