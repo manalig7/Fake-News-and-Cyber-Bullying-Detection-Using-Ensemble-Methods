@@ -1,0 +1,56 @@
+CBOW FT model_done!
+6679
+Transformed!!
+(3780, 6679)
+(946, 6679)
+################# Naive Bayes Classifier ####################
+
+Accuracy on Training Set :
+0.844973544974
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.692389006342
+
+Precision Score
+0.565310492505
+
+Recall Score
+0.75
+
+F1 Score
+0.644688644689
+################### Random Forest Classifier ###############
+
+Accuracy on Training Set :
+0.993650793651
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.778012684989
+
+Precision Score
+0.755395683453
+
+Recall Score
+0.596590909091
+
+F1 Score
+0.666666666667
+################### Logistic regression Classifier ###############
+
+Accuracy on Training Set :
+0.874867724868
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.811839323467
+
+Precision Score
+0.758928571429
+
+Recall Score
+0.724431818182
+
+F1 Score
+0.741279069767
