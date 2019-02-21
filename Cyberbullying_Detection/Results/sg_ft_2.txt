@@ -1,0 +1,56 @@
+SG FT model_done!
+5489
+Transformed!!
+(3780, 5489)
+(946, 5489)
+################# Naive Bayes Classifier ####################
+
+Accuracy on Training Set :
+0.772222222222
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.69978858351
+
+Precision Score
+0.574561403509
+
+Recall Score
+0.744318181818
+
+F1 Score
+0.648514851485
+################### Random Forest Classifier ###############
+
+Accuracy on Training Set :
+0.986243386243
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.775898520085
+
+Precision Score
+0.769230769231
+
+Recall Score
+0.568181818182
+
+F1 Score
+0.653594771242
+################### Logistic regression Classifier ###############
+
+Accuracy on Training Set :
+0.721428571429
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.717758985201
+
+Precision Score
+0.722513089005
+
+Recall Score
+0.392045454545
+
+F1 Score
+0.508287292818

@@ -1,0 +1,56 @@
+CountVectors
+(4726, 10821)
+(3780, 10821)
+(946, 10821)
+################# Naive Bayes Classifier ####################
+
+Accuracy on Training Set :
+0.92962962963
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.819238900634
+
+Precision Score
+0.765395894428
+
+Recall Score
+0.741477272727
+
+F1 Score
+0.753246753247
+################### Random Forest Classifier ###############
+
+Accuracy on Training Set :
+0.98835978836
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.787526427061
+
+Precision Score
+0.798418972332
+
+Recall Score
+0.573863636364
+
+F1 Score
+0.667768595041
+################### Logistic regression Classifier ###############
+
+Accuracy on Training Set :
+0.970899470899
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.837209302326
+
+Precision Score
+0.792899408284
+
+Recall Score
+0.761363636364
+
+F1 Score
+0.776811594203
+
