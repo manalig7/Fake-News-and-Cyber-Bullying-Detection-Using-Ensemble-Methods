@@ -1,0 +1,230 @@
+### on dataset without phonetic substitution or spellcheck ##
+
+##Textblob+Vader##
+
+################# Naive Bayes Classifier ####################
+
+Accuracy on Training Set :
+0.689417989418
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.712473572939
+
+Precision Score
+0.613636363636
+
+Recall Score
+0.613636363636
+
+F1 Score
+0.613636363636
+################### Random Forest Classifier ###############
+
+Accuracy on Training Set :
+0.96164021164
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.678646934461
+
+Precision Score
+0.583916083916
+
+Recall Score
+0.474431818182
+
+F1 Score
+0.523510971787
+################### Logistic regression Classifier ###############
+
+Accuracy on Training Set :
+0.694444444444
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.704016913319
+
+Precision Score
+0.627659574468
+
+Recall Score
+0.502840909091
+
+F1 Score
+0.558359621451
+################### SVM Classifier ###############
+
+Accuracy on Training Set :
+0.705291005291
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.714587737844
+
+Precision Score
+0.633116883117
+
+Recall Score
+0.553977272727
+
+F1 Score
+0.590909090909
+
+
+
+####################################################################################################
+
+### on dataset without phonetic substitution or spellcheck ##
+
+##Textblob##
+
+################# Naive Bayes Classifier ####################
+
+Accuracy on Training Set :
+0.62671957672
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.635306553911
+
+Precision Score
+0.536842105263
+
+Recall Score
+0.144886363636
+
+F1 Score
+0.228187919463
+################### Random Forest Classifier ###############
+
+Accuracy on Training Set :
+0.813756613757
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.609936575053
+
+Precision Score
+0.465863453815
+
+Recall Score
+0.329545454545
+
+F1 Score
+0.386023294509
+################### Logistic regression Classifier ###############
+
+Accuracy on Training Set :
+0.626455026455
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.637420718816
+
+Precision Score
+0.552941176471
+
+Recall Score
+0.133522727273
+
+F1 Score
+0.215102974828
+################### SVM Classifier ###############
+
+Accuracy on Training Set :
+0.625661375661
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.633192389006
+
+Precision Score
+0.534246575342
+
+Recall Score
+0.110795454545
+
+F1 Score
+0.183529411765
+
+
+
+
+#########################################################################################################
+
+
+### on dataset without phonetic substitution or spellcheck ##
+
+##Vader##
+
+################# Naive Bayes Classifier ####################
+
+Accuracy on Training Set :
+0.692857142857
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.710359408034
+
+Precision Score
+0.614035087719
+
+Recall Score
+0.596590909091
+
+F1 Score
+0.605187319885
+################### Random Forest Classifier ###############
+
+Accuracy on Training Set :
+0.940211640212
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.677589852008
+
+Precision Score
+0.583629893238
+
+Recall Score
+0.465909090909
+
+F1 Score
+0.518167456556
+################### Logistic regression Classifier ###############
+
+Accuracy on Training Set :
+0.692328042328
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.714587737844
+
+Precision Score
+0.647482014388
+
+Recall Score
+0.511363636364
+
+F1 Score
+0.571428571429
+################### SVM Classifier ###############
+
+Accuracy on Training Set :
+0.702380952381
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.716701902748
+
+Precision Score
+0.634615384615
+
+Recall Score
+0.5625
+
+F1 Score
+0.596385542169
+
+###############################################################################################################
