@@ -46,7 +46,7 @@ X = array[:,0:73]
 Y = array[:,73]
 print("attributes Split")
 
-model = LogisticRegression(random_state=20)
+model = LogisticRegression(random_state=np.random.seed(20))
 # create the RFE model and select 3 attributes
 rfe = RFE(model, 50)
 rfe = rfe.fit(X, Y)
@@ -133,26 +133,24 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.ensemble import ExtraTreesClassifier
 from sklearn.ensemble import AdaBoostClassifier
 
-clf_rand = RandomForestClassifier(random_state=20)
+clf_rand = RandomForestClassifier(random_state=np.random.seed(20))
 clf_multi_nb = MultinomialNB(alpha=1.0, fit_prior=True, class_prior=None)
 clf_gaussian_nb = GaussianNB()
 clf_knn = KNeighborsClassifier(n_neighbors=5)
-clf_svm=svm.SVC(gamma='auto',C=0.80,random_state=20)
-clf_log= LogisticRegression(random_state=20, solver='lbfgs',multi_class='multinomial')
-
-"""
-clf = GradientBoostingClassifier(learning_rate=0.1, n_estimators=1000,max_depth=3, min_samples_split=5, min_samples_leaf=1, subsample=1,max_features='sqrt', random_state=10)
+clf_svm=svm.SVC(gamma='auto',C=0.80,random_state=np.random.seed(20))
+clf_log= LogisticRegression(random_state=np.random.seed(20), solver='lbfgs',multi_class='multinomial')
 
 
 
-clf = BaggingClassifier(GaussianNB(),
+
+clf_gbc_knn = BaggingClassifier(KNeighborsClassifier(n_neighbors=5),random_state=np.random.seed(20),
                             max_samples=0.4, max_features=0.8,n_estimators=300)
+clf_gbc_rf = BaggingClassifier(RandomForestClassifier(random_state=np.random.seed(20)),random_state=np.random.seed(20),
+                            max_samples=0.4, max_features=0.8,n_estimators=300)
+clf_extra = ExtraTreesClassifier(n_estimators=200, max_depth=None,min_samples_split=2, random_state=np.random.seed(20))
+clf_ada= AdaBoostClassifier(n_estimators=300,random_state=np.random.seed(20))
+clf_grad_boost = GradientBoostingClassifier(learning_rate=0.1, n_estimators=1000,max_depth=3, min_samples_split=5, min_samples_leaf=1, subsample=1,max_features='sqrt', random_state=np.random.seed(20))
 
-clf = ExtraTreesClassifier(n_estimators=200, max_depth=None,min_samples_split=2, random_state=0)
-clf.fit(feature_set,y_train)
-
-clf= AdaBoostClassifier(n_estimators=300)
-"""
 
 print "BASIC CLASSIFIER RESULTS"
 
@@ -266,6 +264,97 @@ print (recall_score(y_test, y_pred))
 print ("\nF1 Score")
 print (f1_score(y_test, y_pred))
 
+print "***********************************************************"
+print "******************ENSEMBLE CLASSIFIERS********************"
+print "***********************************************************"
 
+print "################## GBC WITH KNN #####################"
+clf_gbc_knn.fit(feature_set,y_train)
+print ("\nAccuracy on Training Set :")
+print (clf_gbc_knn.score(feature_set, y_train))
 
+print ("Checking on Test Set")
+print ("\nAccuracy on Testing Set :")
+print (clf_gbc_knn.score(feature_set_test, y_test))
+
+y_pred=clf_gbc_knn.predict(feature_set_test)
+
+print ("\nPrecision Score")
+print (precision_score(y_test, y_pred))
+print ("\nRecall Score")
+print (recall_score(y_test, y_pred))
+print ("\nF1 Score")
+print (f1_score(y_test, y_pred))
+
+print "################## GBC WITH RF #####################"
+clf_gbc_rf.fit(feature_set,y_train)
+print ("\nAccuracy on Training Set :")
+print (clf_gbc_rf.score(feature_set, y_train))
+
+print ("Checking on Test Set")
+print ("\nAccuracy on Testing Set :")
+print (clf_gbc_rf.score(feature_set_test, y_test))
+
+y_pred=clf_gbc_rf.predict(feature_set_test)
+
+print ("\nPrecision Score")
+print (precision_score(y_test, y_pred))
+print ("\nRecall Score")
+print (recall_score(y_test, y_pred))
+print ("\nF1 Score")
+print (f1_score(y_test, y_pred))
+
+print "################## EXTRA TREES #####################"
+clf_extra.fit(feature_set,y_train)
+print ("\nAccuracy on Training Set :")
+print (clf_extra.score(feature_set, y_train))
+
+print ("Checking on Test Set")
+print ("\nAccuracy on Testing Set :")
+print (clf_extra.score(feature_set_test, y_test))
+
+y_pred=clf_extra.predict(feature_set_test)
+
+print ("\nPrecision Score")
+print (precision_score(y_test, y_pred))
+print ("\nRecall Score")
+print (recall_score(y_test, y_pred))
+print ("\nF1 Score")
+print (f1_score(y_test, y_pred))
+
+print "################## ADABOOST #####################"
+clf_ada.fit(feature_set,y_train)
+print ("\nAccuracy on Training Set :")
+print (clf_ada.score(feature_set, y_train))
+
+print ("Checking on Test Set")
+print ("\nAccuracy on Testing Set :")
+print (clf_ada.score(feature_set_test, y_test))
+
+y_pred=clf_ada.predict(feature_set_test)
+
+print ("\nPrecision Score")
+print (precision_score(y_test, y_pred))
+print ("\nRecall Score")
+print (recall_score(y_test, y_pred))
+print ("\nF1 Score")
+print (f1_score(y_test, y_pred))
+
+print "################## GRADIENT BOOSTING #####################"
+clf_grad_boost.fit(feature_set,y_train)
+print ("\nAccuracy on Training Set :")
+print (clf_grad_boost.score(feature_set, y_train))
+
+print ("Checking on Test Set")
+print ("\nAccuracy on Testing Set :")
+print (clf_grad_boost.score(feature_set_test, y_test))
+
+y_pred=clf_grad_boost.predict(feature_set_test)
+
+print ("\nPrecision Score")
+print (precision_score(y_test, y_pred))
+print ("\nRecall Score")
+print (recall_score(y_test, y_pred))
+print ("\nF1 Score")
+print (f1_score(y_test, y_pred))
 
