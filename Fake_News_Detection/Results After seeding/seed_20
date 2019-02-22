@@ -2,20 +2,20 @@ BASIC CLASSIFIER RESULTS
 ################## RANDOM FOREST #####################
 
 Accuracy on Training Set :
-0.9922294172062904
+0.9935245143385754
 Checking on Test Set
 
 Accuracy on Testing Set :
-0.8247041420118343
+0.8254437869822485
 
 Precision Score
-0.8421052631578947
+0.8380503144654088
 
 Recall Score
-0.7927927927927928
+0.8003003003003003
 
 F1 Score
-0.8167053364269141
+0.8187403993855608
 ################## MULTI NB #####################
 
 Accuracy on Training Set :
@@ -87,17 +87,105 @@ F1 Score
 ################## LOGISTIC REGRESSION #####################
 
 Accuracy on Training Set :
-0.7753931544865865
+0.7691026827012026
 Checking on Test Set
 
 Accuracy on Testing Set :
-0.7551775147928994
+0.7566568047337278
 
 Precision Score
-0.7122940430925222
+0.7157490396927016
 
 Recall Score
-0.8438438438438438
+0.8393393393393394
 
 F1 Score
-0.7725085910652921
+0.7726330338631652
+***********************************************************
+******************ENSEMBLE CLASSIFIERS********************
+***********************************************************
+################## GBC WITH KNN #####################
+
+Accuracy on Training Set :
+0.7602220166512489
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.6960059171597633
+
+Precision Score
+0.7264653641207816
+
+Recall Score
+0.6141141141141141
+
+F1 Score
+0.6655817737998373
+################## GBC WITH RF #####################
+
+Accuracy on Training Set :
+0.937650323774283
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.8431952662721893
+
+Precision Score
+0.8398203592814372
+
+Recall Score
+0.8423423423423423
+
+F1 Score
+0.8410794602698651
+################## EXTRA TREES #####################
+
+Accuracy on Training Set :
+0.9998149861239592
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.8291420118343196
+
+Precision Score
+0.8330781010719756
+
+Recall Score
+0.8168168168168168
+
+F1 Score
+0.8248673237300986
+################## ADABOOST #####################
+
+Accuracy on Training Set :
+0.8938020351526365
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.8468934911242604
+
+Precision Score
+0.8536209553158706
+
+Recall Score
+0.8318318318318318
+
+F1 Score
+0.8425855513307986
+################## GRADIENT BOOSTING #####################
+
+Accuracy on Training Set :
+0.991304347826087
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.860207100591716
+
+Precision Score
+0.863013698630137
+
+Recall Score
+0.8513513513513513
+
+F1 Score
+0.8571428571428572
