@@ -1,0 +1,154 @@
+Random Forest
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.7251585623678647
+
+Precision Score
+0.6782945736434108
+
+Recall Score
+0.4971590909090909
+
+F1 Score
+0.5737704918032787
+Multi NB
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.7219873150105708
+
+Precision Score
+0.6320474777448071
+
+Recall Score
+0.6051136363636364
+
+F1 Score
+0.618287373004354
+GaussianNB
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.6849894291754757
+
+Precision Score
+0.6336633663366337
+
+Recall Score
+0.36363636363636365
+
+F1 Score
+0.4620938628158845
+KNN
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.693446088794926
+
+Precision Score
+0.6131386861313869
+
+Recall Score
+0.4772727272727273
+
+F1 Score
+0.5367412140575081
+SVM
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.678646934460888
+
+Precision Score
+0.6445783132530121
+
+Recall Score
+0.3039772727272727
+
+F1 Score
+0.4131274131274131
+Logistic Regression
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.741014799154334
+
+Precision Score
+0.6851211072664359
+
+Recall Score
+0.5625
+
+F1 Score
+0.6177847113884556
+Bagging KNN
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.693446088794926
+
+Precision Score
+0.624
+
+Recall Score
+0.4431818181818182
+
+F1 Score
+0.5182724252491694
+Bagging RF
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.7684989429175476
+
+Precision Score
+0.7453874538745388
+
+Recall Score
+0.5738636363636364
+
+F1 Score
+0.6484751203852327
+ExtraTreesClassifier
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.7568710359408034
+
+Precision Score
+0.7103448275862069
+
+Recall Score
+0.5852272727272727
+
+F1 Score
+0.6417445482866043
+AdaBoost
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.7642706131078224
+
+Precision Score
+0.6891495601173021
+
+Recall Score
+0.6676136363636364
+
+F1 Score
+0.6782106782106782
+Gradient Boosting
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.7906976744186046
+
+Precision Score
+0.7264705882352941
+
+Recall Score
+0.7017045454545454
+
+F1 Score
+0.7138728323699421
