@@ -2,7 +2,7 @@ CBOW W2V model_done!
 5470
 Transformed!!
 (3780, 5470)
-(3780, 5470)
+(946, 5470)
 ################# Naive Bayes Classifier ####################
 
 Accuracy on Training Set :
@@ -10,16 +10,16 @@ Accuracy on Training Set :
 Checking on Test Set
 
 Accuracy on Testing Set :
-0.842857142857
+0.659619450317
 
 Precision Score
-0.710102489019
+0.526978417266
 
 Recall Score
-1.0
+0.832386363636
 
 F1 Score
-0.830479452055
+0.645374449339
 ################### Random Forest Classifier ###############
 
 Accuracy on Training Set :
@@ -27,16 +27,16 @@ Accuracy on Training Set :
 Checking on Test Set
 
 Accuracy on Testing Set :
-0.990740740741
+0.783298097252
 
 Precision Score
-0.995118549512
+0.765342960289
 
 Recall Score
-0.980756013746
+0.602272727273
 
 F1 Score
-0.987885081343
+0.674085850556
 ################### Logistic regression Classifier ###############
 
 Accuracy on Training Set :
@@ -44,13 +44,13 @@ Accuracy on Training Set :
 Checking on Test Set
 
 Accuracy on Testing Set :
-0.809259259259
+0.790697674419
 
 Precision Score
-0.787167449139
+0.746794871795
 
 Recall Score
-0.691408934708
+0.661931818182
 
 F1 Score
-0.73618733992
+0.701807228916
