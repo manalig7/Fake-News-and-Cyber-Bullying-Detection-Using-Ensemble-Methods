@@ -138,7 +138,7 @@ mild_words=[]
 f=open('ofcom_profane_strong.txt','r')
 for line in f:
 	ls=line.split()
-	ls[0]=ls[0].lower
+	ls[0]=ls[0].lower()
 
 	strong_words.append(ls[0])
 f.close()
@@ -146,7 +146,7 @@ f.close()
 f=open('ofcom_profane_medium.txt','r')
 for line in f:
 	ls=line.split()
-	ls[0]=ls[0].lower
+	ls[0]=ls[0].lower()
 
 	medium_words.append(ls[0])
 f.close()
@@ -154,7 +154,7 @@ f.close()
 f=open('ofcom_profane_mild.txt','r')
 for line in f:
 	ls=line.split()
-	ls[0]=ls[0].lower
+	ls[0]=ls[0].lower()
 
 	mild_words.append(ls[0])
 f.close()
