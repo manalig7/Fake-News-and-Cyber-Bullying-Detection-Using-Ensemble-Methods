@@ -3,57 +3,60 @@
 ### eclf1 = VotingClassifier(estimators=[ ('lr', clf2), ('rf', clf3), ('ada', clf5)], voting='hard')
 
 Accuracy on Training Set :
-0.995004625347
+0.993524514339
 Checking on Test Set
 
 Accuracy on Testing Set :
-0.858727810651
+0.915680473373
 
 Precision Score
-0.889983579639
+0.910714285714
 
 Recall Score
-0.813813813814
+0.918918918919
 
 F1 Score
-0.850196078431
+0.914798206278
+
+
 
 
 ### eclf1 = VotingClassifier(estimators=[ ('gb', clf1), ('rf', clf3), ('lr', clf2)], voting='hard') ####
-
 Accuracy on Training Set :
-0.995004625347
+0.852913968548
 Checking on Test Set
 
 Accuracy on Testing Set :
-0.858727810651
+0.808431952663
 
 Precision Score
-0.889983579639
+0.748473748474
 
 Recall Score
-0.813813813814
+0.92042042042
 
 F1 Score
-0.850196078431
+0.825589225589
+
+
 
 
 ### eclf1 = VotingClassifier(estimators=[ ('gb', clf1), ('ada', clf5), ('lr', clf2)], voting='hard') ####
 
 Accuracy on Training Set :
-0.995004625347
+0.853654024052
 Checking on Test Set
 
 Accuracy on Testing Set :
-0.858727810651
+0.826923076923
 
 Precision Score
-0.889983579639
+0.758992805755
 
 Recall Score
-0.813813813814
+0.95045045045
 
 F1 Score
-0.850196078431
+0.844
 
 
