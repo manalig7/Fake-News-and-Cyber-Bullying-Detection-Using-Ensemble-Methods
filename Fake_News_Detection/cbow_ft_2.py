@@ -71,12 +71,15 @@ f.close()
 
 pad_len=max(lent)
 
-model_FT = FastText(data, size=10, window=5, min_count=1, workers=5, sg=1,max_vocab_size=10000)
+#model_FT = FastText(data, size=10, window=5, min_count=1, workers=5, sg=0,max_vocab_size=10000)
+#model_FT.save("CBOW_fasttext.model")
+model_FT = FastText.load("CBOW_fasttext.model")
 
 print "CBOW FT model_done!"
 
 voc=list(model_FT.wv.vocab)
 print(len(voc))
+
 
 XVAL=fit_transform(data)
 
@@ -120,7 +123,7 @@ print ("################### Random Forest Classifier ###############")
 from sklearn.ensemble import RandomForestClassifier
 
 
-clf = RandomForestClassifier()
+clf = RandomForestClassifier(random_state=20)
 clf.fit(x_train,y_train)
 
 print "\nAccuracy on Training Set :"
@@ -143,7 +146,7 @@ print ("################### Logistic regression Classifier ###############")
 
 from sklearn.linear_model import LogisticRegression
 
-clf = LogisticRegression(random_state=0, solver='lbfgs')
+clf = LogisticRegression(random_state=20, solver='lbfgs')
 
 clf.fit(x_train,y_train)
 print "\nAccuracy on Training Set :"

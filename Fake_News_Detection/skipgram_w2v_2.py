@@ -70,12 +70,16 @@ f.close()
 
 pad_len=max(lent)
 
-model_W2V = Word2Vec(data, size=10, window=5, min_count=1, workers=5, sg=0,max_vocab_size=10000)
+#model_W2V = Word2Vec(data, size=10, window=5, min_count=1, workers=5, sg=1,max_vocab_size=10000)
+#model_W2V.save("SG_word2vec.model")
+model_W2V = Word2Vec.load("SG_word2vec.model")
 
 print "SG W2V model_done!"
 
 voc=list(model_W2V.wv.vocab)
 print(len(voc))
+
+
 XVAL=fit_transform(data)
 
 print ("Transformed!!")
@@ -116,7 +120,7 @@ print ("################### Random Forest Classifier ###############")
 from sklearn.ensemble import RandomForestClassifier
 
 
-clf = RandomForestClassifier()
+clf = RandomForestClassifier(random_state=20)
 clf.fit(x_train,y_train)
 
 print "\nAccuracy on Training Set :"
@@ -139,7 +143,7 @@ print ("################### Logistic regression Classifier ###############")
 
 from sklearn.linear_model import LogisticRegression
 
-clf = LogisticRegression(random_state=0, solver='lbfgs')
+clf = LogisticRegression(random_state=20, solver='lbfgs')
 
 clf.fit(x_train,y_train)
 print "\nAccuracy on Training Set :"
