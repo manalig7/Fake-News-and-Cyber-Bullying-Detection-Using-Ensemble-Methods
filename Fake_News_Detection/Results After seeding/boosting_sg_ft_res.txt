@@ -1,0 +1,32 @@
+################GradientBoostingClassifier############
+
+Accuracy on Training Set :
+0.9914893617021276
+
+Accuracy on Testing Set :
+0.8572485207100592
+
+Precision Score
+0.8556390977443609
+
+Recall Score
+0.8543543543543544
+
+F1 Score
+0.8549962434259955
+################AdaBoost Classifier############
+
+Accuracy on Training Set :
+0.9073080481036078
+
+Accuracy on Testing Set :
+0.8394970414201184
+
+Precision Score
+0.8480620155038759
+
+Recall Score
+0.8213213213213213
+
+F1 Score
+0.8344774980930586
