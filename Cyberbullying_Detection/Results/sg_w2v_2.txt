@@ -54,3 +54,57 @@ Recall Score
 
 F1 Score
 0.633165829146
+
+
+################### Ensemble Voting Classifier ###############
+
+Accuracy on Training Set :
+0.961111111111
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.809725158562
+
+Precision Score
+0.796551724138
+
+Recall Score
+0.65625
+
+F1 Score
+0.719626168224
+################### Ensemble Bagging Classifier ###############
+
+Accuracy on Training Set :
+0.818518518519
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.744186046512
+
+Precision Score
+0.615546218487
+
+Recall Score
+0.832386363636
+
+F1 Score
+0.707729468599
+################### Ensemble Boosting Classifier ###############
+
+Accuracy on Training Set :
+0.903703703704
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.795983086681
+
+Precision Score
+0.750788643533
+
+Recall Score
+0.676136363636
+
+F1 Score
+0.711509715994
+
