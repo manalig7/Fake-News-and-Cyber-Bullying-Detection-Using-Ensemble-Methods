@@ -1,56 +1,107 @@
 CBOW W2V model_done!
-5470
+6679
 Transformed!!
-(3780, 5470)
-(946, 5470)
+(3780, 6679)
+(946, 6679)
 ################# Naive Bayes Classifier ####################
 
 Accuracy on Training Set :
-0.842857142857
+0.843121693122
 Checking on Test Set
 
 Accuracy on Testing Set :
-0.659619450317
+0.693446088795
 
 Precision Score
-0.526978417266
+0.56512605042
 
 Recall Score
-0.832386363636
+0.764204545455
 
 F1 Score
-0.645374449339
+0.649758454106
 ################### Random Forest Classifier ###############
 
 Accuracy on Training Set :
-0.990740740741
+0.989947089947
 Checking on Test Set
 
 Accuracy on Testing Set :
 0.783298097252
 
 Precision Score
-0.765342960289
+0.769230769231
 
 Recall Score
-0.602272727273
+0.596590909091
 
 F1 Score
-0.674085850556
+0.672
 ################### Logistic regression Classifier ###############
 
 Accuracy on Training Set :
-0.809259259259
+0.80873015873
 Checking on Test Set
 
 Accuracy on Testing Set :
-0.790697674419
+0.781183932347
 
 Precision Score
-0.746794871795
+0.733118971061
 
 Recall Score
-0.661931818182
+0.647727272727
 
 F1 Score
-0.701807228916
+0.68778280543
+################### Ensemble Voting Classifier ###############
+
+Accuracy on Training Set :
+0.966931216931
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.824524312896
+
+Precision Score
+0.790625
+
+Recall Score
+0.71875
+
+F1 Score
+0.752976190476
+################### Ensemble Bagging Classifier ###############
+
+Accuracy on Training Set :
+0.823544973545
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.707188160677
+
+Precision Score
+0.576064908722
+
+Recall Score
+0.806818181818
+
+F1 Score
+0.672189349112
+################### Ensemble Boosting Classifier ###############
+
+Accuracy on Training Set :
+0.892063492063
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.80866807611
+
+Precision Score
+0.756756756757
+
+Recall Score
+0.715909090909
+
+F1 Score
+0.735766423358
