@@ -1,0 +1,272 @@
+WITHOUT SMOTE
+
+Random Forest
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.693446088794926
+
+Precision Score
+0.5861111111111111
+
+Recall Score
+0.5994318181818182
+
+F1 Score
+0.5926966292134832
+KNN
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.7050739957716702
+
+Precision Score
+0.6298932384341637
+
+Recall Score
+0.5028409090909091
+
+F1 Score
+0.5592417061611373
+SVM
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.6913319238900634
+
+Precision Score
+0.6666666666666666
+
+Recall Score
+0.3409090909090909
+
+F1 Score
+0.4511278195488721
+
+Logistic Regression
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.7505285412262156
+
+Precision Score
+0.657608695652174
+
+Recall Score
+0.6875
+
+F1 Score
+0.6722222222222223
+Bagging KNN
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.7124735729386892
+
+Precision Score
+0.6666666666666666
+
+Recall Score
+0.45454545454545453
+
+F1 Score
+0.5405405405405405
+Bagging RF
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.7558139534883721
+
+Precision Score
+0.6257796257796258
+
+Recall Score
+0.8551136363636364
+
+F1 Score
+0.7226890756302521
+ExtraTreesClassifier
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.7389006342494715
+
+Precision Score
+0.6056338028169014
+
+Recall Score
+0.8551136363636364
+
+F1 Score
+0.7090694935217904
+AdaBoost
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.7357293868921776
+
+Precision Score
+0.6711409395973155
+
+Recall Score
+0.5681818181818182
+
+F1 Score
+0.6153846153846154
+Gradient Boosting
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.7610993657505285
+
+Precision Score
+0.6607142857142857
+
+Recall Score
+0.7357954545454546
+
+F1 Score
+0.696236559139785
+
+WITH SMOTE (Gives Good Recall with some classifiers, but not good precision and accuracy)
+
+Random Forest
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.7071881606765328
+
+Precision Score
+0.5959079283887468
+
+Recall Score
+0.6619318181818182
+
+F1 Score
+0.6271870794078063
+KNN
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.6849894291754757
+
+Precision Score
+0.5572033898305084
+
+Recall Score
+0.7471590909090909
+
+F1 Score
+0.6383495145631067
+SVM
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.7019027484143763
+
+Precision Score
+0.631578947368421
+
+Recall Score
+0.4772727272727273
+
+F1 Score
+0.5436893203883496
+Logistic Regression
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.7293868921775899
+
+Precision Score
+0.5987654320987654
+
+Recall Score
+0.8267045454545454
+
+F1 Score
+0.6945107398568019
+Bagging KNN
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.7008456659619451
+
+Precision Score
+0.5732484076433121
+
+Recall Score
+0.7670454545454546
+
+F1 Score
+0.6561360874848117
+Bagging RF
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.7315010570824524
+
+Precision Score
+0.5921052631578947
+
+Recall Score
+0.8948863636363636
+
+F1 Score
+0.7126696832579185
+ExtraTreesClassifier
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.7389006342494715
+
+Precision Score
+0.6015473887814313
+
+Recall Score
+0.8835227272727273
+
+F1 Score
+0.715765247410817
+AdaBoost
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.726215644820296
+
+Precision Score
+0.6690909090909091
+
+Recall Score
+0.5227272727272727
+
+F1 Score
+0.5869218500797447
+Gradient Boosting
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.7505285412262156
+
+Precision Score
+0.6435643564356436
+
+Recall Score
+0.7386363636363636
+
+F1 Score
+0.6878306878306879
+
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.5866807610993657
+
+Precision Score
+0.4721030042918455
+
+Recall Score
+0.9375
+
+F1 Score
+0.6279733587059942
