@@ -73,6 +73,9 @@ from gensim.models import Word2Vec
 
 analyser = SentimentIntensityAnalyzer()
 tokenizer = RegexpTokenizer(' ', gaps=True)
+
+
+#######################TRAINING SET VOCAB#########################
 """
 tsv = 'Spell_Check_and_Segmentation/finalcb_clean_train_py_spell_check_segment_all_trial.txt'
 f=open(tsv,'r')
@@ -102,9 +105,21 @@ for i in range(0,len(x_train)):
 	feature_set.append([])
 
 f.close()
+
+pad_len=max(lent)
+
+model_W2V = Word2Vec(data, size=10, window=5, min_count=1, workers=5, sg=0,max_vocab_size=10000)
+model_W2V.save("CBOW_W2V.model")
+model_W2V = Word2Vec.load("CBOW_W2V.model")
+
+print("CBOW W2V model_done!")
+
+vocab=list(model_W2V.wv.vocab)
 """
 
-tsv = 'Spell_Check_and_Segmentation/finalcb_clean_test_py_spell_check_segment_all.txt'
+############################TESTING SET VOCAB###########################
+
+tsv = 'Spell_Check_and_Segmentation/finalcb_clean_train_py_spell_check_segment_all_trial.txt'
 f=open(tsv,'r')
 x_test=[]
 y_test=[]
@@ -130,8 +145,19 @@ for i in range(0,len(x_test)):
 	feature_set_test.append([])
 
 f.close()
+pad_len=max(lentest)
+
+model_W2V = Word2Vec(datatest, size=10, window=5, min_count=1, workers=5, sg=0,max_vocab_size=10000)
+model_W2V.save("CBOW_W2V.model")
+model_W2V = Word2Vec.load("CBOW_W2V.model")
+
+print("CBOW W2V model_done!")
+
+vocabtest=list(model_W2V.wv.vocab)
 
 
+
+##########################EXTRACTING PROFANE WORDS FROM FILE###################### 
 medium_words=[]
 strong_words=[]
 mild_words=[]
@@ -185,7 +211,7 @@ def dislegomena(text):
     dislegomena = [key for key,val in freq.items() if val==2]
     return len(dislegomena)
 
-def fit_transform(d,feature_set):
+def fit_transform(d,feature_set,voc):
 	res=[]
 	for i in range(0,len(d)):
 		temp=[]	
@@ -206,6 +232,8 @@ def fit_transform(d,feature_set):
 				temp.append(0)		
 		res.append(temp)
 	return res
+
+
 
 
 from nltk.stem.porter import PorterStemmer
@@ -233,15 +261,9 @@ def yules_K_calc(entry):
     return yules_K
 
 
-pad_len=max(lent)
 
-model_W2V = Word2Vec(data, size=10, window=5, min_count=1, workers=5, sg=0,max_vocab_size=10000)
-model_W2V.save("CBOW_W2V.model")
-model_W2V = Word2Vec.load("CBOW_W2V.model")
 
-print("CBOW W2V model_done!")
 
-voc=list(model_W2V.wv.vocab)
  
 
 ##############################FEATURES#############################
@@ -693,7 +715,7 @@ for i in range(0,len(x_test)):
 #	print(feature_set[i])
 
 
-XVAL_test = fit_transform(data,feature_set_test)
+XVAL_test = fit_transform(datatest,feature_set_test,vocabtest)
 
 x_test=XVAL_test[:]
 
