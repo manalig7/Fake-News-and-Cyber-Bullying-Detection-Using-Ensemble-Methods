@@ -491,7 +491,7 @@ spchar=['~' , '@', '#', '$', '%', '^', '&', '*', '-', '_', '=' ,'+', '>', '<', '
 char_remove=['.',',' ,'~' , '@', '#', '$', '%', '^', '&', '*', '-', '_', '=' ,'+', '>', '<', '[', ']', '{', '}', '/', '\\', '\|','"','\'','!']
 
 #Total number of words (0)
-for i in range(0,len(x_train)):
+for i in range(0,len(x_test)):
 	text=x_test[i]
 	for item in char_remove:
 		text=text.replace(item,"")
@@ -693,7 +693,7 @@ for i in range(0,len(x_test)):
 #	print(feature_set[i])
 
 
-XVAL_test = fit_transform(datatest,feature_set_test)
+XVAL_test = fit_transform(data,feature_set_test)
 
 x_test=XVAL_test[:]
 
