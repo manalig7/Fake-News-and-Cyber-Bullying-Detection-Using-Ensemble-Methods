@@ -73,7 +73,7 @@ from gensim.models import Word2Vec
 
 analyser = SentimentIntensityAnalyzer()
 tokenizer = RegexpTokenizer(' ', gaps=True)
-
+"""
 tsv = 'Spell_Check_and_Segmentation/finalcb_clean_train_py_spell_check_segment_all_trial.txt'
 f=open(tsv,'r')
 x_train=[]
@@ -108,10 +108,20 @@ tsv = 'Spell_Check_and_Segmentation/finalcb_clean_test_py_spell_check_segment_al
 f=open(tsv,'r')
 x_test=[]
 y_test=[]
-
+datatest=[]
+lentest=[]
 for line in f:
 	ls=line.split('\t')
 	x_test.append((ls[0]))
+
+	temp = []
+	for j in tokenizer.tokenize(ls[0]):
+		#print(j) 
+	       	temp.append(j) 
+	datatest.append(temp)
+
+	lentest.append(len(temp))
+
 	y_test.append(int(ls[1]))
 
 feature_set_test=[]
@@ -119,7 +129,8 @@ feature_set_test=[]
 for i in range(0,len(x_test)):
 	feature_set_test.append([])
 
-f.close()"""
+f.close()
+
 
 medium_words=[]
 strong_words=[]
@@ -236,7 +247,7 @@ voc=list(model_W2V.wv.vocab)
 ##############################FEATURES#############################
 
 #CHARACTER BASED FEATURES
-
+"""
 
 
 #Frequency of each letter (4-29)
@@ -460,11 +471,10 @@ XVAL = fit_transform(data,feature_set)
 
 x_train=XVAL[:]
 
-
+"""
 
 ##############################FEATURES FOR TEST###############################
 
-"""
 #CHARACTER BASED FEATURES
 
 
@@ -482,23 +492,23 @@ char_remove=['.',',' ,'~' , '@', '#', '$', '%', '^', '&', '*', '-', '_', '=' ,'+
 
 #Total number of words (0)
 for i in range(0,len(x_train)):
-	text=x_train[i]
+	text=x_test[i]
 	for item in char_remove:
 		text=text.replace(item,"")
 	wordcount=word_count(text)
 	feature_set_test[i].append(wordcount)
 
 #Number of Characters (1)
-for i in range(0,len(x_train)):
-	text=x_train[i]
+for i in range(0,len(x_test)):
+	text=x_test[i]
 	charcount=len(text)
 	feature_set_test[i].append(charcount)
 
 
 
 #Total different words (2)
-for i in range(0,len(x_train)):
-	text=x_train[i]
+for i in range(0,len(x_test)):
+	text=x_test[i]
 	for item in char_remove:
 		text=text.replace(item,"")
 	ls=text.split(' ')
@@ -507,8 +517,8 @@ for i in range(0,len(x_train)):
 
 
 #Percentage number of short words (less than 4 chracters) and Percentage of characters in words, Average word length(3,4)
-for i in range(0,len(x_train)):
-	text=x_train[i]
+for i in range(0,len(x_test)):
+	text=x_test[i]
 	for item in char_remove:
 		text=text.replace(item,"")
 	ls=text.split(" ")
@@ -518,16 +528,16 @@ for i in range(0,len(x_train)):
 		if len(item)<4:
 			count=count+1
 		num_char=num_char+len(item)
-	if feature_set[i][0]!=0:
-		shortratio=float(count)/feature_set[i][0]
+	if feature_set_test[i][0]!=0:
+		shortratio=float(count)/feature_set_test[i][0]
 	else:
 		shortratio=0.0001
-	if feature_set[i][1]!=0:
-		word_char_ratio=float(num_char)/feature_set[i][1]
+	if feature_set_test[i][1]!=0:
+		word_char_ratio=float(num_char)/feature_set_test[i][1]
 	else:
 		word_char_ratio=0.0001
-	if feature_set[i][0]!=0:
-		av_word_length=float(num_char)/feature_set[i][0]
+	if feature_set_test[i][0]!=0:
+		av_word_length=float(num_char)/feature_set_test[i][0]
 	else:
 		av_word_length=0.0001
 	feature_set_test[i].append(shortratio)
@@ -547,8 +557,8 @@ list_third_person_pronouns=['he','they','him','them','his', 'her','their','she',
 
 #Has a greeting (5)
 greetings=["hello","good afternoon","good evening","good morning"]
-for i in range(0,len(x_train)):
-	text=x_train[i].lower()
+for i in range(0,len(x_test)):
+	text=x_test[i].lower()
 	flag=0
 	for j in range(0,len(greetings)):
 		if greetings[j] in text:
@@ -558,8 +568,8 @@ for i in range(0,len(x_train)):
 
 #Has quoted content  -Cite original message as part of replying message (Measuring the number of quotes)(6)
 quotes=['"']
-for i in range(0,len(x_train)):
-	text=x_train[i]
+for i in range(0,len(x_test)):
+	text=x_test[i]
 	num_quotes=0
 	for j in range(0,len(text)):
 		if text[j] in quotes:
@@ -574,14 +584,14 @@ char_remove=['.',',' ,'~' , '@', '#', '$', '%', '^', '&', '*', '-', '_', '=' ,'+
 
 #A vocabulary richness measure defined by Yule (7)
 
-for i in range(0,len(x_train)):
-	text=x_train[i].lower()
+for i in range(0,len(x_test)):
+	text=x_test[i].lower()
 	feature_set_test[i].append(yules_K_calc(text))
 
 
 #POSTagger(8-20)
-for i in range(0,len(x_train)):
-	text=x_train[i]
+for i in range(0,len(x_test)):
+	text=x_test[i]
 	for item in char_remove:
 		text=text.replace(item,"")
 	ls=text.split(" ")
@@ -614,8 +624,8 @@ for i in range(0,len(x_train)):
 	feature_set_test[i].append(counts['WDT']+counts['WP']+counts['WRB'])  #WH - determiner, pronoun, adverb
 
 #First,second,third person pronouns(21,22,23)
-for i in range(0,len(x_train)):
-	text=x_train[i].lower()
+for i in range(0,len(x_test)):
+	text=x_test[i].lower()
 	for item in char_remove:
 		text=text.replace(item,"")
 	num_first_person=0
@@ -638,10 +648,10 @@ for i in range(0,len(x_train)):
 
 #sentiment polarity score(24)
 #LIST OF PROFANIC WORDS- MILD, MEDIUM AND STRONG(25,26,27)
-for i in range(0,len(x_train)):
+for i in range(0,len(x_test)):
 
 	reslist=[]
-	ls=x_train[i].split('\t')
+	ls=x_test[i].split('\t')
 	# testimonial = TextBlob(ls[0])
 	# res= testimonial.sentiment
 	# reslist.extend([res[0],res[1]])
@@ -657,7 +667,7 @@ for i in range(0,len(x_train)):
 
 
 	profane_vec=[]
-	text = x_train[i].lower()
+	text = x_test[i].lower()
 	for item in char_remove:
 		text=text.replace(item,"")
 	ls=text.split(' ')
@@ -683,7 +693,7 @@ for i in range(0,len(x_train)):
 #	print(feature_set[i])
 
 
-XVAL_test = fit_transform(data,feature_set_test)
+XVAL_test = fit_transform(datatest,feature_set_test)
 
 x_test=XVAL_test[:]
 
@@ -708,7 +718,7 @@ for i in range(0,len(x_test)):
 	f.write(str(y_test[i]))
 	f.write("\n")
 f.close()
-
+"""
 """
 
 print("################# Naive Bayes Classifier ####################")
