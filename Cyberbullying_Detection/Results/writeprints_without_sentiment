@@ -152,3 +152,54 @@ Recall Score
 
 F1 Score
 0.7138728323699421
+
+Simple SMOTE (auto)
+
+Bagging RF
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.8012684989429175
+
+Precision Score
+0.7397660818713451
+
+Recall Score
+0.71875
+
+F1 Score
+0.7291066282420748
+########################################
+SMOTE (float parameter=1)
+
+Bagging RF
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.8012684989429175
+
+Precision Score
+0.7397660818713451
+
+Recall Score
+0.71875
+
+F1 Score
+0.7291066282420748
+
+########################################
+SMOTE (float parameter=1, k_neighbours=10)
+
+Bagging RF
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.8012684989429175
+
+Precision Score
+0.7397660818713451
+
+Recall Score
+0.71875
+
+F1 Score
