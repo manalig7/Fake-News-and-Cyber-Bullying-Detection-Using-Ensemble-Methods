@@ -2,7 +2,7 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics import confusion_matrix, precision_recall_fscore_support, recall_score, precision_score, f1_score
 
-tsv = '/home/user/Documents/Major Project/Implement-CB/Dataset/finalcb_clean_train.txt'
+tsv = '/home/user/Documents/Major Project/Implement-CB/DS_spellchecked/finaldb_train_spellcorrect_segment.txt'
 f=open(tsv,'r')
 x_train=[]
 y_train=[]
@@ -17,7 +17,7 @@ m=len(x_train)
 
 data = x_train
 
-tsv1 = '/home/user/Documents/Major Project/Implement-CB/Dataset/finalcb_clean_test.txt'
+tsv1 = '/home/user/Documents/Major Project/Implement-CB/DS_spellchecked/finaldb_test_spellcorrect_segment.txt'
 f=open(tsv1,'r')
 
 x_test=[]
