@@ -1,0 +1,128 @@
+SG FT model_done!
+6679
+Transformed!!
+(3780, 6679)
+(946, 6679)
+################# Naive Bayes Classifier ####################
+
+Accuracy on Training Set :
+0.845502645503
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.693446088795
+
+Precision Score
+0.5670995671
+
+Recall Score
+0.744318181818
+
+F1 Score
+0.643734643735
+################### Random Forest Classifier ###############
+
+Accuracy on Training Set :
+0.987301587302
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.771670190275
+
+Precision Score
+0.739436619718
+
+Recall Score
+0.596590909091
+
+F1 Score
+0.660377358491
+################### Logistic regression Classifier ###############
+
+Accuracy on Training Set :
+0.880158730159
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.815010570825
+
+Precision Score
+0.77399380805
+
+Recall Score
+0.710227272727
+
+F1 Score
+0.740740740741
+
+################### Ensemble Voting Classifier ###############
+
+Accuracy on Training Set :
+0.97328042328
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.816067653277
+
+Precision Score
+0.78164556962
+
+Recall Score
+0.701704545455
+
+F1 Score
+0.739520958084
+################### Ensemble Bagging Classifier ###############
+
+Accuracy on Training Set :
+0.821693121693
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.712473572939
+
+Precision Score
+0.583682008368
+
+Recall Score
+0.792613636364
+
+F1 Score
+0.672289156627
+################### Ensemble Boosting Classifier ###############
+
+Accuracy on Training Set :
+0.892063492063
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.80866807611
+
+Precision Score
+0.756756756757
+
+Recall Score
+0.715909090909
+
+F1 Score
+0.735766423358
+
+
+################### SVM Classifier ###############
+
+Accuracy on Training Set :
+0.957407407407
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.829809725159
+
+Precision Score
+0.778425655977
+
+Recall Score
+0.758522727273
+
+F1 Score
+0.768345323741
+
