@@ -24,7 +24,7 @@ def fit_transform(d):
 x = []
 ##### training dataset #####
 
-tsv = '/home/user/Documents/Major Project/Implement-CB/DS_spellchecked/finaldb_train_spellcorrect_segment.txt'
+tsv = '/Users/haritareddy/Desktop/Major-Project-Final/Major-Project/Cyberbullying_Detection/Spell_Check_and_Segmentation/finalcb_clean_train_py_spell_check_segment_all.txt'
 f=open(tsv,'r')
 y_train=[]
 data=[]
@@ -50,7 +50,7 @@ m=len(x)
 #print(max(lent))
 
 ##### testing dataset #####
-tsv1 = '/home/user/Documents/Major Project/Implement-CB/DS_spellchecked/finaldb_test_spellcorrect_segment.txt'
+tsv1 = '/Users/haritareddy/Desktop/Major-Project-Final/Major-Project/Cyberbullying_Detection/Spell_Check_and_Segmentation/finalcb_clean_test_py_spell_check_segment_all.txt'
 f=open(tsv1,'r')
 y_test=[]
 
@@ -90,6 +90,47 @@ print(np.array(x_train).shape)
 x_test = []
 x_test=XVAL[m:]
 print(np.array(x_test).shape)
+
+import tensorflow
+from keras.models import Model, Sequential
+from keras.layers import Dense, Dropout
+from keras.callbacks import EarlyStopping
+
+early_stopping_monitor = EarlyStopping(patience=3)
+x_train=np.array(x_train)
+x_test=np.array(x_test)
+ip=x_train.shape[1]
+model = Sequential()
+model.add(Dense((ip/5), input_dim=(ip), activation='relu'))
+model.add(Dropout(0.5))
+model.add(Dense((ip/100), activation='relu'))
+#model.add(Dropout(0.5))
+model.add(Dense(1, activation='sigmoid')) 
+
+model.compile(loss='mean_squared_error', optimizer='adagrad',metrics=['accuracy'])
+
+model.fit(x_train, y_train, epochs=25,batch_size=(x_train.shape[0]/100), callbacks=[early_stopping_monitor])
+
+print(model.metrics_names)
+
+print "\nAccuracy on Training Set :"
+score = model.evaluate(x_train, y_train, batch_size=(x_train.shape[0]/100))
+print (score)
+
+print "Checking on Test Set"
+print "\nAccuracy on Testing Set :"
+score = model.evaluate(x_test, y_test, batch_size=(x_test.shape[0]/100))
+print (score)
+
+y_pred = model.predict_classes(x_test)
+#print y_pred
+
+print "\nPrecision Score"
+print precision_score(y_test, y_pred)
+print "\nRecall Score"
+print recall_score(y_test, y_pred)
+print "\nF1 Score"
+print f1_score(y_test, y_pred)
 
 
 """
@@ -243,7 +284,7 @@ print precision_score(y_test, y_pred)
 print "\nRecall Score"
 print recall_score(y_test, y_pred)
 print "\nF1 Score"
-print f1_score(y_test, y_pred)"""
+print f1_score(y_test, y_pred)
 
 print ("################### SVM Classifier ###############")
 
@@ -267,3 +308,4 @@ print "\nRecall Score"
 print recall_score(y_test, y_pred)
 print "\nF1 Score"
 print f1_score(y_test, y_pred)
+"""
