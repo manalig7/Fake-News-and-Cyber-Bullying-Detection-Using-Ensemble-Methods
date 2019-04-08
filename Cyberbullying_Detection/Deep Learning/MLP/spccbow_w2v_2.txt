@@ -293,4 +293,94 @@ Recall Score
 F1 Score
 0.789772727273
 
+#############model 8 #####
+model 2
+score = model.evaluate(x_test, y_test, batch_size=(x_test.shape[0]/100))
+## Result ##
+['loss', 'acc']
+
+Accuracy on Training Set :
+3780/3780 [==============================] - 2s 421us/step
+[0.0038752413566317287, 0.99761904845477412]
+Checking on Test Set
+
+Accuracy on Testing Set :
+946/946 [==============================] - 1s 858us/step
+[0.90643275420985159, 0.82558140546146452]
+
+Precision Score
+0.791277258567
+
+Recall Score
+0.721590909091
+
+F1 Score
+0.754829123328
+
+
+#############model 9 #####
+model 3
+score = model.evaluate(x_test, y_test, batch_size=(x_test.shape[0]/100))
+## Result ##
+['loss', 'acc']
+
+Accuracy on Training Set :
+3780/3780 [==============================] - 12s 3ms/step
+[0.016629924656502672, 0.99497354738611388]
+Checking on Test Set
+
+Accuracy on Testing Set :
+946/946 [==============================] - 7s 7ms/step
+[1.0136425765847188, 0.81923891112491898]
+
+Precision Score
+0.785488958991
+
+Recall Score
+0.707386363636
+
+F1 Score
+0.744394618834
+
+
+#############model 10 #####
+model 4
+score = model.evaluate(x_test, y_test, batch_size=(x_test.shape[0]/100))
+## Result ##
+
+#############model 11 #####
+model 5
+score = model.evaluate(x_test, y_test, batch_size=(x_test.shape[0]/100))
+## Result ##
+['loss', 'acc']
+
+Accuracy on Training Set :
+3780/3780 [==============================] - 2s 652us/step
+[0.0078425041833219845, 0.99867724888223819]
+Checking on Test Set
+
+Accuracy on Testing Set :
+946/946 [==============================] - 1s 1ms/step
+[0.64868878854520373, 0.84566597086052564]
+
+Precision Score
+0.806547619048
+
+Recall Score
+0.769886363636
+
+F1 Score
+0.787790697674
+
+
+#############model 11 #####
+model 6
+score = model.evaluate(x_test, y_test, batch_size=(x_test.shape[0]/100))
+## Result ##
+
+#############model 11 #####
+model 7
+score = model.evaluate(x_test, y_test, batch_size=(x_test.shape[0]/100))
+## Result ##
+
 

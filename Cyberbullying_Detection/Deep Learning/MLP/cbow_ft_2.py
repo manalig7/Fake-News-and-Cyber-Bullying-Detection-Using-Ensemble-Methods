@@ -101,22 +101,22 @@ print (" ################## MLP #####################")
 
 import tensorflow
 from keras.models import Model, Sequential
-from keras.layers import Dense
+from keras.layers import Dense, Dropout
 from keras.callbacks import EarlyStopping
 
 early_stopping_monitor = EarlyStopping(patience=3)
 
 ip=x_train.shape[1]
 model = Sequential()
-model.add(Dense((ip), input_dim=(ip), activation='relu'))
+model.add(Dense((ip/5), input_dim=(ip), activation='relu'))
 #model.add(Dropout(0.5))
-model.add(Dense((ip/10), activation='relu'))
+model.add(Dense((ip/100), activation='relu'))
 #model.add(Dropout(0.5))
 model.add(Dense(1, activation='sigmoid')) 
 
-model.compile(loss='binary_crossentropy', optimizer='adam',metrics=['accuracy'])
+model.compile(loss='binary_crossentropy', optimizer='adagrad',metrics=['accuracy'])
 
-model.fit(x_train, y_train, epochs=15,batch_size=(x_train.shape[0]/100), callbacks=[early_stopping_monitor])
+model.fit(x_train, y_train, epochs=25,batch_size=(x_train.shape[0]/100), callbacks=[early_stopping_monitor])
 
 print(model.metrics_names)
 

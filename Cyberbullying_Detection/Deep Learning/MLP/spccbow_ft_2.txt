@@ -1,3 +1,92 @@
+ ### model 1 ###
+early_stopping_monitor = EarlyStopping(patience=3)
+
+ip=x_train.shape[1]
+model = Sequential()
+model.add(Dense((ip/10), input_dim=(ip), activation='relu'))
+#model.add(Dropout(0.5))
+model.add(Dense((ip/100), activation='relu'))
+#model.add(Dropout(0.5))
+model.add(Dense(1, activation='relu')) # (relu(2),sigmoid,128=84),(relu(3),128=)
+
+model.compile(loss='binary_crossentropy', optimizer='adam',metrics=['accuracy'])
+
+model.fit(x_train, y_train, epochs=40,batch_size=128,callbacks=[early_stopping_monitor])
+
+
+##### Result ####
+['loss', 'acc']
+
+Accuracy on Training Set :
+3780/3780 [==============================] - 1s 289us/step
+[0.070046290936819189, 0.68783068770454048]
+Checking on Test Set
+
+Accuracy on Testing Set :
+946/946 [==============================] - 0s 264us/step
+[1.7344771424509253, 0.67336152169467534]
+
+Precision Score
+0.786144578313
+
+Recall Score
+0.741477272727
+
+F1 Score
+0.763157894737
+
+
+
+### model 2 ###
+
+ip=x_train.shape[1]
+model = Sequential()
+model.add(Dense((ip/10), input_dim=(ip), activation='relu'))
+#model.add(Dropout(0.5))
+model.add(Dense((ip/100), activation='relu'))
+#model.add(Dropout(0.5))
+model.add(Dense(1, activation='sigmoid')) 
+
+model.compile(loss='binary_crossentropy', optimizer='adam',metrics=['accuracy'])
+
+model.fit(x_train, y_train, epochs=40,batch_size=(x_train.shape[0]/100), callbacks=[early_stopping_monitor])
+
+print(model.metrics_names)
+
+print "\nAccuracy on Training Set :"
+score = model.evaluate(x_train, y_train, batch_size=(x_train.shape[0]/100))
+print (score)
+
+print "Checking on Test Set"
+print "\nAccuracy on Testing Set :"
+score = model.evaluate(x_test, y_test, batch_size=(x_train.shape[0]/100))
+
+### Result ####
+['loss', 'acc']
+
+Accuracy on Training Set :
+3780/3780 [==============================] - 2s 420us/step
+[0.0045400315347955082, 0.99814814925193784]
+Checking on Test Set
+
+Accuracy on Testing Set :
+946/946 [==============================] - 0s 353us/step
+[1.0264945813074677, 0.84249471584787827]
+
+Precision Score
+0.78431372549
+
+Recall Score
+0.795454545455
+
+F1 Score
+0.789844851904
+
+
+
+
+### model 3 ###
+
 ip=x_train.shape[1]
 model = Sequential()
 model.add(Dense((ip), input_dim=(ip), activation='relu'))
@@ -20,23 +109,215 @@ print "Checking on Test Set"
 print "\nAccuracy on Testing Set :"
 score = model.evaluate(x_test, y_test, batch_size=(x_train.shape[0]/100))
 
-#### Result ####
+### Result ###
+
+
+
+### model 4 ###
+
+ip=x_train.shape[1]
+model = Sequential()
+model.add(Dense((ip/5), input_dim=(ip), activation='relu'))
+model.add(Dropout(0.5))
+model.add(Dense((ip/100), activation='relu'))
+#model.add(Dropout(0.5))
+model.add(Dense(1, activation='sigmoid')) 
+
+model.compile(loss='binary_crossentropy', optimizer='adam',metrics=['accuracy'])
+
+model.fit(x_train, y_train, epochs=25,batch_size=(x_train.shape[0]/100), callbacks=[early_stopping_monitor])
+
+print(model.metrics_names)
+
+print "\nAccuracy on Training Set :"
+score = model.evaluate(x_train, y_train, batch_size=(x_train.shape[0]/100))
+print (score)
+
+print "Checking on Test Set"
+print "\nAccuracy on Testing Set :"
+score = model.evaluate(x_test, y_test, batch_size=(x_train.shape[0]/100))
+
+## Result ##
+['loss', 'acc']
 
 Accuracy on Training Set :
 3780/3780 [==============================] - 11s 3ms/step
-[0.003602297487627068, 0.9984126987753722]
+[0.004864052686543897, 0.9984126987753722]
 Checking on Test Set
 
 Accuracy on Testing Set :
 946/946 [==============================] - 3s 3ms/step
-[1.0578120514025899, 0.82558139799513219]
+[1.0511756326696082, 0.8245243167398344]
 
 Precision Score
-0.760445682451
+0.776785714286
 
 Recall Score
-0.775568181818
+0.741477272727
 
 F1 Score
-0.767932489451
+0.758720930233
+
+
+
+#################################################################################################################################################
+###########  model 5 ###########
+
+
+ip=x_train.shape[1]
+model = Sequential()
+model.add(Dense((ip/5), input_dim=(ip), activation='relu'))
+model.add(Dropout(0.5))
+model.add(Dense((ip/100), activation='relu'))
+#model.add(Dropout(0.5))
+model.add(Dense(1, activation='sigmoid')) 
+
+model.compile(loss='binary_crossentropy', optimizer='adagrad',metrics=['accuracy'])
+
+model.fit(x_train, y_train, epochs=25,batch_size=(x_train.shape[0]/100), callbacks=[early_stopping_monitor])
+
+print(model.metrics_names)
+
+print "\nAccuracy on Training Set :"
+score = model.evaluate(x_train, y_train, batch_size=(x_train.shape[0]/100))
+print (score)
+
+print "Checking on Test Set"
+print "\nAccuracy on Testing Set :"
+score = model.evaluate(x_test, y_test, batch_size=(x_train.shape[0]/100))
+
+
+## Result ##
+['loss', 'acc']
+
+Accuracy on Training Set :
+3780/3780 [==============================] - 2s 651us/step
+[0.0036841071458415145, 0.99867724888223819]
+Checking on Test Set
+
+Accuracy on Testing Set :
+946/946 [==============================] - 1s 624us/step
+[0.79426218701593465, 0.83720929974229341]
+
+Precision Score
+0.789473684211
+
+Recall Score
+0.767045454545
+
+F1 Score
+0.778097982709
+
+
+#############################################################################################################################################
+#### Model 6 ###
+
+ip=x_train.shape[1]
+model = Sequential()
+model.add(Dense((ip/5), input_dim=(ip), activation='relu'))
+#model.add(Dropout(0.5))
+model.add(Dense((ip/100), activation='relu'))
+#model.add(Dropout(0.5))
+model.add(Dense(1, activation='sigmoid')) 
+
+model.compile(loss='binary_crossentropy', optimizer='adagrad',metrics=['accuracy'])
+
+model.fit(x_train, y_train, epochs=25,batch_size=(x_train.shape[0]/100), callbacks=[early_stopping_monitor])
+
+print(model.metrics_names)
+
+print "\nAccuracy on Training Set :"
+score = model.evaluate(x_train, y_train, batch_size=(x_train.shape[0]/100))
+print (score)
+
+print "Checking on Test Set"
+print "\nAccuracy on Testing Set :"
+score = model.evaluate(x_test, y_test, batch_size=(x_train.shape[0]/100))
+
+
+### Results ###
+['loss', 'acc']
+
+Accuracy on Training Set :
+3780/3780 [==============================] - 5s 1ms/step
+[0.0031829886428418812, 0.99867724888223819]
+Checking on Test Set
+
+Accuracy on Testing Set :
+946/946 [==============================] - 1s 1ms/step
+[0.83115881498721889, 0.8340380583706668]
+
+Precision Score
+0.785923753666
+
+Recall Score
+0.761363636364
+
+F1 Score
+0.773448773449
+
+
+
+
+##### Model 7 ###
+
+mod 5+
+
+loss= mean_squared_error
+
+## Result ##
+['loss', 'acc']
+
+Accuracy on Training Set :
+3780/3780 [==============================] - 2s 647us/step
+[0.0017094171138628625, 0.99788359856164011]
+Checking on Test Set
+
+Accuracy on Testing Set :
+946/946 [==============================] - 1s 622us/step
+[0.13615289695529428, 0.83509513729470475]
+
+Precision Score
+0.800613496933
+
+Recall Score
+0.741477272727
+
+F1 Score
+0.769911504425
+
+
+
+#############model 8 #####
+model 2
+score = model.evaluate(x_test, y_test, batch_size=(x_test.shape[0]/100))
+## Result ##
+
+
+#############model 9 #####
+model 3
+score = model.evaluate(x_test, y_test, batch_size=(x_test.shape[0]/100))
+## Result ##
+
+#############model 10 #####
+model 4
+score = model.evaluate(x_test, y_test, batch_size=(x_test.shape[0]/100))
+## Result ##
+
+#############model 11 #####
+model 5
+score = model.evaluate(x_test, y_test, batch_size=(x_test.shape[0]/100))
+## Result ##
+
+
+#############model 11 #####
+model 6
+score = model.evaluate(x_test, y_test, batch_size=(x_test.shape[0]/100))
+## Result ##
+
+#############model 11 #####
+model 7
+score = model.evaluate(x_test, y_test, batch_size=(x_test.shape[0]/100))
+## Result ##
+
 
