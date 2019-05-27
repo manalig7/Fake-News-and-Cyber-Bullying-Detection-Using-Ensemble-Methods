@@ -39,7 +39,7 @@ def fit_transform(d):
 			#print(voc[j])
 			if voc[j] in d[i]:
 				#print 	(np.mean(model_W2V.wv[voc[j]]))	
-				temp.append(np.mean(model_W2V.wv[voc[j]]))
+				temp.append(np.mean(model_FT.wv[voc[j]]))
 			else :
 				temp.append(0)		
 		res.append(temp)
@@ -49,7 +49,7 @@ def fit_transform(d):
 x = []
 ##### training dataset #####
 
-tsv = '/Users/haritareddy/Desktop/Major-Project/Fake_News_Detection/Model_on_Only_Train/finaldataset_train.txt'
+tsv = 'finaldataset_train.txt'
 f=open(tsv,'r')
 y_train=[]
 data=[]
@@ -75,7 +75,7 @@ m=len(x)
 #print(max(lent))
 
 ##### testing dataset #####
-tsv1 = '/Users/haritareddy/Desktop/Major-Project/Fake_News_Detection/Model_on_Only_Train/finaldataset_test.txt'
+tsv1 = 'finaldataset_test.txt'
 f=open(tsv1,'r')
 y_test=[]
 
@@ -95,12 +95,12 @@ f.close()
 
 pad_len=max(lent)
 
-model_W2V = gensim.models.Word2Vec.load("sg_ft.model")
+model_FT = gensim.models.Word2Vec.load("sg_ft.model")
 #model_W2V = Word2Vec(data, size=10, window=5, min_count=1, workers=5, sg=0,max_vocab_size=10000)
 
 #print "SG W2V model_done!"
 
-voc=list(model_W2V.wv.vocab)
+voc=list(model_FT.wv.vocab)
 #	print(len(voc))
 XVAL=fit_transform(data)
 

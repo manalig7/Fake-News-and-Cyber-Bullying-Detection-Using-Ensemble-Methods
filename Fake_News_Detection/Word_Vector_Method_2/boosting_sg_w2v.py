@@ -49,7 +49,7 @@ def fit_transform(d):
 x = []
 ##### training dataset #####
 
-tsv = '/Users/haritareddy/Desktop/Major-Project/Fake_News_Detection/Model_on_Only_Train/finaldataset_train.txt'
+tsv = 'finaldataset_train.txt'
 f=open(tsv,'r')
 y_train=[]
 data=[]
@@ -75,7 +75,7 @@ m=len(x)
 #print(max(lent))
 
 ##### testing dataset #####
-tsv1 = '/Users/haritareddy/Desktop/Major-Project/Fake_News_Detection/Model_on_Only_Train/finaldataset_test.txt'
+tsv1 = 'finaldataset_test.txt'
 f=open(tsv1,'r')
 y_test=[]
 

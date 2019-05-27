@@ -30,94 +30,121 @@ from gensim.models import Word2Vec
 from sklearn.metrics import confusion_matrix, precision_recall_fscore_support, recall_score, precision_score, f1_score
 import gensim
 import pickle
+from gensim.models import FastText
 
 
-
-#np.random.seed(20)
+corpus = []
+labels = []
 
 def fit_transform(d):
-	res=[]
-	for i in range(0,len(d)):
-		temp=[]	
-		for j in range(0,len(voc)):
-			#print(voc[j])
-			if voc[j] in d[i]:
-				#print 	(np.mean(model_W2V.wv[voc[j]]))	
-				temp.append(np.mean(model_W2V.wv[voc[j]]))
-			else :
-				temp.append(0)		
-		res.append(temp)
-	return res
+    res=[]
+    for i in range(0,len(d)):
+        temp=[] 
+        for j in range(0,len(voc)):
+            #print(voc[j])
+            if voc[j] in d[i]:
+                #print  (np.mean(model_W2V.wv[voc[j]])) 
+                temp.append(np.mean(model_FT.wv[voc[j]]))
+            else :
+                temp.append(0)      
+        res.append(temp)
+    return res
 
-
-x = []
-##### training dataset #####
-
-tsv = '/Users/haritareddy/Desktop/Major-Project/Fake_News_Detection/Model_on_Only_Train/finaldataset_train.txt'
+tsv = 'finaldataset_train.txt'
 f=open(tsv,'r')
+x = []
 y_train=[]
-data=[]
+tokenized_corpus=[]
 lent=[]
 
 tokenizer = RegexpTokenizer(' ', gaps=True)
 
 for line in f :
-	ls=line.split('\t')
-	x.append(ls[0])
-	temp = [] 
-	#print(ls[0])
-	for j in tokenizer.tokenize(ls[0].decode('utf-8')):
-		#print(j) 
-	       	temp.append(j) 
-	data.append(temp)
-	lent.append(len(temp)) 
-	y_train.append(int(ls[1]))
+    ls=line.split('\t')
+    x.append(ls[0])
+    temp = [] 
+    #print(ls[0])
+    for j in tokenizer.tokenize(ls[0].decode('utf-8')):
+        #print(j) 
+            temp.append(j) 
+    tokenized_corpus.append(temp)
+    lent.append(len(temp)) 
+    y_train.append(int(ls[1]))
+f.close()
+"""  
+# Gensim Word2Vec model
+vector_size = 120
+window_size = 8
+
+# Create Word2Vec
+
+model_W2V  = Word2Vec(sentences=tokenized_corpus,
+                    size=vector_size, 
+                    window=window_size, 
+                    negative=20,
+                    iter=40,
+                    seed=1000,
+                    workers=multiprocessing.cpu_count(),sg=1)
+"""
+
+
+model_FT = gensim.models.FastText.load("cbow_ft.model")
+voc=list(model_FT.wv.vocab)
+
+X_vecs = model_FT.wv
+
+
+
+# Compute average and max tweet length
+avg_length = 0.0
+max_length = 0
+
+for tweet in tokenized_corpus:
+    if len(tweet) > max_length:
+        max_length = len(tweet)
+##################################READING IN THE TEST SET###################################
+
+tsv = 'finaldataset_test.txt'
+f=open(tsv,'r')
+x = []
+Y_test=[]
+tokenized_corpus_test=[]
+lent=[]
+
+tokenizer = RegexpTokenizer(' ', gaps=True)
+
+for line in f :
+    ls=line.split('\t')
+    x.append(ls[0])
+    temp = [] 
+    #print(ls[0])
+    for j in tokenizer.tokenize(ls[0].decode('utf-8')):
+        #print(j) 
+            temp.append(j) 
+    tokenized_corpus_test.append(temp)
+    lent.append(len(temp)) 
+    y_test.append(int(ls[1]))
 f.close()
 
-m=len(x)
+print ("Reached Here")
 
-#print(max(lent))
+# Tweet max length (number of tokens)
+max_tweet_length = max_length
 
-##### testing dataset #####
-tsv1 = '/Users/haritareddy/Desktop/Major-Project/Fake_News_Detection/Model_on_Only_Train/finaldataset_test.txt'
-f=open(tsv1,'r')
-y_test=[]
+# Create train and test sets
+# Generate random indexes
+#indexes = set(np.random.choice(len(tokenized_corpus), train_size + test_size, replace=False))
 
-#data1=[]
-for line in f:
-	ls=line.split('\t')
-	x.append(ls[0])
-	temp = [] 
-	#print(ls[0])
-	for j in tokenizer.tokenize(ls[0].decode('utf-8')):
-		#print(j) 
-	       	temp.append(j) 
-	data.append(temp)
-	lent.append(len(temp))  
-	y_test.append(int(ls[1]))
-f.close()
 
-pad_len=max(lent)
 
-model_W2V = gensim.models.Word2Vec.load("cbow_ft.model")
-#model_W2V = Word2Vec(data, size=10, window=5, min_count=1, workers=5, sg=0,max_vocab_size=10000)
+x_train_sg=fit_transform(tokenized_corpus)
+print ("Done transforming train")
+x_test_sg=fit_transform(tokenized_corpus_test)
+print ("Done transforming test")
+#Y_train=labels
+#Y_test=labels_test
 
-#print "SG W2V model_done!"
-
-voc=list(model_W2V.wv.vocab)
-#	print(len(voc))
-XVAL=fit_transform(data)
-
-#print ("Transformed!!")
-
-x_train=[]
-x_train=XVAL[:m]
-#print(np.array(x_train).shape)
-x_test = []
-x_test=XVAL[m:]
-#print(np.array(x_test).shape)
-x_train_sg=x_train
-x_test_sg=x_test
+print ("Finished with test")
 
 ##################################################################
 ##################################################################
@@ -152,8 +179,8 @@ rfe = RFE(model, 50)
 rfe = rfe.fit(X, Y)
 
 rankings= list(rfe.ranking_)
-print rankings.count(1)
-print rfe.support_
+#print rankings.count(1)
+#print rfe.support_
 # summarize the selection of the attributes
 
 np.set_printoptions(precision=3)

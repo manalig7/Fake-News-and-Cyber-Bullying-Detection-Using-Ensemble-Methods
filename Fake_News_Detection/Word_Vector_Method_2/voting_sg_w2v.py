@@ -40,7 +40,7 @@ def fit_transform(d):
 x = []
 ##### training dataset #####
 
-tsv = 'dataset/finaldataset_train.txt'
+tsv = 'finaldataset_train.txt'
 f=open(tsv,'r')
 y_train=[]
 data=[]
@@ -66,7 +66,7 @@ m=len(x)
 #print(max(lent))
 
 ##### testing dataset #####
-tsv1 = 'dataset/finaldataset_test.txt'
+tsv1 = 'finaldataset_test.txt'
 f=open(tsv1,'r')
 y_test=[]
 
