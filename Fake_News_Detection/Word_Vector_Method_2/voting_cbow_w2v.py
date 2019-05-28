@@ -143,7 +143,7 @@ X = array[:,0:73]
 Y = array[:,73]
 print("attributes Split")
 
-model = LogisticRegression()
+model = LogisticRegression(random_state=20)
 # create the RFE model and select 3 attributes
 rfe = RFE(model, 50)
 rfe = rfe.fit(X, Y)
@@ -245,10 +245,10 @@ for i in range(len(x_test)):
 ### Voting method for classification ###
 
 clf1 = GaussianNB()
-clf2 = LogisticRegression(random_state=0, solver='lbfgs')
-clf3 = RandomForestClassifier()
-clf4 = BaggingClassifier(GaussianNB(),max_samples=0.4, max_features=0.8,n_estimators=300)
-clf5 = AdaBoostClassifier(n_estimators=300)
+clf2 = LogisticRegression(random_state=20, solver='lbfgs')
+clf3 = RandomForestClassifier(random_state=20)
+clf4 = BaggingClassifier(GaussianNB(),max_samples=0.4, max_features=0.8,n_estimators=300,random_state=20)
+clf5 = AdaBoostClassifier(n_estimators=300,random_state=20)
 
 eclf1 = VotingClassifier(estimators=[('bag', clf4), ('lr', clf2), ('rf', clf3)], voting='hard')
 # ('mnb', clf1), ('lr', clf2), ('rf', clf3) ,('ada', clf5), ('bag', clf4)

@@ -89,7 +89,7 @@ f.close()
 #model_W2V = Word2Vec(data, size=10, window=5, min_count=1, workers=5, sg=1, max_vocab_size=10000)
 
 #print "CBOW W2V model_done!"
-model_FT = gensim.models.FastText.load("cbow_ft.model")
+model_FT = gensim.models.FastText.load("sg_ft.model")
 
 voc=list(model_FT.wv.vocab)
 print(len(voc))
