@@ -82,13 +82,13 @@ model_W2V  = Word2Vec(sentences=tokenized_corpus,
                     workers=multiprocessing.cpu_count(),sg=1)
 """
 
-model_W2V =Word2Vec(tokenized_corpus, size=10, window=5, min_count=1, workers=5, sg=1,max_vocab_size=10000)
+#model_W2V =Word2Vec(tokenized_corpus, size=10, window=5, min_count=1, workers=5, sg=1,max_vocab_size=10000)
 
 
-model_W2V.save("sg_w2v.model")
+#model_W2V.save("sg_w2v.model")
 
 
-#model_W2V = gensim.models.Word2Vec.load("sg_w2v.model")
+model_W2V = gensim.models.Word2Vec.load("sg_w2v.model")
 voc=list(model_W2V.wv.vocab)
 
 # Copy word vectors and delete Word2Vec model  and original corpus to save memory

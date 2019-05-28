@@ -8,9 +8,10 @@
 
 #Import sklearn's feature selection algorithm
 import numpy as np
+np.random.seed(20)
 from random import seed
 seed(20)
-np.random.seed(20)
+
 from sklearn.feature_selection import SelectKBest
 import pandas as pd  
 
@@ -107,7 +108,7 @@ for tweet in tokenized_corpus:
 tsv = 'finaldataset_test.txt'
 f=open(tsv,'r')
 x = []
-Y_test=[]
+y_test=[]
 tokenized_corpus_test=[]
 lent=[]
 
@@ -172,7 +173,7 @@ Y = array[:,73]
 #model = LogisticRegression(np.random.seed(20))
 #model=pickle.load(open('model_feature_selection', 'rb'))
 #pickle.dump(model, open('model_feature_selection', 'wb'))
-model = LogisticRegression()
+model = LogisticRegression(random_state=20)
 # create the RFE model and select 3 attributes
 rfe = RFE(model, 50)
 rfe = rfe.fit(X, Y)
@@ -255,6 +256,7 @@ for item in selected_feature_names:
 
 
 
+
 ######################################
 
 n_writeprints=10
@@ -270,8 +272,8 @@ from sklearn.metrics import confusion_matrix, precision_recall_fscore_support, r
 from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.linear_model import LogisticRegression
 import random
-clf = RandomForestClassifier()
-clf1 = LogisticRegression(solver='lbfgs')
+clf = RandomForestClassifier(random_state=20)
+clf1 = LogisticRegression(random_state=20,solver='lbfgs')
 predictions=[]
 for p in range(0,len(feature_set_test)):
 	predictions.append([])
@@ -322,8 +324,12 @@ print (recall_score(y_test, final_pred))
 print ("\nF1 Score")
 print (f1_score(y_test, final_pred))
 
+
+
 ######################################	
 ######################################
+
+
 
 n_writeprints=15
 size_writeprints=700
@@ -338,8 +344,8 @@ from sklearn.metrics import confusion_matrix, precision_recall_fscore_support, r
 from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.linear_model import LogisticRegression
 import random
-clf = RandomForestClassifier()
-clf1 = LogisticRegression(solver='lbfgs')
+clf = RandomForestClassifier(random_state=20)
+clf1 = LogisticRegression(random_state=20,solver='lbfgs')
 predictions=[]
 for p in range(0,len(feature_set_test)):
 	predictions.append([])

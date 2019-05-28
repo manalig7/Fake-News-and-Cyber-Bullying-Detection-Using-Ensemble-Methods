@@ -1,0 +1,232 @@
+--------------------------------- SG - W2V ----------------------------------------
+
+################# Naive Bayes Classifier ####################
+
+Accuracy on Training Set :
+0.7990749306197965
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.7507396449704142
+
+Precision Score
+0.680968096809681
+
+Recall Score
+0.9294294294294294
+
+F1 Score
+0.786031746031746
+################### Random Forest Classifier ###############
+/usr/local/lib/python2.7/site-packages/sklearn/ensemble/forest.py:246: FutureWarning: The default value of n_estimators will change from 10 in version 0.20 to 100 in 0.22.
+  "10 in version 0.20 to 100 in 0.22.", FutureWarning)
+
+Accuracy on Training Set :
+0.9951896392229417
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.863905325443787
+
+Precision Score
+0.903010033444816
+
+Recall Score
+0.8108108108108109
+
+F1 Score
+0.8544303797468354
+################### Logistic regression Classifier ###############
+
+Accuracy on Training Set :
+0.9541165587419056
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.900887573964497
+
+Precision Score
+0.8832853025936599
+
+Recall Score
+0.9204204204204204
+
+F1 Score
+0.901470588235294
+
+--------------------------------- CBOW - W2V ----------------------------------------
+
+
+################# Naive Bayes Classifier ####################
+
+Accuracy on Training Set :
+0.8653098982423681
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.8032544378698225
+
+Precision Score
+0.7506265664160401
+
+Recall Score
+0.8993993993993994
+
+F1 Score
+0.8183060109289617
+################### Random Forest Classifier ###############
+/usr/local/lib/python2.7/site-packages/sklearn/ensemble/forest.py:246: FutureWarning: The default value of n_estimators will change from 10 in version 0.20 to 100 in 0.22.
+  "10 in version 0.20 to 100 in 0.22.", FutureWarning)
+
+Accuracy on Training Set :
+0.9951896392229417
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.863905325443787
+
+Precision Score
+0.9057239057239057
+
+Recall Score
+0.8078078078078078
+
+F1 Score
+0.853968253968254
+################### Logistic regression Classifier ###############
+
+Accuracy on Training Set :
+0.9907493061979649
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.9341715976331361
+
+Precision Score
+0.9351432880844646
+
+Recall Score
+0.9309309309309309
+
+F1 Score
+0.9330323551542514
+
+--------------------------------- CBOW - FT ----------------------------------------
+################# Naive Bayes Classifier ####################
+
+Accuracy on Training Set :
+0.8257169287696577
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.7662721893491125
+
+Precision Score
+0.6993166287015945
+
+Recall Score
+0.9219219219219219
+
+F1 Score
+0.7953367875647668
+################### Random Forest Classifier ###############
+/usr/local/lib/python2.7/site-packages/sklearn/ensemble/forest.py:246: FutureWarning: The default value of n_estimators will change from 10 in version 0.20 to 100 in 0.22.
+  "10 in version 0.20 to 100 in 0.22.", FutureWarning)
+
+Accuracy on Training Set :
+0.9955596669750231
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.8661242603550295
+
+Precision Score
+0.8892455858747994
+
+Recall Score
+0.8318318318318318
+
+F1 Score
+0.8595810705973623
+################### Logistic regression Classifier ###############
+/usr/local/lib/python2.7/site-packages/sklearn/linear_model/logistic.py:758: ConvergenceWarning: lbfgs failed to converge. Increase the number of iterations.
+  "of iterations.", ConvergenceWarning)
+
+Accuracy on Training Set :
+0.9896392229417206
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.9230769230769231
+
+Precision Score
+0.9270516717325228
+
+Recall Score
+0.9159159159159159
+
+F1 Score
+0.9214501510574019
+
+
+--------------------------------- SG - FT ----------------------------------------
+
+################# Naive Bayes Classifier ####################
+
+Accuracy on Training Set :
+0.7874190564292322
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.7455621301775148
+
+Precision Score
+0.6746203904555315
+
+Recall Score
+0.933933933933934
+
+F1 Score
+0.7833753148614611
+################### Random Forest Classifier ###############
+/usr/local/lib/python2.7/site-packages/sklearn/ensemble/forest.py:246: FutureWarning: The default value of n_estimators will change from 10 in version 0.20 to 100 in 0.22.
+  "10 in version 0.20 to 100 in 0.22.", FutureWarning)
+
+Accuracy on Training Set :
+0.9964847363552266
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.8616863905325444
+
+Precision Score
+0.8819776714513556
+
+Recall Score
+0.8303303303303303
+
+F1 Score
+0.8553750966744006
+################### Logistic regression Classifier ###############
+
+Accuracy on Training Set :
+0.9876040703052729
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.9230769230769231
+
+Precision Score
+0.915680473372781
+
+Recall Score
+0.9294294294294294
+
+F1 Score
+0.9225037257824144
+
+
+
+
+
+

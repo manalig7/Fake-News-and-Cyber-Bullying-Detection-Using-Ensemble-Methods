@@ -106,12 +106,12 @@ model_W2V  = Word2Vec(sentences=tokenized_corpus,
                     seed=1000,
                     workers=multiprocessing.cpu_count(),sg=1)
 """
-model_FT = FastText(tokenized_corpus, size=10, window=5, min_count=1, workers=5, sg=1,max_vocab_size=10000)
+#model_FT = FastText(tokenized_corpus, size=10, window=5, min_count=1, workers=5, sg=1,max_vocab_size=10000)
 
 
-model_FT.save("sg_ft.model")
+#model_FT.save("sg_ft.model")
 
-#model_FT = gensim.models.FastText.load("sg_ft.model")
+model_FT = gensim.models.FastText.load("sg_ft.model")
 voc=list(model_FT.wv.vocab)
 
 # Copy word vectors and delete Word2Vec model  and original corpus to save memory

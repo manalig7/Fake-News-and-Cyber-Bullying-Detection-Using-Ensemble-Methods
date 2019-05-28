@@ -142,7 +142,7 @@ Y = array[:,73]
 #model = LogisticRegression(np.random.seed(20))
 #model=pickle.load(open('model_feature_selection', 'rb'))
 #pickle.dump(model, open('model_feature_selection', 'wb'))
-model = LogisticRegression()
+model = LogisticRegression(random_state=20)
 # create the RFE model and select 3 attributes
 rfe = RFE(model, 50)
 rfe = rfe.fit(X, Y)
@@ -238,7 +238,7 @@ print("GRADIENT BOOSTING CLASSIFIER")
 from sklearn.ensemble import GradientBoostingClassifier
 
 
-clf = GradientBoostingClassifier(learning_rate=0.1, n_estimators=1000,max_depth=3, min_samples_split=5, min_samples_leaf=1, subsample=1,max_features='sqrt')
+clf = GradientBoostingClassifier(random_state=20,learning_rate=0.1, n_estimators=1000,max_depth=3, min_samples_split=5, min_samples_leaf=1, subsample=1,max_features='sqrt')
 
 clf.fit(feature_set,y_train)
 print ("\nAccuracy on Training Set :")
@@ -255,13 +255,14 @@ print (precision_score(y_test, y_pred))
 print ("\nRecall Score")
 print (recall_score(y_test, y_pred))
 print ("\nF1 Score")
+print (f1_score(y_test, y_pred))
 
 ###############################################################
-PRINT("ADABOOST CLASSIFIER")
+print("ADABOOST CLASSIFIER")
 from sklearn.ensemble import AdaBoostClassifier
 
 
-clf = AdaBoostClassifier(n_estimators=500)
+clf = AdaBoostClassifier(n_estimators=500,random_state=20)
 
 
 clf.fit(feature_set,y_train)
@@ -279,7 +280,4 @@ print (precision_score(y_test, y_pred))
 print ("\nRecall Score")
 print (recall_score(y_test, y_pred))
 print ("\nF1 Score")
-
-
 print (f1_score(y_test, y_pred))
-clf.fit(X_test,y_test)
