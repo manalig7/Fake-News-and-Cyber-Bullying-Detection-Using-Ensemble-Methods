@@ -1,16 +1,147 @@
 --------------------------------- SG - W2V ----------------------------------------
 
+GRADIENT BOOSTING CLASSIFIER
+
+Accuracy on Training Set :
+0.9998149861239592
+
+Accuracy on Testing Set :
+0.9511834319526628
+
+Precision Score
+0.9491017964071856
+
+Recall Score
+0.9519519519519519
+
+F1 Score
+0.9505247376311845
+ADABOOST CLASSIFIER
+
+Accuracy on Training Set :
+0.9996299722479186
+
+Accuracy on Testing Set :
+0.9452662721893491
+
+Precision Score
+0.947129909365559
+
+Recall Score
+0.9414414414414415
+
+F1 Score
+0.9442771084337349
 
 
 --------------------------------- CBOW - W2V ----------------------------------------
 
+GRADIENT BOOSTING CLASSIFIER
+
+Accuracy on Training Set :
+0.9998149861239592
+
+Accuracy on Testing Set :
+0.9541420118343196
+
+Precision Score
+0.9520958083832335
+
+Recall Score
+0.954954954954955
+
+F1 Score
+0.9535232383808094
+ADABOOST CLASSIFIER
+
+Accuracy on Training Set :
+0.9996299722479186
+
+Accuracy on Testing Set :
+0.9452662721893491
+
+Precision Score
+0.947129909365559
+
+Recall Score
+0.9414414414414415
+
+F1 Score
+0.9442771084337349
 
 
 
 --------------------------------- CBOW - FT ----------------------------------------
+GRADIENT BOOSTING CLASSIFIER
+
+Accuracy on Training Set :
+0.9998149861239592
+
+Accuracy on Testing Set :
+0.9571005917159763
+
+Precision Score
+0.9578313253012049
+
+Recall Score
+0.954954954954955
+
+F1 Score
+0.9563909774436091
+
+
+ADABOOST CLASSIFIER
+
+Accuracy on Training Set :
+0.9996299722479186
+
+Accuracy on Testing Set :
+0.9452662721893491
+
+Precision Score
+0.947129909365559
+
+Recall Score
+0.9414414414414415
+
+F1 Score
+0.9442771084337349
 
 
 
 
 
 --------------------------------- SG - FT ----------------------------------------
+
+GRADIENT BOOSTING CLASSIFIER
+
+Accuracy on Training Set :
+0.9996299722479186
+
+Accuracy on Testing Set :
+0.9511834319526628
+
+Precision Score
+0.9451038575667656
+
+Recall Score
+0.9564564564564565
+
+F1 Score
+0.9507462686567165
+ADABOOST CLASSIFIER
+
+Accuracy on Training Set :
+0.9996299722479186
+
+Accuracy on Testing Set :
+0.9452662721893491
+
+Precision Score
+0.947129909365559
+
+Recall Score
+0.9414414414414415
+
+F1 Score
+0.9442771084337349
