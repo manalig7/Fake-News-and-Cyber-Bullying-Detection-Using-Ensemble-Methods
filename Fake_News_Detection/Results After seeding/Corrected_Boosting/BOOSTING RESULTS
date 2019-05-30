@@ -1,0 +1,138 @@
+BOOSTING RESULTS
+
+-----------------------------SG W2V---------------------------------
+
+################Gradient Boosting Classifier############
+
+Accuracy on Training Set :
+0.9998149861239592
+
+Accuracy on Testing Set :
+0.9504437869822485
+
+Precision Score
+0.9531013615733737
+
+Recall Score
+0.9459459459459459
+
+F1 Score
+0.9495101733232855
+################AdaBoost Classifier############
+
+Accuracy on Training Set :
+0.9998149861239592
+
+Accuracy on Testing Set :
+0.9423076923076923
+
+Precision Score
+0.9414414414414415
+
+Recall Score
+0.9414414414414415
+
+F1 Score
+0.9414414414414415
+
+--------------------------CBOW W2V--------------------------
+################Gradient Boosting Classifier############
+
+Accuracy on Training Set :
+0.9998149861239592
+
+Accuracy on Testing Set :
+0.9504437869822485
+
+Precision Score
+0.9490254872563718
+
+Recall Score
+0.9504504504504504
+
+F1 Score
+0.9497374343585896
+################AdaBoost Classifier############
+
+Accuracy on Training Set :
+0.9998149861239592
+
+Accuracy on Testing Set :
+0.9423076923076923
+
+Precision Score
+0.9414414414414415
+
+Recall Score
+0.9414414414414415
+
+F1 Score
+0.9414414414414415
+
+-------------------------------SG FT--------------------------
+################Gradient Boosting Classifier############
+
+Accuracy on Training Set :
+0.9959296947271046
+
+Accuracy on Testing Set :
+0.9230769230769231
+
+Precision Score
+0.9169139465875371
+
+Recall Score
+0.9279279279279279
+
+F1 Score
+0.9223880597014924
+################AdaBoost Classifier############
+
+Accuracy on Training Set :
+0.9916743755781684
+
+Accuracy on Testing Set :
+0.9045857988165681
+
+Precision Score
+0.9162790697674419
+
+Recall Score
+0.8873873873873874
+
+F1 Score
+0.9016018306636155
+-------------------------------CBOW FT--------------------------
+
+################Gradient Boosting Classifier############
+
+Accuracy on Training Set :
+0.9957446808510638
+
+Accuracy on Testing Set :
+0.9304733727810651
+
+Precision Score
+0.9230769230769231
+
+Recall Score
+0.9369369369369369
+
+F1 Score
+0.9299552906110283
+################AdaBoost Classifier############
+
+Accuracy on Training Set :
+0.9916743755781684
+
+Accuracy on Testing Set :
+0.9045857988165681
+
+Precision Score
+0.9162790697674419
+
+Recall Score
+0.8873873873873874
+
+F1 Score
+0.9016018306636155
