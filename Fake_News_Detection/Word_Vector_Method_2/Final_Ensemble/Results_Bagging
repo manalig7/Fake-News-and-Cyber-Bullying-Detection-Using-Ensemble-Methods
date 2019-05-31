@@ -1,0 +1,110 @@
+---------------------------------SG W2V------------------------
+(10, 700)
+Accuracy on Testing Set
+0.867603550296
+
+Precision Score
+0.8672699849170438
+
+Recall Score
+0.8633633633633634
+
+F1 Score
+0.8653122648607976
+(15, 700)
+Accuracy on Testing Set
+0.875
+
+Precision Score
+0.8725637181409296
+
+Recall Score
+0.8738738738738738
+
+F1 Score
+0.873218304576144
+
+---------------------------------CBOW W2V-----------------------
+
+(10, 700)
+Accuracy on Testing Set
+0.902366863905
+
+Precision Score
+0.9145962732919255
+
+Recall Score
+0.8843843843843844
+
+F1 Score
+0.899236641221374
+(15, 700)
+Accuracy on Testing Set
+0.911982248521
+
+Precision Score
+0.9280125195618153
+
+Recall Score
+0.8903903903903904
+
+F1 Score
+0.9088122605363984
+
+
+
+--------------------------------SG FT----------------------------
+(10, 700)
+Accuracy on Testing Set
+0.888313609467
+
+Precision Score
+0.8883861236802413
+
+Recall Score
+0.8843843843843844
+
+F1 Score
+0.8863807373965388
+(15, 700)
+Accuracy on Testing Set
+0.900887573964
+
+Precision Score
+0.8993993993993994
+
+Recall Score
+0.8993993993993994
+
+F1 Score
+0.8993993993993994
+
+
+--------------------------------CBOW FT--------------------------
+
+(10, 700)
+Accuracy on Testing Set
+0.900147928994
+
+Precision Score
+0.9090909090909091
+
+Recall Score
+0.8858858858858859
+
+F1 Score
+0.8973384030418251
+(15, 700)
+Accuracy on Testing Set
+0.909023668639
+
+Precision Score
+0.9183359013867488
+
+Recall Score
+0.8948948948948949
+
+F1 Score
+0.9064638783269963
+
+

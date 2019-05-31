@@ -1,0 +1,221 @@
+---------------------------------SG W2V-----------------------
+
+NB LR RF
+
+Accuracy on Training Set :
+0.8316373728029602
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.7803254437869822
+
+Precision Score
+0.7157894736842105
+
+Recall Score
+0.918918918918919
+
+F1 Score
+0.8047337278106509
+NB LR Ada
+
+Accuracy on Training Set :
+0.8316373728029602
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.8025147928994083
+
+Precision Score
+0.7301038062283737
+
+Recall Score
+0.9504504504504504
+
+F1 Score
+0.8258317025440314
+LR RF Ada
+
+Accuracy on Training Set :
+0.9946345975948196
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.9119822485207101
+
+Precision Score
+0.9027982326951399
+
+Recall Score
+0.9204204204204204
+
+F1 Score
+0.9115241635687732
+
+---------------------------------CBOW W2V---------------------
+NB LR RF
+
+Accuracy on Training Set :
+0.8727104532839963
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.8239644970414202
+
+Precision Score
+0.7675
+
+Recall Score
+0.9219219219219219
+
+F1 Score
+0.8376534788540245
+NB LR Ada
+
+Accuracy on Training Set :
+0.8727104532839963
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.8461538461538461
+
+Precision Score
+0.7806372549019608
+
+Recall Score
+0.9564564564564565
+
+F1 Score
+0.8596491228070176
+LR RF Ada
+
+Accuracy on Training Set :
+0.9959296947271046
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.908284023668639
+
+Precision Score
+0.900887573964497
+
+Recall Score
+0.9144144144144144
+
+F1 Score
+0.9076005961251863
+-------------------------------------SG FT-----------------------
+
+NB LR RF
+
+Accuracy on Training Set :
+0.8497687326549491
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.8069526627218935
+
+Precision Score
+0.7379553466509988
+
+Recall Score
+0.9429429429429429
+
+F1 Score
+0.8279499011206328
+NB LR Ada
+
+Accuracy on Training Set :
+0.8495837187789084
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.8217455621301775
+
+Precision Score
+0.7450980392156863
+
+Recall Score
+0.96996996996997
+
+F1 Score
+0.842791911285062
+LR RF Ada
+
+Accuracy on Training Set :
+0.9959296947271046
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.9193786982248521
+
+Precision Score
+0.9101620029455081
+
+Recall Score
+0.9279279279279279
+
+F1 Score
+0.9189591078066914
+
+------------------------------------CBOW FT----------------------
+
+NB LR RF
+
+Accuracy on Training Set :
+0.8790009250693802
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.8321005917159763
+
+Precision Score
+0.7733499377334994
+
+Recall Score
+0.9324324324324325
+
+F1 Score
+0.8454731109598367
+NB LR Ada
+
+Accuracy on Training Set :
+0.8786308973172988
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.852810650887574
+
+Precision Score
+0.7865030674846626
+
+Recall Score
+0.9624624624624625
+
+F1 Score
+0.8656313301823093
+LR RF Ada
+
+Accuracy on Training Set :
+0.9957446808510638
+Checking on Test Set
+
+Accuracy on Testing Set :
+0.9090236686390533
+
+Precision Score
+0.8975109809663251
+
+Recall Score
+0.9204204204204204
+
+F1 Score
+0.9088213491475168
+
+
+
+
+
+
+
+
